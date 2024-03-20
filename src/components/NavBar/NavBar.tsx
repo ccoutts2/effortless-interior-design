@@ -9,7 +9,7 @@ import Link from "next/link";
 import BurgerNav from "../BurgerNav/BurgerNav";
 
 const NavBar = () => {
-  const [isActive, setIsActive] = useState(false);
+  const [isActive, setIsActive] = useState<boolean>(false);
 
   return (
     <main className={styles.header}>
@@ -19,7 +19,10 @@ const NavBar = () => {
             setIsActive(!isActive);
           }}
           className={styles.el}>
-          <div className={styles.burger}></div>
+          <div
+            className={`${styles.burger} ${
+              isActive ? styles.burgerActive : ""
+            }`}></div>
           <div className={styles.label}>
             <motion.p variants={opacity} animate={isActive ? "closed" : "open"}>
               menu
@@ -30,7 +33,7 @@ const NavBar = () => {
           </div>
         </div>
         <div className={styles.logo}>
-          <h1>effortless interior design</h1>
+          <Link href="/">effortless interior design</Link>
         </div>
         <motion.div
           variants={opacity}

@@ -1,0 +1,49 @@
+.nav {
+  overflow: hidden;
+  .wrapper {
+    position: relative;
+    div {
+      margin: 0.25rem 0;
+    }
+    .el {
+      cursor: pointer;
+      position: relative;
+    }
+
+    .plus {
+      width: 10px;
+
+      &::after,
+      &::before {
+        content: "";
+        transform: translate(-50%, -50%) rotate(-90deg);
+        position: absolute;
+        background-color: currentColor;
+        transition: all 1s cubic-bezier(0.76, 0, 0.24, 1);
+        top: 39%;
+        left: 18%;
+      }
+
+      &::before {
+        width: 11px;
+        height: 1px;
+        transform: rotate(0deg);
+      }
+
+      &::after {
+        width: 1px;
+        height: 11px;
+        transform: rotate(0deg);
+      }
+    }
+
+    .plusActive {
+      .plus::after {
+        opacity: 0;
+      }
+      .plus::before {
+        transform: rotate(-180deg);
+      }
+    }
+  }
+}

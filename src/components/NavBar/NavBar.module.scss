@@ -9,6 +9,7 @@
   padding: 1rem;
   position: fixed;
   width: 100%;
+  background-color: #f4f0ea;
 
   .bar {
     @include flex(row, space-between, stretch);
@@ -16,23 +17,18 @@
     gap: 0.5rem;
 
     a {
-      position: absolute;
-      left: 0;
       text-decoration: none;
-    }
-
-    .logo {
-      @include flex(row, center, center);
-      font-size: 0.7rem;
+      color: black;
     }
 
     .shopContainer {
       @include flex(row, center, center);
       gap: 0.5rem;
+      cursor: pointer;
     }
 
     .el {
-      @include flex(row, center, center);
+      @include flex(row, flex-start, center);
       gap: 0.25rem;
       cursor: pointer;
     }
@@ -48,6 +44,7 @@
         height: 1px;
         background-color: black;
         position: relative;
+        transition: all 1s cubic-bezier(0.76, 0, 0.24, 1);
       }
 
       &::after {
@@ -56,6 +53,18 @@
 
       &::before {
         top: 4px;
+      }
+    }
+
+    .burgerActive {
+      &::after {
+        top: -1px;
+        transform: rotate(45deg);
+      }
+
+      &::before {
+        top: 1px;
+        transform: rotate(-45deg);
       }
     }
 
