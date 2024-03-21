@@ -5,6 +5,21 @@
   align-items: $align;
 }
 
+$tablet-breakpoint: 768px;
+$desktop-breakpoint: 1280px;
+
+@mixin tablet {
+  @media (min-width: $tablet-breakpoint) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: $desktop-breakpoint) {
+    @content;
+  }
+}
+
 .header {
   padding: 1rem;
   position: fixed;
@@ -16,21 +31,52 @@
     text-transform: uppercase;
     gap: 0.5rem;
 
+    @include desktop {
+      @include flex(row, center, flex-end);
+    }
+
     a {
       text-decoration: none;
       color: black;
+
+      @include desktop {
+        font-size: 1.5rem;
+      }
     }
 
     .shopContainer {
       @include flex(row, center, center);
       gap: 0.5rem;
       cursor: pointer;
+
+      @include desktop {
+        position: relative;
+        bottom: 3rem;
+      }
     }
 
     .el {
       @include flex(row, flex-start, center);
       gap: 0.25rem;
       cursor: pointer;
+
+      @include desktop {
+        display: none;
+      }
+    }
+
+    .desktopEl {
+      display: none;
+
+      @include desktop {
+        display: flex;
+        padding-inline: 3rem;
+        font-size: 1rem;
+      }
+    }
+
+    .nav {
+      padding-inline: 2rem;
     }
 
     .burger {

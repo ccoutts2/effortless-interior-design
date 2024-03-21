@@ -12,10 +12,10 @@ const ShopMenu = () => {
       animate="enter"
       exit="exit">
       <div className={styles.wrapper}>
-        <p>bedroom</p>
-        <p>bathroom</p>
-        <p>kitchen</p>
-        <p>living room</p>
+        <div className={styles.el}>bedroom</div>
+        <div className={styles.el}>bathroom</div>
+        <div className={styles.el}>kitchen</div>
+        <div className={styles.el}>living room</div>
       </div>
     </motion.main>
   );

@@ -15,7 +15,7 @@ const BurgerNav = () => {
       animate="enter"
       exit="exit">
       <nav className={styles.wrapper}>
-        <div>home</div>
+        <div className={styles.el}>home</div>
         <div
           onClick={() => {
             setIsActive(!isActive);
@@ -24,11 +24,11 @@ const BurgerNav = () => {
           shop <span className={styles.plus}></span>
         </div>
         <AnimatePresence mode="wait">{isActive && <ShopMenu />}</AnimatePresence>
-        <div>workshops</div>
-        <div>consultations</div>
-        <div>resources</div>
-        <div>about</div>
-        <div>contact</div>
+        <div className={styles.el}>workshops</div>
+        <div className={styles.el}>consultations</div>
+        <div className={styles.el}>resources</div>
+        <div className={styles.el}>about</div>
+        <div className={styles.el}>contact</div>
       </nav>
     </motion.main>
   );

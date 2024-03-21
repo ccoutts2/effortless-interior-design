@@ -7,9 +7,11 @@ import { opacity } from "./anim";
 import React, { useState } from "react";
 import Link from "next/link";
 import BurgerNav from "../BurgerNav/BurgerNav";
+import ShopMenu from "../ShopMenu/ShopMenu";
 
 const NavBar = () => {
   const [isActive, setIsActive] = useState<boolean>(false);
+  const [isShopActive, setIsShopActive] = useState<boolean>(false);
 
   return (
     <main className={styles.header}>
@@ -32,8 +34,30 @@ const NavBar = () => {
             </motion.p>
           </div>
         </div>
-        <div className={styles.logo}>
+        <div className={styles.desktopEl}>
+          <div onMouseEnter={() => setIsShopActive(true)} className={styles.nav}>
+            shop
+          </div>
+          <div onMouseEnter={() => setIsShopActive(false)} className={styles.nav}>
+            workshops
+          </div>
+          <div onMouseEnter={() => setIsShopActive(false)} className={styles.nav}>
+            consultations
+          </div>
+        </div>
+        <div onMouseEnter={() => setIsShopActive(false)} className={styles.logo}>
           <Link href="/">effortless interior design</Link>
+        </div>
+        <div className={styles.desktopEl}>
+          <div onMouseEnter={() => setIsShopActive(false)} className={styles.nav}>
+            resources
+          </div>
+          <div onMouseEnter={() => setIsShopActive(false)} className={styles.nav}>
+            about
+          </div>
+          <div onMouseEnter={() => setIsShopActive(false)} className={styles.nav}>
+            contact
+          </div>
         </div>
         <motion.div
           variants={opacity}
@@ -43,6 +67,7 @@ const NavBar = () => {
           <IoIosSearch />
         </motion.div>
       </div>
+      <AnimatePresence mode="wait">{isShopActive && <ShopMenu />}</AnimatePresence>
       <AnimatePresence mode="wait">{isActive && <BurgerNav />}</AnimatePresence>
     </main>
   );

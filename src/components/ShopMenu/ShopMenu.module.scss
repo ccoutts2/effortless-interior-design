@@ -4,5 +4,13 @@
     p {
       margin: 0.25rem 0;
     }
+
+    .el {
+      cursor: pointer;
+      position: relative;
+      text-transform: uppercase;
+      font-size: 0.8rem;
+      padding: 0.5rem 0;
+    }
   }
 }
