@@ -1,7 +1,33 @@
+@mixin flex($direction, $justify, $align) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
+}
+
+$tablet-breakpoint: 768px;
+$desktop-breakpoint: 1280px;
+
+@mixin tablet {
+  @media (min-width: $tablet-breakpoint) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: $desktop-breakpoint) {
+    @content;
+  }
+}
+
 .nav {
   overflow: hidden;
   .wrapper {
     position: relative;
+
+    @include desktop {
+      display: flex;
+    }
     div {
       margin: 0.25rem 0;
     }

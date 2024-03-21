@@ -1,7 +1,7 @@
 import styles from "./ShopMenu.module.scss";
 import { motion } from "framer-motion";
 import React, { useState } from "react";
-import { height, translate, blur, opacity } from "./anim";
+import { height, translate, blur } from "./anim";
 import Link from "next/link";
 import ShopImages from "./ShopImages";
 
@@ -27,7 +27,7 @@ const ShopMenu = () => {
     {
       title: "bathroom",
       href: "/",
-      src: "bathroom.jpg",
+      src: "bathroom2.jpg",
     },
     {
       title: "kitchen",
@@ -37,7 +37,7 @@ const ShopMenu = () => {
     {
       title: "living room",
       href: "/",
-      src: "bathroom.jpg",
+      src: "bathroom2.jpg",
     },
   ];
 
