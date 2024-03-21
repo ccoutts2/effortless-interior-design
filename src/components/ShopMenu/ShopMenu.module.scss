@@ -1,16 +1,54 @@
+@mixin flex($direction, $justify, $align) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
+}
+
+$tablet-breakpoint: 768px;
+$desktop-breakpoint: 1280px;
+
+@mixin tablet {
+  @media (min-width: $tablet-breakpoint) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: $desktop-breakpoint) {
+    @content;
+  }
+}
+
 .nav {
   overflow: hidden;
   .wrapper {
-    p {
-      margin: 0.25rem 0;
-    }
-
     .el {
       cursor: pointer;
       position: relative;
       text-transform: uppercase;
       font-size: 0.8rem;
       padding: 0.5rem 0;
+      text-decoration: none;
+      color: black;
+      display: block;
+    }
+
+    p {
+      margin: 0.25rem 0;
+
+      @include desktop {
+        font-size: 2.6rem;
+        margin: 1rem 2rem;
+        // display: flex;
+      }
+    }
+
+    @include desktop {
+      @include flex(row, flex-start, stretch);
+      width: 60%;
+      flex-wrap: wrap;
+      padding-top: 2rem;
     }
   }
 }

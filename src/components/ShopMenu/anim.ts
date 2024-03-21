@@ -18,3 +18,34 @@ export const height: Variants = {
     transition,
   },
 };
+
+export const translate: Variants = {
+  initial: {
+    y: "100%",
+  },
+  enter: {
+    y: 0,
+    transition: { ...transition, delay: 0.7 },
+  },
+  closed: {
+    y: "100%",
+    transition: { ...transition, delay: 0.2 },
+  },
+};
+
+export const blur: Variants = {
+  initial: {
+    filter: "blur(0px)",
+    opacity: 1,
+  },
+  open: {
+    filter: "blur(2px)",
+    opacity: 0.3,
+    transition: { duration: 0.3 },
+  },
+  closed: {
+    filter: "blur(0px)",
+    opacity: 1,
+    transition: { duration: 0.3 },
+  },
+};

@@ -12,6 +12,7 @@ import ShopMenu from "../ShopMenu/ShopMenu";
 const NavBar = () => {
   const [isActive, setIsActive] = useState<boolean>(false);
   const [isShopActive, setIsShopActive] = useState<boolean>(false);
+  const [isHover, setIsHover] = useState<boolean>(false);
 
   return (
     <main className={styles.header}>
@@ -36,27 +37,32 @@ const NavBar = () => {
         </div>
         <div className={styles.desktopEl}>
           <div onMouseEnter={() => setIsShopActive(true)} className={styles.nav}>
-            shop
+            <Link href="/"> shop</Link>
           </div>
           <div onMouseEnter={() => setIsShopActive(false)} className={styles.nav}>
-            workshops
+            <Link href="/"> workshops</Link>
           </div>
           <div onMouseEnter={() => setIsShopActive(false)} className={styles.nav}>
-            consultations
+            <Link className={``} href="/">
+              {" "}
+              consultations
+            </Link>
           </div>
         </div>
         <div onMouseEnter={() => setIsShopActive(false)} className={styles.logo}>
           <Link href="/">effortless interior design</Link>
         </div>
-        <div className={styles.desktopEl}>
-          <div onMouseEnter={() => setIsShopActive(false)} className={styles.nav}>
-            resources
+        <div
+          onMouseEnter={() => setIsShopActive(false)}
+          className={styles.desktopEl}>
+          <div className={styles.nav}>
+            <Link href="/"> resources</Link>
           </div>
-          <div onMouseEnter={() => setIsShopActive(false)} className={styles.nav}>
-            about
+          <div className={styles.nav}>
+            <Link href="/"> about</Link>
           </div>
-          <div onMouseEnter={() => setIsShopActive(false)} className={styles.nav}>
-            contact
+          <div className={styles.nav}>
+            <Link href="/"> contact</Link>
           </div>
         </div>
         <motion.div
