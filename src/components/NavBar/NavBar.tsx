@@ -7,7 +7,7 @@ import { opacity } from "./anim";
 import React, { useState } from "react";
 import Link from "next/link";
 import BurgerNav from "../BurgerNav/BurgerNav";
-import ShopMenu from "../ShopMenu/ShopMenu";
+import ShopMenu from "../Shop/ShopMenu";
 
 const NavBar = () => {
   const [isActive, setIsActive] = useState<boolean>(false);

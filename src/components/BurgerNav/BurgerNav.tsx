@@ -2,7 +2,7 @@ import styles from "./BurgerNav.module.scss";
 import { motion, AnimatePresence } from "framer-motion";
 import { height, opacity } from "./anim";
 import React, { useState } from "react";
-import ShopMenu from "../ShopMenu/ShopMenu";
+import ShopMenu from "../Shop/ShopMenu";
 
 const BurgerNav = () => {
   const [isActive, setIsActive] = useState<boolean>(false);
