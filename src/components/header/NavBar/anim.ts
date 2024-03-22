@@ -1,5 +1,10 @@
 import type { Variants } from "framer-motion";
 
+const transition = {
+  duration: 1,
+  ease: [0.76, 0, 0.24, 1],
+};
+
 export const opacity: Variants = {
   initial: {
     opacity: 0,
@@ -15,5 +20,19 @@ export const opacity: Variants = {
     transition: {
       duration: 0.35,
     },
+  },
+};
+
+export const background: Variants = {
+  initial: {
+    height: 0,
+  },
+  open: {
+    height: "100vh",
+    transition,
+  },
+  closed: {
+    height: 0,
+    transition,
   },
 };

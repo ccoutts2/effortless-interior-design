@@ -1,8 +1,7 @@
 import styles from "./ShopImages.module.scss";
 import { motion } from "framer-motion";
-import React, { useState } from "react";
+import React from "react";
 import { opacity } from "./anim";
-import Link from "next/link";
 import Image from "next/image";
 
 interface ShopImagesProps {

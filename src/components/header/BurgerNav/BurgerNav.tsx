@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { height, opacity } from "./anim";
 import React, { useState } from "react";
 import ShopMenu from "../Shop/ShopMenu";
+import Link from "next/link";
 
 const BurgerNav = () => {
   const [isActive, setIsActive] = useState<boolean>(false);
@@ -27,7 +28,9 @@ const BurgerNav = () => {
         <div className={styles.el}>workshops</div>
         <div className={styles.el}>consultations</div>
         <div className={styles.el}>resources</div>
-        <div className={styles.el}>about</div>
+        <div className={styles.el}>
+          <Link href="/about">about</Link>
+        </div>
         <div className={styles.el}>contact</div>
       </nav>
     </motion.main>

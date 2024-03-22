@@ -131,4 +131,12 @@ $desktop-breakpoint: 1280px;
       }
     }
   }
+
+  .background {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    background-color: black;
+    opacity: 0.5;
+  }
 }

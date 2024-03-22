@@ -3,7 +3,7 @@ import styles from "./NavBar.module.scss";
 import { FiShoppingCart } from "react-icons/fi";
 import { IoIosSearch } from "react-icons/io";
 import { motion, AnimatePresence } from "framer-motion";
-import { opacity } from "./anim";
+import { opacity, background } from "./anim";
 import React, { useState } from "react";
 import Link from "next/link";
 import BurgerNav from "../BurgerNav/BurgerNav";
@@ -12,7 +12,6 @@ import ShopMenu from "../Shop/ShopMenu";
 const NavBar = () => {
   const [isActive, setIsActive] = useState<boolean>(false);
   const [isShopActive, setIsShopActive] = useState<boolean>(false);
-  const [isHover, setIsHover] = useState<boolean>(false);
 
   return (
     <main className={styles.header}>
@@ -37,13 +36,13 @@ const NavBar = () => {
         </div>
         <div className={styles.desktopEl}>
           <div onMouseEnter={() => setIsShopActive(true)} className={styles.nav}>
-            <Link href="/"> shop</Link>
+            <Link href="/shop"> shop</Link>
           </div>
           <div onMouseEnter={() => setIsShopActive(false)} className={styles.nav}>
-            <Link href="/"> workshops</Link>
+            <Link href="/workshops"> workshops</Link>
           </div>
           <div onMouseEnter={() => setIsShopActive(false)} className={styles.nav}>
-            <Link className={``} href="/">
+            <Link className={``} href="/consultations">
               {" "}
               consultations
             </Link>
@@ -56,13 +55,13 @@ const NavBar = () => {
           onMouseEnter={() => setIsShopActive(false)}
           className={styles.desktopEl}>
           <div className={styles.nav}>
-            <Link href="/"> resources</Link>
+            <Link href="/resources"> resources</Link>
           </div>
           <div className={styles.nav}>
-            <Link href="/"> about</Link>
+            <Link href="/about"> about</Link>
           </div>
           <div className={styles.nav}>
-            <Link href="/"> contact</Link>
+            <Link href="/contact"> contact</Link>
           </div>
         </div>
         <motion.div
@@ -73,8 +72,14 @@ const NavBar = () => {
           <IoIosSearch />
         </motion.div>
       </div>
+
       <AnimatePresence mode="wait">{isShopActive && <ShopMenu />}</AnimatePresence>
       <AnimatePresence mode="wait">{isActive && <BurgerNav />}</AnimatePresence>
+      {/* <motion.div
+        className={styles.background}
+        variants={background}
+        initial="initial"
+        animate={isActive ? "open" : "closed"}></motion.div> */}
     </main>
   );
 };
