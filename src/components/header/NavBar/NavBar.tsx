@@ -8,10 +8,16 @@ import React, { useState } from "react";
 import Link from "next/link";
 import BurgerNav from "../BurgerNav/BurgerNav";
 import ShopMenu from "../Shop/ShopMenu";
+import SearchBar from "../SearchBar/SearchBar";
 
 const NavBar = () => {
   const [isActive, setIsActive] = useState<boolean>(false);
   const [isShopActive, setIsShopActive] = useState<boolean>(false);
+  const [isVisible, setIsVisible] = useState<boolean>(false);
+
+  const toggleSearchBar = () => {
+    setIsVisible(!isVisible);
+  };
 
   return (
     <main className={styles.header}>
@@ -69,7 +75,8 @@ const NavBar = () => {
           animate={isActive ? "closed" : "open"}
           className={styles.shopContainer}>
           <FiShoppingCart />
-          <IoIosSearch />
+          <IoIosSearch onClick={toggleSearchBar} />
+          <SearchBar isVisible={isVisible} />
         </motion.div>
       </div>
 

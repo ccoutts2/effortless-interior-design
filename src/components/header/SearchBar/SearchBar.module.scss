@@ -1,0 +1,14 @@
+.searchContainer {
+  position: relative;
+
+  .searchBar {
+    display: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+
+  .visible {
+    display: flex;
+  }
+}
