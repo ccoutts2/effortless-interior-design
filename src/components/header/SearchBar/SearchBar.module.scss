@@ -1,14 +1,31 @@
 .searchContainer {
-  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+
+  .searchForm {
+    width: 30%;
+  }
 
   .searchBar {
     display: none;
-    position: absolute;
-    top: 0;
-    right: 0;
+    border: none;
+    width: 100%;
   }
 
   .visible {
     display: flex;
+    height: 3rem;
+    background-color: #f4f0ea;
+    border: none;
+  }
+
+  .button {
+    height: 3rem;
+  }
+
+  .icon {
+    height: 100%;
   }
 }
