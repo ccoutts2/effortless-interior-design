@@ -53,6 +53,14 @@ $desktop-breakpoint: 1280px;
         position: relative;
         bottom: 3rem;
       }
+
+      .searchLogo {
+        display: none;
+
+        @include desktop {
+          display: flex;
+        }
+      }
     }
 
     .el {

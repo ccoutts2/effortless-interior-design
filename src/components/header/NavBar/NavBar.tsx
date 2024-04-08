@@ -32,14 +32,14 @@ const NavBar = () => {
               className={`${styles.burger} ${
                 isActive ? styles.burgerActive : ""
               }`}></div>
-            <div className={styles.label}>
+            {/* <div className={styles.label}>
               <motion.p variants={opacity} animate={isActive ? "closed" : "open"}>
                 menu
               </motion.p>
               <motion.p variants={opacity} animate={!isActive ? "closed" : "open"}>
                 close
               </motion.p>
-            </div>
+            </div> */}
           </div>
           <div className={styles.desktopEl}>
             <div onMouseEnter={() => setIsShopActive(true)} className={styles.nav}>
@@ -76,7 +76,7 @@ const NavBar = () => {
             animate={isActive ? "closed" : "open"}
             className={styles.shopContainer}>
             <FiShoppingCart />
-            <IoIosSearch onClick={toggleSearchBar} />
+            <IoIosSearch className={styles.searchLogo} onClick={toggleSearchBar} />
           </motion.div>
         </div>
       )}

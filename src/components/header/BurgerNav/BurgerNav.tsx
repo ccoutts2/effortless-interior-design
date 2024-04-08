@@ -1,9 +1,10 @@
 import styles from "./BurgerNav.module.scss";
 import { motion, AnimatePresence } from "framer-motion";
-import { height, opacity } from "./anim";
+import { height } from "./anim";
 import React, { useState } from "react";
 import ShopMenu from "../Shop/ShopMenu";
 import Link from "next/link";
+import SearchBar from "../SearchBar/SearchBar";
 
 const BurgerNav = () => {
   const [isActive, setIsActive] = useState<boolean>(false);
@@ -32,6 +33,14 @@ const BurgerNav = () => {
           <Link href="/about">about</Link>
         </div>
         <div className={styles.el}>contact</div>
+        <div className={styles.el}>
+          <form className={styles.searchForm} id="search" name="search">
+            <input
+              type="text"
+              className={styles.searchBar}
+              placeholder="Search..."></input>
+          </form>
+        </div>
       </nav>
     </motion.main>
   );
