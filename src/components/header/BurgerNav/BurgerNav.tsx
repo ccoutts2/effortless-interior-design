@@ -4,7 +4,6 @@ import { height } from "./anim";
 import React, { useState } from "react";
 import ShopMenu from "../Shop/ShopMenu";
 import Link from "next/link";
-import SearchBar from "../SearchBar/SearchBar";
 
 const BurgerNav = () => {
   const [isActive, setIsActive] = useState<boolean>(false);

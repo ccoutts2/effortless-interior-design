@@ -25,6 +25,7 @@ $desktop-breakpoint: 1280px;
   position: fixed;
   width: 100%;
   background-color: #f4f0ea;
+  z-index: 2;
 
   .bar {
     @include flex(row, space-between, stretch);
