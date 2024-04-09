@@ -20,11 +20,23 @@ $desktop-breakpoint: 1280px;
   }
 }
 
-.hero {
-  width: 100%;
-  aspect-ratio: 10 / 10;
+.bio {
+  padding: 2rem 1rem 1rem;
 
-  @include desktop {
-    aspect-ratio: 10 / 5;
+  @include tablet {
+    padding-inline: 3rem;
+  }
+
+  .header {
+    text-transform: capitalize;
+    text-align: center;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 0.8rem;
+    text-align: center;
+  }
+
+  .text {
+    padding-top: 1rem;
   }
 }

@@ -20,13 +20,6 @@ const ImageCarousel = ({ images, interval = 5000 }: ImageCarouselProps) => {
     });
   };
 
-  const showPrevImage = () => {
-    setImageIndex((index) => {
-      if (index === 0) return images.length - 1;
-      return index - 1;
-    });
-  };
-
   useEffect(() => {
     const intervalImage = setInterval(showNextImage, interval);
 

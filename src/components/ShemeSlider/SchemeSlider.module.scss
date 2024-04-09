@@ -1,0 +1,117 @@
+@mixin flex($direction, $justify, $align) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
+}
+
+$tablet-breakpoint: 768px;
+$desktop-breakpoint: 1280px;
+
+@mixin tablet {
+  @media (min-width: $tablet-breakpoint) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: $desktop-breakpoint) {
+    @content;
+  }
+}
+
+.section {
+  .header {
+    padding: 2rem 1rem 1rem;
+    text-align: center;
+    font-weight: 400;
+    font-size: 0.8rem;
+    text-transform: capitalize;
+    font-style: italic;
+
+    @include tablet {
+      padding-inline: 3rem;
+    }
+  }
+  .sliderTop {
+    height: 18rem;
+    padding: 1rem 1rem 2rem;
+    gap: 0.25rem;
+    display: flex;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+
+    @include tablet {
+      padding-inline: 3rem;
+    }
+
+    .imageContainer {
+      height: 100%;
+      width: 60%;
+      flex: 0 0 auto;
+
+      @include tablet {
+        width: 30%;
+        margin: 0 auto;
+      }
+
+      .imageEl {
+        height: 100%;
+        object-fit: cover;
+        width: 100%;
+      }
+    }
+  }
+
+  .sliderBottom {
+    padding: 1rem;
+    gap: 2rem;
+    @include flex(column, space-between, center);
+    // overflow-x: auto;
+    // overflow-y: hidden;
+    // -ms-overflow-style: none;
+    // scrollbar-width: none;
+
+    @include tablet {
+      @include flex(row, space-between, stretch);
+      height: 18rem;
+      padding-inline: 3rem;
+    }
+
+    .videoContainer {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+      flex-grow: 2;
+
+      // @include tablet {
+      //   width: 50%;
+      // }
+
+      .video {
+        object-fit: cover;
+        height: 100%;
+        width: 100%;
+      }
+    }
+
+    .imageContainer {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+      flex-grow: 1;
+
+      @include tablet {
+        width: 50%;
+      }
+
+      .imageEl {
+        height: 100%;
+        object-fit: cover;
+        width: 100%;
+      }
+    }
+  }
+}
