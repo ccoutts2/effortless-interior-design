@@ -27,6 +27,10 @@ $desktop-breakpoint: 1280px;
     padding-inline: 3rem;
   }
 
+  @include desktop {
+    padding-inline: 8rem;
+  }
+
   .header {
     text-transform: capitalize;
     text-align: center;

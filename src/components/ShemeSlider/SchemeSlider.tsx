@@ -1,8 +1,9 @@
 "use client";
 import styles from "./SchemeSlider.module.scss";
-import room1 from "../../../public/assets/images/bathroom.jpg";
-import room2 from "../../../public/assets/images/bathroom2.jpg";
-import room3 from "../../../public/assets/images/bedroom-1.jpg";
+import room1 from "../../../public/assets/images/eid4.jpg";
+import room2 from "../../../public/assets/images/eid10.jpg";
+import room3 from "../../../public/assets/images/eid6.jpg";
+import Image from "next/image";
 
 const SchemeSlider = () => {
   return (
@@ -11,15 +12,33 @@ const SchemeSlider = () => {
       <section>
         <div className={styles.sliderTop}>
           <div className={styles.imageContainer}>
-            <img className={styles.imageEl} src={room1.src} />
+            <Image
+              width={500}
+              height={500}
+              className={styles.imageEl}
+              src={room1.src}
+              alt="slider"
+            />
             <p>bathroom</p>
           </div>
           <div className={styles.imageContainer}>
-            <img className={styles.imageEl} src={room2.src} />
+            <Image
+              width={500}
+              height={500}
+              className={styles.imageEl}
+              src={room2.src}
+              alt="slider"
+            />
             <p>kitchen</p>
           </div>
           <div className={styles.imageContainer}>
-            <img className={styles.imageEl} src={room3.src} />
+            <Image
+              width={500}
+              height={500}
+              className={styles.imageEl}
+              src={room3.src}
+              alt="slider"
+            />
             <p>bedroom</p>
           </div>
         </div>
@@ -31,7 +50,13 @@ const SchemeSlider = () => {
             <p>workshops</p>
           </div>
           <div className={styles.imageContainer}>
-            <img className={styles.imageEl} src={room3.src} />
+            <Image
+              width={500}
+              height={500}
+              className={styles.imageEl}
+              src={room3.src}
+              alt="slider"
+            />
             <p>bedroom</p>
           </div>
         </div>

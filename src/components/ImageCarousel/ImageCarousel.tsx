@@ -1,8 +1,7 @@
 "use client";
 
 import styles from "./ImageCarousel.module.scss";
-import { FaArrowAltCircleLeft } from "react-icons/fa";
-import { FaArrowAltCircleRight } from "react-icons/fa";
+import Image from "next/image";
 import React, { useState, useEffect } from "react";
 
 type ImageCarouselProps = {
@@ -30,9 +29,12 @@ const ImageCarousel = ({ images, interval = 5000 }: ImageCarouselProps) => {
     <div className={styles.slider}>
       <div className={styles.imageContainer}>
         {images.map((url, index) => (
-          <img
+          <Image
+            width={1800}
+            height={1800}
             key={url}
             src={url}
+            alt="carousel"
             className={`${styles.image} ${
               index === imageIndex ? styles.active : ""
             }`}

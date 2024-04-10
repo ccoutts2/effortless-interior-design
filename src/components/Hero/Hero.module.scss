@@ -22,9 +22,13 @@ $desktop-breakpoint: 1280px;
 
 .hero {
   width: 100%;
-  aspect-ratio: 10 / 10;
+  aspect-ratio: 0.6818181818181818;
+
+  @include tablet {
+    aspect-ratio: 12 / 6;
+  }
 
   @include desktop {
-    aspect-ratio: 10 / 5;
+    aspect-ratio: 14 / 6;
   }
 }

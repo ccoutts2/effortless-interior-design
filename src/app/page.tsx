@@ -9,6 +9,7 @@ import SchemeSlider from "@/components/ShemeSlider/SchemeSlider";
 import OurStory from "@/components/OurStory/OurStory";
 import Lenis from "@studio-freight/lenis";
 import Testimonials from "@/components/Testimonials/Testimonials";
+import Resources from "@/components/Resources/Resources";
 
 export default function Home() {
   useEffect(() => {
@@ -29,6 +30,7 @@ export default function Home() {
       <SchemeSlider />
       <OurStory />
       <Testimonials />
+      <Resources />
     </main>
   );
 }

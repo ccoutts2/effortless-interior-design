@@ -47,6 +47,10 @@ $desktop-breakpoint: 1280px;
       padding-inline: 3rem;
     }
 
+    @include desktop {
+      padding-inline: 8rem;
+    }
+
     .imageContainer {
       height: 100%;
       width: 60%;
@@ -69,15 +73,15 @@ $desktop-breakpoint: 1280px;
     padding: 1rem;
     gap: 2rem;
     @include flex(column, space-between, center);
-    // overflow-x: auto;
-    // overflow-y: hidden;
-    // -ms-overflow-style: none;
-    // scrollbar-width: none;
 
     @include tablet {
       @include flex(row, space-between, stretch);
       height: 18rem;
       padding-inline: 3rem;
+    }
+
+    @include desktop {
+      padding-inline: 8rem;
     }
 
     .videoContainer {
