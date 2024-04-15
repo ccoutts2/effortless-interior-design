@@ -1,0 +1,109 @@
+@mixin flex($direction, $justify, $align) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
+}
+
+$tablet-breakpoint: 768px;
+$desktop-breakpoint: 1280px;
+
+@mixin tablet {
+  @media (min-width: $tablet-breakpoint) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: $desktop-breakpoint) {
+    @content;
+  }
+}
+
+.footer {
+  background-color: #f4f0ea;
+  @include flex(column, center, center);
+  width: 100%;
+  padding: 1rem;
+
+  @include tablet {
+    @include flex(column, space-between, stretch);
+    padding-inline: 3rem;
+  }
+
+  .header {
+    font-weight: 400;
+    text-align: center;
+    text-transform: capitalize;
+  }
+
+  .headings {
+    font-weight: 400;
+    text-transform: uppercase;
+    padding-bottom: 0.5rem;
+  }
+
+  .footerContent {
+    @include flex(column, center, center);
+    padding-top: 1rem;
+    width: 100%;
+
+    @include tablet {
+      @include flex(row, space-between, flex-start);
+    }
+
+    .newsLetter {
+      @include flex(column, center, center);
+      padding: 1rem 0;
+      text-transform: capitalize;
+      font-weight: 400;
+      width: 100%;
+
+      @include tablet {
+        @include flex(column, center, flex-start);
+      }
+
+      .form {
+        @include flex(column, center, center);
+        text-transform: capitalize;
+        width: 100%;
+
+        @include tablet {
+          @include flex(column, center, flex-start);
+        }
+        .input {
+          background-color: #f4f0ea;
+          border: none;
+          width: 100%;
+          &::placeholder {
+            text-align: center;
+            line-height: 2;
+          }
+        }
+      }
+    }
+
+    .contact {
+      @include flex(column, center, center);
+      padding: 1rem 0;
+      text-transform: capitalize;
+      width: 100%;
+    }
+
+    .schemes {
+      @include flex(column, center, center);
+      padding: 1rem 0;
+      text-transform: capitalize;
+      width: 100%;
+
+      @include tablet {
+        @include flex(column, center, flex-end);
+      }
+    }
+  }
+  .copywrite {
+    @include flex(column, center, center);
+    width: 100%;
+    text-transform: capitalize;
+  }
+}

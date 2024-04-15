@@ -54,10 +54,6 @@ $desktop-breakpoint: 1280px;
           text-transform: uppercase;
 
           &::placeholder {
-            font-family: ui-monospace, Menlo, Monaco, "Cascadia Mono",
-              "Segoe UI Mono", "Roboto Mono", "Oxygen Mono", "Ubuntu Monospace",
-              "Source Code Pro", "Fira Mono", "Droid Sans Mono", "Courier New",
-              monospace;
             color: rgba(0, 0, 0, 0.7);
           }
 
