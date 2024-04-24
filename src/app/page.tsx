@@ -26,9 +26,9 @@ export default function Home() {
   return (
     <main className={styles.main}>
       <Hero />
-      <HomeBio />
-      <SchemeSlider />
       <OurStory />
+      <SchemeSlider />
+      <HomeBio />
       <Testimonials />
       <Resources />
     </main>

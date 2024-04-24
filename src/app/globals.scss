@@ -12,6 +12,14 @@ body {
 
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap");
 
+input {
+  font-family: "Poppins", sans-serif;
+  font-size: 0.7rem;
+  outline: none;
+  text-align: center;
+}
+
 input::placeholder {
   font-family: "Poppins", sans-serif;
+  font-size: 0.7rem;
 }
