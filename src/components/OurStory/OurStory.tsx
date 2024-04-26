@@ -1,6 +1,6 @@
 "use client";
 import styles from "./OurStory.module.scss";
-import React, { useRef, useEffect } from "react";
+import React, { useRef } from "react";
 import { useScroll, motion } from "framer-motion";
 
 const OurStory = () => {

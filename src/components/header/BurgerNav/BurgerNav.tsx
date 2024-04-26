@@ -22,7 +22,7 @@ const BurgerNav = () => {
             setIsActive(!isActive);
           }}
           className={`${styles.el} ${isActive ? styles.plusActive : ""}`}>
-          shop <span className={styles.plus}></span>
+          schemes <span className={styles.plus}></span>
         </div>
         <AnimatePresence mode="wait">{isActive && <ShopMenu />}</AnimatePresence>
         <div className={styles.el}>workshops</div>

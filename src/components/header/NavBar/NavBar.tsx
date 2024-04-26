@@ -36,7 +36,7 @@ const NavBar = () => {
             </div>
             <div className={styles.desktopEl}>
               <div onMouseEnter={() => setIsShopActive(true)} className={styles.nav}>
-                <Link href="/shop"> shop</Link>
+                <Link href="/schemes"> schemes</Link>
               </div>
               <div
                 onMouseEnter={() => setIsShopActive(false)}
