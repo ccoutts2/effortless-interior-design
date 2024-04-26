@@ -35,7 +35,7 @@ const bulletPoints: BulletPoints[] = [
   },
 ];
 
-const Workshops: React.FC = () => {
+export const WorkshopsScreen: React.FC = () => {
   return (
     <section>
       <div className={styles.workshops}>
@@ -106,5 +106,3 @@ const Workshops: React.FC = () => {
     </section>
   );
 };
-
-export default Workshops;
