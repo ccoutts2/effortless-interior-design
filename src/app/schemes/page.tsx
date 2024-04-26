@@ -1,7 +1,6 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React from "react";
 import styles from "./page.module.scss";
-import Image from "next/image";
 
 import SchemeArticles from "@/components/SchemeArticles/SchemeArticles";
 
