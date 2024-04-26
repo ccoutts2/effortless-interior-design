@@ -1,0 +1,81 @@
+@mixin flex($direction, $justify, $align) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
+}
+
+$tablet-breakpoint: 768px;
+$desktop-breakpoint: 1280px;
+
+@mixin tablet {
+  @media (min-width: $tablet-breakpoint) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: $desktop-breakpoint) {
+    @content;
+  }
+}
+
+.filter {
+  @include flex(row, flex-start, stretch);
+  padding: 2rem 1rem;
+  gap: 0.5rem;
+  text-transform: capitalize;
+
+  .filterOverlay {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 85vw;
+    height: 100vh;
+    padding: 1rem;
+    background-color: #91978a;
+    z-index: 2;
+    display: flex;
+    clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+  }
+
+  .filterCopy {
+    flex: 4;
+    @include flex(column, space-between, stretch);
+    padding-top: 2rem;
+  }
+
+  .filterHeader {
+    padding: 2rem;
+    border-bottom: 1px solid black;
+
+    h3 {
+      font-weight: 400;
+    }
+  }
+
+  .filterItems {
+    width: max-content;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  }
+
+  .filterItemHolder {
+    position: relative;
+  }
+
+  .filterItemHolder p {
+    color: #000;
+    font-size: 1rem;
+    font-weight: 400;
+    letter-spacing: -0.02rem;
+    line-height: 90%;
+
+    @include tablet {
+      font-size: 4rem;
+    }
+
+    @include tablet {
+      font-size: 5rem;
+    }
+  }
+}

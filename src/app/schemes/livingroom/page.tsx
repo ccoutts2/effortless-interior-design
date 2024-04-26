@@ -3,8 +3,7 @@ import React from "react";
 import styles from "../page.module.scss";
 
 import SchemeArticles from "@/components/SchemeArticles/SchemeArticles";
-
-import { BsFilterCircle } from "react-icons/bs";
+import FilterOverlay from "@/components/FilterOverlay/FilterOverlay";
 
 const schemes = [
   {
@@ -37,10 +36,7 @@ const LivingroomScheme: React.FC = () => {
           <span>off the peg design schemes</span> tailored to you
         </p>
       </section>
-      <section className={styles.filter}>
-        <BsFilterCircle />
-        <p>filter & sort</p>
-      </section>
+      <FilterOverlay />
 
       <SchemeArticles schemes={schemes} />
     </>
