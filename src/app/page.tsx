@@ -1,8 +1,8 @@
 "use client";
+import styles from "./page.module.scss";
 
 import Image from "next/image";
 import React, { useEffect } from "react";
-import styles from "./page.module.scss";
 import Hero from "@/components/Hero/Hero";
 import HomeBio from "@/components/HomeBio/HomeBio";
 import SchemeSlider from "@/components/ShemeSlider/SchemeSlider";
