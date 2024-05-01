@@ -7,6 +7,8 @@ import Image from "next/image";
 import { motion, useScroll } from "framer-motion";
 import React, { useRef } from "react";
 
+import { assetsConfig } from "@/config/assets";
+
 const SchemeSlider = () => {
   const containerRef = useRef(null);
   const targetRef = useRef(null);
@@ -20,7 +22,7 @@ const SchemeSlider = () => {
   return (
     <div className={styles.section}>
       <h2 className={styles.header}>what is an otp scheme</h2>
-      <section>
+      <section className={styles.sliderSection}>
         <div className={styles.sliderTop} ref={containerRef}>
           <motion.div
             className={styles.imageContainer}
@@ -59,7 +61,7 @@ const SchemeSlider = () => {
         <div className={styles.sliderBottom}>
           <div className={styles.videoContainer}>
             <video controls={false} autoPlay loop muted className={styles.video}>
-              <source src="/assets/videos/test.mp4" type="video/mp4" />
+              <source src={assetsConfig.workshopsReelVideo.src} type="video/mp4" />
             </video>
             <p>workshops</p>
           </div>

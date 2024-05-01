@@ -36,7 +36,10 @@ const BathroomScheme: React.FC = () => {
           <span>off the peg design schemes</span> tailored to you
         </p>
       </section>
-      <FilterOverlay />
+      <section className={styles.filter}>
+        <BsFilterCircle />
+        <p>filter & sort</p>
+      </section>
 
       <SchemeArticles schemes={schemes} />
     </>
