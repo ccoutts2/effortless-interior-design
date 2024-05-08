@@ -87,7 +87,8 @@ $desktop-breakpoint: 1280px;
         text-align: end;
         width: 95%;
         border: none;
-        border-bottom: 1px solid #572a28;
+        border-bottom: 1px solid #744442;
+        background-color: #f3eee8;
         font-size: 0.8rem;
         text-transform: uppercase;
         height: auto;
@@ -97,6 +98,7 @@ $desktop-breakpoint: 1280px;
         &::placeholder {
           text-transform: uppercase;
           font-size: 0.8rem;
+          color: #5d3a40;
         }
       }
       .button {
@@ -104,9 +106,9 @@ $desktop-breakpoint: 1280px;
         padding: 0.5rem 1.8rem;
         margin: 0.75rem 0;
         width: auto;
-        background-color: #572a28;
+        background-color: #744442;
         letter-spacing: 1px;
-        color: #fcf7a7;
+        color: #f3eee8;
         height: auto;
         border: none;
         text-transform: uppercase;

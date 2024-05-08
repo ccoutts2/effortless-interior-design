@@ -1,8 +1,6 @@
 "use client";
 import styles from "./page.module.scss";
-import React, { useState, useEffect, useRef } from "react";
-import gsap from "gsap";
-import { useGSAP } from "@gsap/react";
+import React from "react";
 
 import SchemeArticles from "@/components/SchemeArticles/SchemeArticles";
 import FilterOverlay from "@/components/FilterOverlay/FilterOverlay";
@@ -25,14 +23,6 @@ const schemes = [
     src: "/assets/images/eid14.jpg",
     srcHover: "/assets/images/eid13.jpg",
     price: "£1000000",
-  },
-];
-
-const filterOptions = [
-  {
-    price: "Price",
-    type: "Product Type",
-    size: "Size",
   },
 ];
 

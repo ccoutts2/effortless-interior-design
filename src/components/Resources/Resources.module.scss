@@ -104,4 +104,17 @@ $desktop-breakpoint: 1280px;
       }
     }
   }
+
+  .button {
+    font-size: 0.8rem;
+    padding: 0.5rem 1.8rem;
+    margin: 0.75rem 0;
+    width: auto;
+    background-color: #744442;
+    letter-spacing: 1px;
+    color: #f3eee8;
+    height: auto;
+    border: none;
+    text-transform: uppercase;
+  }
 }

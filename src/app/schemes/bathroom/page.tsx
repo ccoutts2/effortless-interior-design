@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import styles from "../page.module.scss";
 
 import SchemeArticles from "@/components/SchemeArticles/SchemeArticles";
@@ -27,6 +27,15 @@ const schemes = [
 ];
 
 const BathroomScheme: React.FC = () => {
+  // const [sortSchemes, setSortSchemes] = useState(schemes);
+
+  // const applySort = (order) => {
+  //   const sortedData = [...sortSchemes].sort((a, b) => {
+  //     return order === "asc" ? a.price - b.price : b.price - a.price;
+  //   });
+  //   setSortSchemes(sortedData);
+  // };
+
   return (
     <>
       <section className={styles.header}>
@@ -36,10 +45,7 @@ const BathroomScheme: React.FC = () => {
           <span>off the peg design schemes</span> tailored to you
         </p>
       </section>
-      <section className={styles.filter}>
-        <BsFilterCircle />
-        <p>filter & sort</p>
-      </section>
+      <FilterOverlay />
 
       <SchemeArticles schemes={schemes} />
     </>

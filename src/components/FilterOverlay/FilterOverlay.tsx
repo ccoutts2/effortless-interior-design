@@ -36,14 +36,8 @@ const FilterOverlay: React.FC = () => {
           .timeline({ paused: true, delay: 0.5 })
           .to(overlay.current, {
             duration: 1,
-            clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
+            clipPath: "polygon(100% 0%, 0% 0%, 0% 100%, 100% 100%)",
             ease: "power4.inOut",
-          })
-          .to(filterItem.current, {
-            duration: 1.25,
-            stagger: 0.1,
-            ease: "power4.inOut",
-            delay: -0.75,
           });
       });
 

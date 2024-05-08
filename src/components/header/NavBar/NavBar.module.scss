@@ -24,7 +24,7 @@ $desktop-breakpoint: 1280px;
   padding: 1rem;
   position: fixed;
   width: 100%;
-  background-color: #f4f0ea;
+  background-color: #f3eee8;
   z-index: 2;
 
   .bar {
@@ -33,12 +33,13 @@ $desktop-breakpoint: 1280px;
     gap: 0.5rem;
 
     @include desktop {
-      @include flex(row, center, flex-end);
+      @include flex(row, center, center);
     }
 
     a {
       text-decoration: none;
-      color: black;
+      color: #5d3a40;
+      font-weight: 500;
 
       @include desktop {
         font-size: 1.5rem;
@@ -86,9 +87,20 @@ $desktop-breakpoint: 1280px;
     .nav {
       padding-inline: 2rem;
 
+      .imageContainer {
+        width: 9rem;
+        height: 50%;
+
+        img {
+          height: 100%;
+          width: 100%;
+          object-fit: cover;
+        }
+      }
+
       a {
         text-decoration: none;
-        color: black;
+        color: #5d3a40;
         font-size: 1rem;
       }
     }

@@ -9,6 +9,9 @@ import Link from "next/link";
 import BurgerNav from "../BurgerNav/BurgerNav";
 import ShopMenu from "../Shop/ShopMenu";
 import SearchBar from "../SearchBar/SearchBar";
+import Image from "next/image";
+
+import Logo from "../../../../public/assets/logo/background.png";
 
 const NavBar = () => {
   const [isActive, setIsActive] = useState<boolean>(false);
@@ -52,8 +55,12 @@ const NavBar = () => {
                 </Link>
               </div>
             </div>
-            <div onMouseEnter={() => setIsShopActive(false)} className={styles.logo}>
-              <Link href="/">effortless interior design</Link>
+            <div onMouseEnter={() => setIsShopActive(false)} className={styles.nav}>
+              <Link href="/">
+                <div className={styles.imageContainer}>
+                  <Image src={Logo} alt="logo" />
+                </div>
+              </Link>
             </div>
             <div
               onMouseEnter={() => setIsShopActive(false)}

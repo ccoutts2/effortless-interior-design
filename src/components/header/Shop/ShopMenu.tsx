@@ -21,22 +21,22 @@ const ShopMenu = () => {
   const links: Links = [
     {
       title: "bedroom",
-      href: "/",
+      href: "/schemes/bedroom",
       src: "eid2.jpg",
     },
     {
       title: "bathroom",
-      href: "/",
+      href: "/schemes/bathroom",
       src: "eid3.jpg",
     },
     {
       title: "kitchen",
-      href: "/",
+      href: "/schemes/kitchen",
       src: "eid4.jpg",
     },
     {
       title: "living room",
-      href: "/",
+      href: "/schemes/livingroom",
       src: "eid5.jpg",
     },
   ];

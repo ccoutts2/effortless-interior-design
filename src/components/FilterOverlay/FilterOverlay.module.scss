@@ -26,17 +26,25 @@ $desktop-breakpoint: 1280px;
   gap: 0.5rem;
   text-transform: capitalize;
 
+  @include tablet {
+    padding: 2rem 3rem;
+  }
+
+  @include desktop {
+    padding-inline: 8rem;
+  }
+
   .filterOverlay {
     position: fixed;
     top: 0;
     right: 0;
-    width: 85vw;
+    width: 40vw;
     height: 100vh;
     padding: 1rem;
     background-color: #91978a;
     z-index: 2;
     display: flex;
-    clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+    clip-path: polygon(100% 0, 100% 0, 100% 100%, 100% 100%);
 
     .close p {
       cursor: pointer;

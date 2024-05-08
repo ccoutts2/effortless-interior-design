@@ -9,7 +9,7 @@ const BurgerNav = () => {
   const [isActive, setIsActive] = useState<boolean>(false);
 
   return (
-    <motion.main
+    <motion.section
       className={styles.nav}
       variants={height}
       initial="initial"
@@ -25,9 +25,15 @@ const BurgerNav = () => {
           schemes <span className={styles.plus}></span>
         </div>
         <AnimatePresence mode="wait">{isActive && <ShopMenu />}</AnimatePresence>
-        <div className={styles.el}>workshops</div>
-        <div className={styles.el}>consultations</div>
-        <div className={styles.el}>resources</div>
+        <div className={styles.el}>
+          <Link href="/about">workshops</Link>
+        </div>
+        <div className={styles.el}>
+          <Link href="/about">consultations</Link>
+        </div>
+        <div className={styles.el}>
+          <Link href="/about">resources</Link>
+        </div>
         <div className={styles.el}>
           <Link href="/about">about</Link>
         </div>
@@ -41,7 +47,7 @@ const BurgerNav = () => {
           </form>
         </div>
       </nav>
-    </motion.main>
+    </motion.section>
   );
 };
 

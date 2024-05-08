@@ -27,13 +27,13 @@ $desktop-breakpoint: 1280px;
   text-transform: capitalize;
 
   @include tablet {
-    @include flex(row, center, stretch);
-    gap: 3rem;
+    @include flex(row, space-between, stretch);
+    padding-inline: 3rem;
+    flex-wrap: wrap;
   }
 
   @include desktop {
-    gap: 5rem;
-    padding-top: 3rem;
+    padding: 3rem 8rem;
   }
 
   .schemes {
@@ -42,9 +42,14 @@ $desktop-breakpoint: 1280px;
     transition: transform 0.3s ease;
     text-align: center;
 
+    @include tablet {
+      width: 17rem;
+      height: 20rem;
+    }
+
     @include desktop {
-      width: 22rem;
-      height: 30rem;
+      width: 25rem;
+      height: 25rem;
     }
 
     img {

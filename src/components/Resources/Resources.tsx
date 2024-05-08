@@ -9,21 +9,18 @@ const Resources = () => {
     {
       src: "/assets/images/eid7.jpg",
       title: "key design lessons from lucy cunningham's...",
-      date: "27 august 2023",
       href: "/",
       continue: "continue reading",
     },
     {
       src: "/assets/images/eid8.jpg",
       title: "english country-house style and the privelege of...",
-      date: "25 august 2023",
       href: "/",
       continue: "continue reading",
     },
     {
       src: "/assets/images/eid11.jpg",
       title: "how to create a fabric scheme for your interior...",
-      date: "22 august 2023",
       href: "/",
       continue: "continue reading",
     },
@@ -35,9 +32,8 @@ const Resources = () => {
         {articles.map((article, index) => (
           <div key={index} className={styles.article}>
             <Image width={500} height={500} src={article.src} alt="resources" />
-            <p className={styles.text}>{article.date}</p>
             <h3 className={styles.title}>{article.title}</h3>
-            <p className={styles.text}>{article.continue}</p>
+            <button className={styles.button}>{article.continue}</button>
           </div>
         ))}
       </article>
