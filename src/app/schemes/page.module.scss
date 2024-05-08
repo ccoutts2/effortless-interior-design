@@ -20,6 +20,14 @@ $desktop-breakpoint: 1280px;
   }
 }
 
+.page {
+  transition: opacity 0.3s ease;
+}
+
+.overlayOpen {
+  opacity: 0.5;
+}
+
 .header {
   padding: 2rem 1rem;
   width: 100%;

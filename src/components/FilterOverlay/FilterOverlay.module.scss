@@ -38,13 +38,17 @@ $desktop-breakpoint: 1280px;
     position: fixed;
     top: 0;
     right: 0;
-    width: 40vw;
+    width: 60vw;
     height: 100vh;
     padding: 1rem;
-    background-color: #91978a;
+    background-color: #f3eee8;
     z-index: 2;
     display: flex;
     clip-path: polygon(100% 0, 100% 0, 100% 100%, 100% 100%);
+
+    @include tablet {
+      width: 40vw;
+    }
 
     .close p {
       cursor: pointer;
@@ -58,7 +62,7 @@ $desktop-breakpoint: 1280px;
   }
 
   .filterHeader {
-    padding: 2rem;
+    padding: 2rem 0;
     border-bottom: 1px solid black;
 
     h3 {
@@ -75,7 +79,7 @@ $desktop-breakpoint: 1280px;
     position: relative;
   }
 
-  .filterItemHolder p {
+  .filterItem {
     color: #000;
     font-size: 1rem;
     font-weight: 400;
@@ -83,11 +87,11 @@ $desktop-breakpoint: 1280px;
     line-height: 90%;
 
     @include tablet {
-      font-size: 4rem;
+      font-size: 2rem;
     }
 
     @include tablet {
-      font-size: 5rem;
+      font-size: 3rem;
     }
   }
 }
