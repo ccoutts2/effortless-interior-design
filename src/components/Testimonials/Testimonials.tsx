@@ -1,6 +1,5 @@
 "use client";
-import styles from "./Testimonials.module.scss";
-import React, { useRef } from "react";
+import { useRef } from "react";
 import { useScroll, motion } from "framer-motion";
 
 const Testimonials = () => {
@@ -11,28 +10,36 @@ const Testimonials = () => {
   });
 
   return (
-    <div className={styles.bio}>
-      <h2 className={styles.header}>testimonials</h2>
+    <div className="p-4 pt-8 md:px-12 lg:px-32">
+      <h2 className="text-center text-xs font-normal capitalize italic">
+        testimonials
+      </h2>
       <motion.div
         ref={element}
         style={{ opacity: scrollYProgress }}
-        className={styles.leftContainer}>
-        <p className={styles.text}>
-          a super workshop! well presented with concise instructions and ideas... my
-          love for interiors has been reignited.
+        className="w-1/2 md:flex md:flex-col md:items-start md:justify-center"
+      >
+        <p className="pt-4 text-center text-sm capitalize italic md:text-left">
+          a super workshop! well presented with concise instructions and
+          ideas... my love for interiors has been reignited.
         </p>
-        <p className={styles.text}>mary, norfolk</p>
+        <p className="pt-4 text-center text-xs capitalize italic">
+          mary, norfolk
+        </p>
       </motion.div>
-      <div className={styles.rightContainer}>
+      <div className="w-full text-end md:flex md:items-end md:justify-end">
         <motion.div
           ref={element}
           style={{ opacity: scrollYProgress }}
-          className={styles.rightContent}>
-          <p className={styles.text}>
-            the pace and content were exactly right. i feel inspired and will take
-            your advice forward for all future projects.
+          className="w-1/2 md:flex md:flex-col md:items-end md:justify-center"
+        >
+          <p className="pt-4 text-center text-sm capitalize italic md:text-right">
+            the pace and content were exactly right. i feel inspired and will
+            take your advice forward for all future projects.
           </p>
-          <p className={styles.text}>rosie, london</p>
+          <p className="pt-4 text-center text-xs capitalize italic">
+            rosie, london
+          </p>
         </motion.div>
       </div>
     </div>
