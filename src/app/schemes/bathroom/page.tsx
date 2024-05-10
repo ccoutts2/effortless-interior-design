@@ -27,15 +27,6 @@ const schemes = [
 ];
 
 const BathroomScheme: React.FC = () => {
-  // const [sortSchemes, setSortSchemes] = useState(schemes);
-
-  // const applySort = (order) => {
-  //   const sortedData = [...sortSchemes].sort((a, b) => {
-  //     return order === "asc" ? a.price - b.price : b.price - a.price;
-  //   });
-  //   setSortSchemes(sortedData);
-  // };
-
   return (
     <>
       <section className={styles.header}>

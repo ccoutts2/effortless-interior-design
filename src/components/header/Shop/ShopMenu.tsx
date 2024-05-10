@@ -61,7 +61,7 @@ const ShopMenu = () => {
 
   return (
     <>
-      <motion.main
+      <motion.section
         className={styles.nav}
         variants={height}
         initial="initial"
@@ -93,7 +93,7 @@ const ShopMenu = () => {
             );
           })}
         </div>
-      </motion.main>
+      </motion.section>
       <ShopImages
         src={links[selectedLink.index].src}
         isActive={selectedLink.isActive}
