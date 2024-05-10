@@ -1,97 +1,97 @@
-@mixin flex($direction, $justify, $align) {
-  display: flex;
-  flex-direction: $direction;
-  justify-content: $justify;
-  align-items: $align;
-}
+// @mixin flex($direction, $justify, $align) {
+//   display: flex;
+//   flex-direction: $direction;
+//   justify-content: $justify;
+//   align-items: $align;
+// }
 
-$tablet-breakpoint: 768px;
-$desktop-breakpoint: 1280px;
+// $tablet-breakpoint: 768px;
+// $desktop-breakpoint: 1280px;
 
-@mixin tablet {
-  @media (min-width: $tablet-breakpoint) {
-    @content;
-  }
-}
+// @mixin tablet {
+//   @media (min-width: $tablet-breakpoint) {
+//     @content;
+//   }
+// }
 
-@mixin desktop {
-  @media (min-width: $desktop-breakpoint) {
-    @content;
-  }
-}
+// @mixin desktop {
+//   @media (min-width: $desktop-breakpoint) {
+//     @content;
+//   }
+// }
 
-.filter {
-  @include flex(row, flex-start, stretch);
-  padding: 2rem 1rem;
-  gap: 0.5rem;
-  text-transform: capitalize;
+// .filter {
+// @include flex(row, flex-start, stretch);
+// padding: 2rem 1rem;
+// gap: 0.5rem;
+// text-transform: capitalize;
 
-  @include tablet {
-    padding: 2rem 3rem;
-  }
+// @include tablet {
+//   padding: 2rem 3rem;
+// }
 
-  @include desktop {
-    padding-inline: 8rem;
-  }
+// @include desktop {
+//   padding-inline: 8rem;
+// }
 
-  .filterOverlay {
-    position: fixed;
-    top: 0;
-    right: 0;
-    width: 60vw;
-    height: 100vh;
-    padding: 1rem;
-    background-color: #f3eee8;
-    z-index: 2;
-    display: flex;
-    clip-path: polygon(100% 0, 100% 0, 100% 100%, 100% 100%);
+// .filterOverlay {
+//   position: fixed;
+//   top: 0;
+//   right: 0;
+//   width: 60vw;
+//   height: 100vh;
+//   padding: 1rem;
+//   background-color: #f3eee8;
+//   z-index: 2;
+//   display: flex;
+//   clip-path: polygon(100% 0, 100% 0, 100% 100%, 100% 100%);
 
-    @include tablet {
-      width: 40vw;
-    }
+//   @include tablet {
+//     width: 40vw;
+//   }
 
-    .close p {
-      cursor: pointer;
-    }
-  }
+//   .close p {
+//     cursor: pointer;
+//   }
+// }
 
-  .filterCopy {
-    flex: 4;
-    @include flex(column, space-between, stretch);
-    padding-top: 2rem;
-  }
+// .filterCopy {
+//   flex: 4;
+//   @include flex(column, space-between, stretch);
+//   padding-top: 2rem;
+// }
 
-  .filterHeader {
-    padding: 2rem 0;
-    border-bottom: 1px solid black;
+// .filterHeader {
+//   padding: 2rem 0;
+//   border-bottom: 1px solid black;
 
-    h3 {
-      font-weight: 400;
-    }
-  }
+//   h3 {
+//     font-weight: 400;
+//   }
+// }
 
-  .filterItems {
-    width: max-content;
-    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-  }
+// .filterItems {
+//   width: max-content;
+//   clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+// }
 
-  .filterItemHolder {
-    position: relative;
-  }
+// .filterItemHolder {
+//   position: relative;
+// }
 
-  .filterItem {
-    color: #000;
-    font-size: 1rem;
-    font-weight: 400;
-    letter-spacing: -0.02rem;
-    line-height: 90%;
+//   .filterItem {
+//     color: #000;
+//     font-size: 1rem;
+//     font-weight: 400;
+//     letter-spacing: -0.02rem;
+//     line-height: 90%;
 
-    @include tablet {
-      font-size: 2rem;
-    }
+//     @include tablet {
+//       font-size: 2rem;
+//     }
 
-    @include tablet {
-      font-size: 3rem;
-    }
-  }
-}
+//     @include tablet {
+//       font-size: 3rem;
+//     }
+//   }
+// }
