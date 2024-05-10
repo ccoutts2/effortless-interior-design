@@ -3,6 +3,7 @@ import { Overpass } from "next/font/google";
 import NavBar from "../components/header/NavBar/NavBar";
 import Footer from "../components/Footer/Footer";
 import "./globals.scss";
+import "./globals.css";
 
 const overpass = Overpass({
   subsets: ["latin"],
