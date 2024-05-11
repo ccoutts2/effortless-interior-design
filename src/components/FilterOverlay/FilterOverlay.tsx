@@ -1,5 +1,4 @@
 "use client";
-import styles from "./FilterOverlay.module.scss";
 import { useState, useEffect, useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
