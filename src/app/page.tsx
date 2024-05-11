@@ -1,8 +1,5 @@
 "use client";
-import styles from "./page.module.scss";
-
-import Image from "next/image";
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import Hero from "@/components/Hero/Hero";
 import HomeBio from "@/components/HomeBio/HomeBio";
 import SchemeSlider from "@/components/ShemeSlider/SchemeSlider";
@@ -24,7 +21,7 @@ export default function Home() {
   }, []);
 
   return (
-    <main className={styles.main}>
+    <main>
       <Hero />
       <OurStory />
       <SchemeSlider />
