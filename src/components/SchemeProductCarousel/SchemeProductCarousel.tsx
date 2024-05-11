@@ -1,8 +1,6 @@
 "use client";
-
-import styles from "./SchemeProductCarousel.module.scss";
 import Image from "next/image";
-import React, { useState, useEffect } from "react";
+import { useState } from "react";
 
 type SchemeProductCarouselProps = {
   images: string[];
@@ -13,8 +11,8 @@ const SchemeProductCarousel = ({ images }: SchemeProductCarouselProps) => {
   const [imageIndex, setImageIndex] = useState(0);
 
   return (
-    <div className={styles.slider}>
-      <div className={styles.imageContainer}>
+    <div className="relative h-full w-full">
+      <div className="flex h-[70vh] w-full overflow-hidden lg:h-screen">
         {images.map((url, index) => (
           <Image
             width={2000}
@@ -22,9 +20,7 @@ const SchemeProductCarousel = ({ images }: SchemeProductCarouselProps) => {
             key={url}
             src={url}
             alt="carousel"
-            className={`${styles.image} ${
-              index === imageIndex ? styles.active : ""
-            }`}
+            className="absolute left-0 top-0 block h-full w-full shrink-0 grow-0 object-cover"
             style={{
               transition: "opacity 1s ease-in-out",
               opacity: index === imageIndex ? 1 : 0,
@@ -32,14 +28,20 @@ const SchemeProductCarousel = ({ images }: SchemeProductCarouselProps) => {
           />
         ))}
       </div>
-      <div className={styles.sliderButtons}>
+      <div className="absolute bottom-2 left-1/2 flex -translate-x-1/2 transform gap-1">
         {images.map((_, index) => (
           <button
             key={index}
-            className={
-              index === imageIndex ? styles.sliderButtonActive : styles.sliderButton
-            }
-            onClick={() => setImageIndex(index)}>
+            className={`
+            relative mx-[6px] inline-block h-[9px] w-[9px] cursor-pointer rounded-full border [transition:color_0.2s_ease-in-out]
+              ${
+                index === imageIndex
+                  ? "border-yellow-400 bg-yellow-400"
+                  : "border-[#d9c6c5] bg-transparent"
+              }
+            `}
+            onClick={() => setImageIndex(index)}
+          >
             <span aria-hidden="true"></span>
           </button>
         ))}
