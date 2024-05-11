@@ -8,7 +8,7 @@ const Hero = () => {
 
   return (
     <section className="aspect-[17/25] w-full md:aspect-[2/1] lg:aspect-[7/3]">
-      <ImageCarousel images={images} />
+      <ImageCarousel images={images} auto />
     </section>
   );
 };
