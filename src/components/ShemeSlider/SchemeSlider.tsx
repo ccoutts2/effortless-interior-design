@@ -25,7 +25,7 @@ const SchemeSlider = () => {
       </h2>
       <div>
         <div
-          className="flex h-72 gap-1 overflow-x-auto overflow-y-hidden p-4 pb-8 [-ms-overflow-style:none] [scrollbar-width:none] md:w-full md:justify-between md:px-12 lg:px-32"
+          className="no-scrollbar flex h-72 gap-1 overflow-x-auto overflow-y-hidden p-4 pb-8 md:w-full md:justify-between md:px-12 lg:px-32"
           ref={containerRef}
         >
           <motion.div
