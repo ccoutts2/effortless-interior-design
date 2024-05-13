@@ -24,71 +24,113 @@ const NavBar = () => {
 
   return (
     <>
-      <nav className={styles.header}>
+      <nav className="fixed z-[2] w-full bg-[#f3eee8] p-4">
         {!isVisible && (
-          <div className={styles.bar}>
+          <div className="flex items-stretch justify-between gap-2 uppercase lg:items-center lg:justify-between">
             <div
               onMouseDown={() => {
                 setIsActive(!isActive);
               }}
-              className={styles.el}>
+              className="flex cursor-pointer items-center justify-start gap-1"
+            >
               <div
-                className={`${styles.burger} ${
-                  isActive ? styles.burgerActive : ""
-                }`}></div>
+                className={`${styles.burger} ${isActive ? styles.burgerActive : ""}`}
+              ></div>
             </div>
-            <div className={styles.desktopEl}>
-              <div onMouseEnter={() => setIsShopActive(true)} className={styles.nav}>
-                <Link href="/schemes"> schemes</Link>
+            <div className="hidden lg:flex lg:px-12">
+              <div onMouseEnter={() => setIsShopActive(true)} className="px-8">
+                <Link
+                  className="text-[#5d3a40] no-underline lg:text-lg"
+                  href="/schemes"
+                >
+                  {" "}
+                  schemes
+                </Link>
               </div>
-              <div
-                onMouseEnter={() => setIsShopActive(false)}
-                className={styles.nav}>
-                <Link href="/workshops"> workshops</Link>
+              <div onMouseEnter={() => setIsShopActive(false)} className="px-8">
+                <Link
+                  className="text-[#5d3a40] no-underline lg:text-lg"
+                  href="/workshops"
+                >
+                  {" "}
+                  workshops
+                </Link>
               </div>
-              <div
-                onMouseEnter={() => setIsShopActive(false)}
-                className={styles.nav}>
-                <Link className={``} href="/consultations">
+              <div onMouseEnter={() => setIsShopActive(false)} className="px-8">
+                <Link
+                  className="text-[#5d3a40] no-underline lg:text-lg"
+                  href="/consultations"
+                >
                   {" "}
                   consultations
                 </Link>
               </div>
             </div>
-            <div onMouseEnter={() => setIsShopActive(false)} className={styles.nav}>
-              <Link href="/">
-                <div className={styles.imageContainer}>
-                  <Image src={Logo} alt="logo" />
+            <div onMouseEnter={() => setIsShopActive(false)} className="px-8">
+              <Link className="text-[#5d3a40] no-underline lg:text-lg" href="/">
+                <div className="h-[50%] w-[9rem]">
+                  <Image
+                    className="h-full w-full object-cover"
+                    src={Logo}
+                    alt="logo"
+                  />
                 </div>
               </Link>
             </div>
             <div
               onMouseEnter={() => setIsShopActive(false)}
-              className={styles.desktopEl}>
-              <div className={styles.nav}>
-                <Link href="/resources"> resources</Link>
+              className="hidden lg:flex lg:px-12"
+            >
+              <div className="px-8">
+                <Link
+                  className="text-[#5d3a40] no-underline lg:text-lg"
+                  href="/resources"
+                >
+                  {" "}
+                  resources
+                </Link>
               </div>
-              <div className={styles.nav}>
-                <Link href="/about"> about</Link>
+              <div className="px-8">
+                <Link
+                  className="text-[#5d3a40] no-underline lg:text-lg"
+                  href="/about"
+                >
+                  {" "}
+                  about
+                </Link>
               </div>
-              <div className={styles.nav}>
-                <Link href="/contact"> contact</Link>
+              <div className="px-8">
+                <Link
+                  className="text-[#5d3a40] no-underline lg:text-lg"
+                  href="/contact"
+                >
+                  {" "}
+                  contact
+                </Link>
               </div>
             </div>
             <motion.div
               variants={opacity}
               animate={isActive ? "closed" : "open"}
-              className={styles.shopContainer}>
+              className="flex cursor-pointer items-center gap-8"
+            >
               <FiShoppingCart />
-              <IoIosSearch className={styles.searchLogo} onClick={toggleSearchBar} />
+              <IoIosSearch
+                className="hidden lg:flex"
+                onClick={toggleSearchBar}
+              />
             </motion.div>
           </div>
         )}
 
         <SearchBar onClick={toggleSearchBar} isVisible={isVisible} />
 
-        <AnimatePresence mode="wait">{isShopActive && <ShopMenu />}</AnimatePresence>
-        <AnimatePresence mode="wait">{isActive && <BurgerNav />}</AnimatePresence>
+        <AnimatePresence mode="wait">
+          {isShopActive && <ShopMenu />}
+        </AnimatePresence>
+        <AnimatePresence mode="wait">
+          {isActive && <BurgerNav />}
+        </AnimatePresence>
       </nav>
       <div style={{ minHeight: "50px" }}></div>
     </>

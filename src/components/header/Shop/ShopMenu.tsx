@@ -1,6 +1,5 @@
-import styles from "./ShopMenu.module.scss";
 import { motion } from "framer-motion";
-import React, { useState } from "react";
+import { useState } from "react";
 import { height, translate, blur } from "./anim";
 import Link from "next/link";
 import ShopImages from "./ShopImages";
@@ -50,9 +49,10 @@ const ShopMenu = () => {
           initial="initial"
           animate="enter"
           exit="closed"
-          key={`c_${index}`}>
+          key={`c_${index}`}
+        >
           {char}
-        </motion.span>
+        </motion.span>,
       );
     });
 
@@ -62,12 +62,13 @@ const ShopMenu = () => {
   return (
     <>
       <motion.section
-        className={styles.nav}
+        className="overflow-hidden"
         variants={height}
         initial="initial"
         animate="enter"
-        exit="exit">
-        <div className={styles.wrapper}>
+        exit="exit"
+      >
+        <div className="mx-1 lg:ml-24 lg:flex lg:w-[50%] lg:flex-wrap lg:justify-start lg:pt-8">
           {links.map((link, index) => {
             const { title, href } = link;
             return (
@@ -78,15 +79,18 @@ const ShopMenu = () => {
                 }}
                 href={href}
                 key={`l_${index}`}
-                className={styles.el}>
+                className="relative block cursor-pointer px-0 py-2 text-xs uppercase no-underline"
+              >
                 <motion.p
+                  className="mx-0 my-1 lg:mx-8 lg:my-8 lg:text-[2.6rem]"
                   variants={blur}
                   initial="initial"
                   animate={
                     selectedLink.isActive && selectedLink.index !== index
                       ? "open"
                       : "closed"
-                  }>
+                  }
+                >
                   {getChar(title)}
                 </motion.p>
               </Link>
