@@ -18,9 +18,7 @@ const BurgerNav = () => {
       exit="exit"
     >
       <nav className="relative mt-2 lg:flex">
-        <div className="relative mx-1 my-0 cursor-pointer px-0 py-2 text-xs uppercase">
-          home
-        </div>
+        <BurgerNavMenuItem label="home" href="" />
         <div
           onClick={() => {
             setIsActive(!isActive);
@@ -32,29 +30,11 @@ const BurgerNav = () => {
         <AnimatePresence mode="wait">
           {isActive && <ShopMenu />}
         </AnimatePresence>
-        <div className="relative mx-1 my-0 cursor-pointer px-0 py-2 text-xs uppercase">
-          <Link className="no-underline" href="/about">
-            workshops
-          </Link>
-        </div>
-        <div className="relative mx-1 my-0 cursor-pointer px-0 py-2 text-xs uppercase">
-          <Link className="no-underline" href="/about">
-            consultations
-          </Link>
-        </div>
-        <div className="relative mx-1 my-0 cursor-pointer px-0 py-2 text-xs uppercase">
-          <Link className="no-underline" href="/about">
-            resources
-          </Link>
-        </div>
-        <div className="relative mx-1 my-0 cursor-pointer px-0 py-2 text-xs uppercase">
-          <Link className="no-underline" href="/about">
-            about
-          </Link>
-        </div>
-        <div className="relative mx-1 my-0 cursor-pointer px-0 py-2 text-xs uppercase">
-          contact
-        </div>
+        <BurgerNavMenuItem label="workshops" href="workshops" />
+        <BurgerNavMenuItem label="consultations" href="consultations" />
+        <BurgerNavMenuItem label="resources" href="resources" />
+        <BurgerNavMenuItem label="about" href="about" />
+        <BurgerNavMenuItem label="contact" href="contact" />
         <div className="relative mx-1 my-0 cursor-pointer px-0 py-2 text-xs uppercase">
           <form id="search" name="search">
             <input
