@@ -12,27 +12,30 @@ interface Props {
 const SearchBar: React.FC<Props> = ({ isVisible, onClick }) => {
   return (
     <motion.div
-      className={styles.searchContainer}
+      className="flex w-full items-center justify-center"
       variants={container}
       initial="hidden"
-      animate="show">
+      animate="show"
+    >
       <motion.form
-        className={styles.searchForm}
+        className="w-[30%]"
         id="search"
         name="search"
-        variants={item}>
+        variants={item}
+      >
         <input
           type="text"
           className={`${styles.searchBar} ${isVisible && styles.visible}`}
-          placeholder="Search"></input>
+          placeholder="Search"
+        ></input>
       </motion.form>
       {isVisible && (
         <motion.button
           className={`${styles.button} ${isVisible && styles.visible}`}
           onClick={onClick}
-          variants={item}>
-          {" "}
-          <IoIosClose className={styles.icon} />
+          variants={item}
+        >
+          <IoIosClose className="h-full" />
         </motion.button>
       )}
     </motion.div>
