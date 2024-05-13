@@ -1,49 +1,67 @@
 import styles from "./BurgerNav.module.scss";
 import { motion, AnimatePresence } from "framer-motion";
 import { height } from "./anim";
-import React, { useState } from "react";
+import { useState } from "react";
 import ShopMenu from "../Shop/ShopMenu";
 import Link from "next/link";
+import BurgerNavMenuItem from "./BurgerNavMenuItem";
 
 const BurgerNav = () => {
   const [isActive, setIsActive] = useState<boolean>(false);
 
   return (
     <motion.section
-      className={styles.nav}
+      className="truncate"
       variants={height}
       initial="initial"
       animate="enter"
-      exit="exit">
-      <nav className={styles.wrapper}>
-        <div className={styles.el}>home</div>
+      exit="exit"
+    >
+      <nav className="relative mt-2 lg:flex">
+        <div className="relative mx-1 my-0 cursor-pointer px-0 py-2 text-xs uppercase">
+          home
+        </div>
         <div
           onClick={() => {
             setIsActive(!isActive);
           }}
-          className={`${styles.el} ${isActive ? styles.plusActive : ""}`}>
+          className={`relative mx-1 my-0 cursor-pointer px-0 py-2 text-xs uppercase ${isActive ? styles.plusActive : ""}`}
+        >
           schemes <span className={styles.plus}></span>
         </div>
-        <AnimatePresence mode="wait">{isActive && <ShopMenu />}</AnimatePresence>
-        <div className={styles.el}>
-          <Link href="/about">workshops</Link>
+        <AnimatePresence mode="wait">
+          {isActive && <ShopMenu />}
+        </AnimatePresence>
+        <div className="relative mx-1 my-0 cursor-pointer px-0 py-2 text-xs uppercase">
+          <Link className="no-underline" href="/about">
+            workshops
+          </Link>
         </div>
-        <div className={styles.el}>
-          <Link href="/about">consultations</Link>
+        <div className="relative mx-1 my-0 cursor-pointer px-0 py-2 text-xs uppercase">
+          <Link className="no-underline" href="/about">
+            consultations
+          </Link>
         </div>
-        <div className={styles.el}>
-          <Link href="/about">resources</Link>
+        <div className="relative mx-1 my-0 cursor-pointer px-0 py-2 text-xs uppercase">
+          <Link className="no-underline" href="/about">
+            resources
+          </Link>
         </div>
-        <div className={styles.el}>
-          <Link href="/about">about</Link>
+        <div className="relative mx-1 my-0 cursor-pointer px-0 py-2 text-xs uppercase">
+          <Link className="no-underline" href="/about">
+            about
+          </Link>
         </div>
-        <div className={styles.el}>contact</div>
-        <div className={styles.el}>
-          <form className={styles.searchForm} id="search" name="search">
+        <div className="relative mx-1 my-0 cursor-pointer px-0 py-2 text-xs uppercase">
+          contact
+        </div>
+        <div className="relative mx-1 my-0 cursor-pointer px-0 py-2 text-xs uppercase">
+          <form id="search" name="search">
             <input
               type="text"
-              className={styles.searchBar}
-              placeholder="Search..."></input>
+              className="w-full border-b border-solid  border-[#5d3a40] bg-[#f3eee8] text-left uppercase placeholder-[#5d3a40]"
+              placeholder="Search..."
+            ></input>
           </form>
         </div>
       </nav>

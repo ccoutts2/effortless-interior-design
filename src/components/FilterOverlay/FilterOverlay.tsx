@@ -77,7 +77,8 @@ const FilterOverlay: React.FC = () => {
               <div
                 ref={(el) => (filterItem.current[index] = el)}
                 key={index}
-                className="w-max [clip-path:polygon(0%_0%,100%_0,100%_100%,0%_100%)]"
+                className="w-max"
+                style={{ clipPath: "polygon(0%_0%,100%_0,100%_100%,0%_100%)" }}
               >
                 <div className="position">
                   <p className="text-base font-normal tracking-tight text-black md:text-4xl lg:text-5xl">

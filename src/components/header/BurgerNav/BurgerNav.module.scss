@@ -1,104 +1,35 @@
-@mixin flex($direction, $justify, $align) {
-  display: flex;
-  flex-direction: $direction;
-  justify-content: $justify;
-  align-items: $align;
-}
+.plus {
+  &::after,
+  &::before {
+    content: "";
+    transform: translate(-50%, -50%) rotate(-90deg);
+    position: absolute;
+    background-color: currentColor;
+    transition: all 1s cubic-bezier(0.76, 0, 0.24, 1);
+    top: 45%;
+    left: 25%;
+  }
 
-$tablet-breakpoint: 768px;
-$desktop-breakpoint: 1280px;
+  &::before {
+    width: 10px;
+    height: 1px;
+    translate: (-50%, -50%) rotate(-90deg);
+  }
 
-@mixin tablet {
-  @media (min-width: $tablet-breakpoint) {
-    @content;
+  &::after {
+    width: 1px;
+    height: 10px;
+    translate: (-50%, -50%) rotate(-90deg);
   }
 }
 
-@mixin desktop {
-  @media (min-width: $desktop-breakpoint) {
-    @content;
+.plusActive {
+  .plus::after {
+    transform: rotate(90deg);
+    top: 26%;
+    left: 25%;
   }
-}
-
-.nav {
-  overflow: hidden;
-
-  .wrapper {
-    position: relative;
-    margin-top: 0.5rem;
-
-    @include desktop {
-      display: flex;
-    }
-    div {
-      margin: 0.25rem 0;
-    }
-    .el {
-      cursor: pointer;
-      position: relative;
-      text-transform: uppercase;
-      font-size: 0.8rem;
-      padding: 0.5rem 0;
-
-      a {
-        text-decoration: none;
-        color: black;
-      }
-
-      .searchForm {
-        .searchBar {
-          border: none;
-          width: 100%;
-          background-color: #f4f0ea;
-          color: black;
-          text-transform: uppercase;
-
-          &::placeholder {
-            color: rgba(0, 0, 0, 0.7);
-          }
-
-          &:focus {
-            border-color: red;
-            outline: none;
-          }
-        }
-      }
-    }
-
-    .plus {
-      &::after,
-      &::before {
-        content: "";
-        transform: translate(-50%, -50%) rotate(-90deg);
-        position: absolute;
-        background-color: currentColor;
-        transition: all 1s cubic-bezier(0.76, 0, 0.24, 1);
-        top: 45%;
-        left: 25%;
-      }
-
-      &::before {
-        width: 10px;
-        height: 1px;
-        translate: (-50%, -50%) rotate(-90deg);
-      }
-
-      &::after {
-        width: 1px;
-        height: 10px;
-        translate: (-50%, -50%) rotate(-90deg);
-      }
-    }
-
-    .plusActive {
-      .plus::after {
-        transform: rotate(90deg);
-        top: 26%;
-        left: 17%;
-      }
-      .plus::before {
-        opacity: 0;
-      }
-    }
+  .plus::before {
+    opacity: 0;
   }
 }
