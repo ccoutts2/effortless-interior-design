@@ -112,7 +112,7 @@ const NavBar = () => {
             <motion.div
               variants={opacity}
               animate={isActive ? "closed" : "open"}
-              className="flex cursor-pointer items-center lg:relative lg:bottom-12"
+              className="flex cursor-pointer items-center gap-8"
             >
               <FiShoppingCart />
               <IoIosSearch
