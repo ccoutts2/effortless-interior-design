@@ -1,14 +1,9 @@
-import styles from "./BurgerNav.module.scss";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { height } from "./anim";
-import { useState } from "react";
-import ShopMenu from "../Shop/ShopMenu";
-import Link from "next/link";
-import BurgerNavMenuItem from "./BurgerNavMenuItem";
+import BurgerNavLink from "./BurgerNavLink";
+import BurgerNavExpandable from "./BurgerNavExpandable";
 
 const BurgerNav = () => {
-  const [isActive, setIsActive] = useState<boolean>(false);
-
   return (
     <motion.section
       className="truncate"
@@ -18,23 +13,13 @@ const BurgerNav = () => {
       exit="exit"
     >
       <nav className="relative mt-2 lg:flex">
-        <BurgerNavMenuItem label="home" href="" />
-        <div
-          onClick={() => {
-            setIsActive(!isActive);
-          }}
-          className={`relative mx-1 my-0 cursor-pointer px-0 py-2 text-xs uppercase ${isActive ? styles.plusActive : ""}`}
-        >
-          schemes <span className={styles.plus}></span>
-        </div>
-        <AnimatePresence mode="wait">
-          {isActive && <ShopMenu />}
-        </AnimatePresence>
-        <BurgerNavMenuItem label="workshops" href="workshops" />
-        <BurgerNavMenuItem label="consultations" href="consultations" />
-        <BurgerNavMenuItem label="resources" href="resources" />
-        <BurgerNavMenuItem label="about" href="about" />
-        <BurgerNavMenuItem label="contact" href="contact" />
+        <BurgerNavLink label="home" href="" />
+        <BurgerNavExpandable label="schemes" />
+        <BurgerNavLink label="workshops" href="workshops" />
+        <BurgerNavLink label="consultations" href="consultations" />
+        <BurgerNavLink label="resources" href="resources" />
+        <BurgerNavLink label="about" href="about" />
+        <BurgerNavLink label="contact" href="contact" />
         <div className="relative mx-1 my-0 cursor-pointer px-0 py-2 text-xs uppercase">
           <form id="search" name="search">
             <input

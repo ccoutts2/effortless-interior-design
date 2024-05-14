@@ -1,0 +1,32 @@
+.burger {
+  width: 100%;
+}
+
+.burger::after,
+.burger::before {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 1px;
+  background-color: black;
+  position: relative;
+  transition: all 1s cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+.burger::after {
+  top: -4px;
+}
+
+.burger::before {
+  top: 4px;
+}
+
+.burgerOpen::after {
+  top: -0.5px;
+  transform: rotate(45deg);
+}
+
+.burgerOpen::before {
+  top: 0.5px;
+  transform: rotate(-45deg);
+}
