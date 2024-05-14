@@ -1,7 +1,4 @@
-"use client";
-import styles from "./page.module.scss";
-import React from "react";
-
+import SchemePageHeader from "@/components/SchemePageHeader/SchemePageHeader";
 import SchemeArticles from "@/components/SchemeArticles/SchemeArticles";
 import FilterOverlay from "@/components/FilterOverlay/FilterOverlay";
 
@@ -29,16 +26,8 @@ const schemes = [
 const Schemes: React.FC = () => {
   return (
     <>
-      <section className={styles.header}>
-        <h1>off the peg design schemes</h1>
-        <p>
-          <span>elevate</span> your rooms with{" "}
-          <span>off the peg design schemes</span> tailored to you
-        </p>
-      </section>
-
+      <SchemePageHeader room="rooms" />
       <FilterOverlay />
-
       <SchemeArticles schemes={schemes} />
     </>
   );
