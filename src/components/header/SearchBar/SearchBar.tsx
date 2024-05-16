@@ -1,15 +1,13 @@
-import styles from "./SearchBar.module.scss";
-import React from "react";
 import { IoIosClose } from "react-icons/io";
 import { motion } from "framer-motion";
 import { container, item } from "./anim";
 
-interface Props {
-  isVisible: boolean;
+interface SearchBarProps {
+  showSearch: boolean;
   onClick: () => void;
 }
 
-const SearchBar: React.FC<Props> = ({ isVisible, onClick }) => {
+const SearchBar = ({ showSearch, onClick }: SearchBarProps) => {
   return (
     <motion.div
       className="flex w-full items-center justify-center"
@@ -25,13 +23,13 @@ const SearchBar: React.FC<Props> = ({ isVisible, onClick }) => {
       >
         <input
           type="text"
-          className={`${styles.searchBar} ${isVisible && styles.visible}`}
+          className={`h-12 w-full border-b border-[#5d3a40] bg-[#f3eee8] ${showSearch ? "flex" : "hidden"}`}
           placeholder="Search"
         ></input>
       </motion.form>
-      {isVisible && (
+      {showSearch && (
         <motion.button
-          className={`${styles.button} ${isVisible && styles.visible}`}
+          className="h-12 border-b border-[#5d3a40] bg-[#f3eee8]"
           onClick={onClick}
           variants={item}
         >

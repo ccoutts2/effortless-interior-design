@@ -1,10 +1,15 @@
+"use client";
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { height, translate, blur } from "./anim";
 import Link from "next/link";
-import ShopImages from "./ShopImages";
+// import ShopImages from "./ShopImages";
 
-const ShopMenu = () => {
+interface ShopMenuProps {
+  setIsShopActive: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+const ShopMenu = ({ setIsShopActive }: ShopMenuProps) => {
   interface SelectedLinkState {
     isActive: boolean;
     index: number;
@@ -67,6 +72,9 @@ const ShopMenu = () => {
         initial="initial"
         animate="enter"
         exit="exit"
+        onMouseLeave={() => {
+          setIsShopActive(false);
+        }}
       >
         <div className="mx-1 lg:ml-24 lg:flex lg:w-[50%] lg:flex-wrap lg:justify-start lg:pt-8">
           {links.map((link, index) => {
@@ -98,10 +106,10 @@ const ShopMenu = () => {
           })}
         </div>
       </motion.section>
-      <ShopImages
+      {/* <ShopImages
         src={links[selectedLink.index].src}
         isActive={selectedLink.isActive}
-      />
+      /> */}
     </>
   );
 };

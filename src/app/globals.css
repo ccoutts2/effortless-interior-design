@@ -38,4 +38,10 @@ input::placeholder {
     -ms-overflow-style: none; /* IE and Edge */
     scrollbar-width: none; /* Firefox */
   }
+
+  .centered {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 }
