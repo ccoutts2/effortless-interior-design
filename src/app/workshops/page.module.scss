@@ -20,99 +20,98 @@ $desktop-breakpoint: 1280px;
   }
 }
 
-.flexView {
-  @include flex(column, flex-start, flex-start);
+// .flexView {
+//   @include flex(column, flex-start, flex-start);
 
-  @include tablet {
-    @include flex(row, space-between, stretch);
-    gap: 1.5rem;
-    padding: 3rem;
-  }
+//   @include tablet {
+//     @include flex(row, space-between, stretch);
+//     gap: 1.5rem;
+//     padding: 3rem;
+//   }
 
-  @include desktop {
-    padding: 5rem 8rem;
-  }
-}
+//   @include desktop {
+//     padding: 5rem 8rem;
+//   }
+// }
 
-.textContent {
-  @include flex(column, flex-start, flex-end);
+// .textContent {
+//   @include flex(column, flex-start, flex-end);
+//   height: 100%;
+//   margin-top: 3rem;
+
+//   @include tablet {
+//     width: 50%;
+//     margin-top: 0;
+//   }
+
+.workshops {
+  padding-inline: 1rem;
+  @include flex(column, space-between, flex-end);
   height: 100%;
-  margin-top: 3rem;
 
   @include tablet {
-    width: 50%;
-    margin-top: 0;
+    padding: 0;
   }
 
-  .workshops {
-    padding-inline: 1rem;
-    @include flex(column, space-between, flex-end);
-    height: 100%;
+  .textContainer {
+    line-height: 1.5rem;
 
     @include tablet {
-      padding: 0;
+      line-height: 2rem;
     }
-
-    .textContainer {
-      line-height: 1.5rem;
-
-      @include tablet {
-        line-height: 2rem;
-      }
-      h1 {
-        text-transform: uppercase;
-        text-align: end;
-      }
-      p {
-        @include flex(column, flex-start, flex-end);
-        text-align: end;
-        padding: 0.5rem 0;
-      }
-
-      ul {
-        list-style-position: inside;
-      }
-
-      li {
-        text-align: end;
-        padding: 0.25rem;
-      }
+    h1 {
+      text-transform: uppercase;
+      text-align: end;
     }
-
-    .form {
+    p {
       @include flex(column, flex-start, flex-end);
-      width: 100%;
+      text-align: end;
+      padding: 0.5rem 0;
+    }
 
-      .input {
-        text-align: end;
-        width: 95%;
-        border: none;
-        border-bottom: 1px solid #744442;
-        background-color: #f3eee8;
-        font-size: 0.8rem;
-        text-transform: uppercase;
-        height: auto;
-        padding: 0.25rem;
-        margin-bottom: 0.25rem;
+    ul {
+      list-style-position: inside;
+    }
 
-        &::placeholder {
-          text-transform: uppercase;
-          font-size: 0.8rem;
-          color: #5d3a40;
-        }
-      }
-      .button {
-        font-size: 0.8rem;
-        padding: 0.5rem 1.8rem;
-        margin: 0.75rem 0;
-        width: auto;
-        background-color: #744442;
-        letter-spacing: 1px;
-        color: #f3eee8;
-        height: auto;
-        border: none;
+    li {
+      text-align: end;
+      padding: 0.25rem;
+    }
+  }
+
+  .form {
+    @include flex(column, flex-start, flex-end);
+    width: 100%;
+
+    .input {
+      text-align: end;
+      width: 95%;
+      border: none;
+      border-bottom: 1px solid #744442;
+      background-color: #f3eee8;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      height: auto;
+      padding: 0.25rem;
+      margin-bottom: 0.25rem;
+
+      &::placeholder {
         text-transform: uppercase;
+        font-size: 0.8rem;
+        color: #5d3a40;
       }
+    }
+    .button {
+      font-size: 0.8rem;
+      padding: 0.5rem 1.8rem;
+      margin: 0.75rem 0;
+      width: auto;
+      background-color: #744442;
+      letter-spacing: 1px;
+      color: #f3eee8;
+      height: auto;
+      border: none;
+      text-transform: uppercase;
     }
   }
 }
