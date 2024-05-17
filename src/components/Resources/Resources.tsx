@@ -1,8 +1,6 @@
-"use client";
-import styles from "./Resources.module.scss";
-import React, { useRef } from "react";
-import { useScroll, motion } from "framer-motion";
 import Image from "next/image";
+
+import Button from "../buttons/Button/Button";
 
 const Resources = () => {
   const articles = [
@@ -25,18 +23,24 @@ const Resources = () => {
       continue: "continue reading",
     },
   ];
+
   return (
-    <div className={styles.resources}>
-      <h2 className={styles.header}>tips & resources</h2>
-      <article className={styles.articles}>
+    <div className="p-4">
+      <h2 className="text-center text-xs capitalize italic xl:text-lg xl:not-italic">
+        tips & resources
+      </h2>
+      <div className="no-scrollbar flex justify-start gap-4 overflow-x-auto overflow-y-hidden pt-4 capitalize md:justify-center md:gap-12 xl:gap-20 xl:pt-12">
         {articles.map((article, index) => (
-          <div key={index} className={styles.article}>
+          <article
+            key={index}
+            className="w-40 rounded-md text-center transition-transform duration-300 ease-in-out [flex:0_0_auto] hover:-translate-y-1 hover:shadow-md xl:h-[30rem] xl:w-[22rem]"
+          >
             <Image width={500} height={500} src={article.src} alt="resources" />
-            <h3 className={styles.title}>{article.title}</h3>
-            <button className={styles.button}>{article.continue}</button>
-          </div>
+            <h3 className="p-1 text-sm xl:p-2">{article.title}</h3>
+            <Button label={article.continue} />
+          </article>
         ))}
-      </article>
+      </div>
     </div>
   );
 };
