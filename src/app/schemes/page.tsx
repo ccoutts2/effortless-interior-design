@@ -1,7 +1,3 @@
-"use client";
-import styles from "./page.module.scss";
-import React from "react";
-
 import SchemeArticles from "@/components/SchemeArticles/SchemeArticles";
 import FilterOverlay from "@/components/FilterOverlay/FilterOverlay";
 
@@ -26,14 +22,13 @@ const schemes = [
   },
 ];
 
-const Schemes: React.FC = () => {
+const Schemes = () => {
   return (
     <>
-      <section className={styles.header}>
-        <h1>off the peg design schemes</h1>
-        <p>
-          <span>elevate</span> your rooms with{" "}
-          <span>off the peg design schemes</span> tailored to you
+      <section className="flex w-full flex-col items-center justify-center gap-4 border-b border-black px-4 py-8 text-center">
+        <h1 className="text-lg">Off the peg design schemes</h1>
+        <p className="text-sm font-light italic">
+          Elevate your rooms with Off the peg design schemes tailored to you
         </p>
       </section>
 
