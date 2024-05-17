@@ -20,8 +20,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={overpass.className}>
+    <html lang="en" className="max-w-screen">
+      <body
+        className={`w-full bg-[#f3eee8] text-[#5d3a40] ${overpass.className}`}
+      >
         <NavBar />
         {children}
         <Footer />

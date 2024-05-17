@@ -10,8 +10,9 @@ import ShopMenu from "../Shop/ShopMenu";
 import SearchBar from "../SearchBar/SearchBar";
 import Image from "next/image";
 import BurgerButton from "@/components/buttons/BurgerButton/BurgerButton";
+import BurgerNavLink from "../BurgerNav/BurgerNavLink";
 
-import Logo from "../../../../public/assets/logo/background.png";
+import logo from "../../../../public/assets/logo/background.png";
 
 const NavBar = () => {
   const [showBurgerMenu, setShowBurgerMenu] = useState(false);
@@ -23,105 +24,88 @@ const NavBar = () => {
   };
 
   return (
-    <>
-      <nav className="fixed z-[2] w-full bg-[#f3eee8] p-4">
-        {!showSearch && (
-          <div className="flex items-center justify-between gap-2 uppercase">
+    <nav className="w-full bg-[#f3eee8] md:sticky md:top-0 md:z-50">
+      {!showSearch && (
+        <div className="centered gap-8 uppercase">
+          <div className="flex flex-1 lg:justify-end">
             <BurgerButton
+              className="lg:hidden"
               isOpen={showBurgerMenu}
               setIsOpen={setShowBurgerMenu}
             />
-            <div className="hidden lg:flex lg:px-12">
-              <div onMouseEnter={() => setIsShopActive(true)} className="px-8">
-                <Link
-                  className="text-[#5d3a40] no-underline lg:text-lg"
-                  href="/schemes"
-                >
-                  schemes
-                </Link>
-              </div>
-              <div onMouseEnter={() => setIsShopActive(false)} className="px-8">
-                <Link
-                  className="text-[#5d3a40] no-underline lg:text-lg"
-                  href="/workshops"
-                >
-                  workshops
-                </Link>
-              </div>
-              <div onMouseEnter={() => setIsShopActive(false)} className="px-8">
-                <Link
-                  className="text-[#5d3a40] no-underline lg:text-lg"
-                  href="/consultations"
-                >
-                  consultations
-                </Link>
-              </div>
+
+            <div className="hidden gap-4 lg:flex">
+              <BurgerNavLink
+                href="schemes"
+                onMouseEnter={() => setIsShopActive(true)}
+              />
+              <BurgerNavLink
+                href="workshops"
+                onMouseEnter={() => setIsShopActive(false)}
+              />
+              <BurgerNavLink
+                href="consultations"
+                onMouseEnter={() => setIsShopActive(false)}
+              />
             </div>
-            <div onMouseEnter={() => setIsShopActive(false)} className="px-8">
-              <Link className="text-[#5d3a40] no-underline lg:text-lg" href="/">
-                <div className="h-[50%] w-[9rem]">
-                  <Image
-                    className="h-full w-full object-cover"
-                    src={Logo}
-                    alt="logo"
-                  />
-                </div>
-              </Link>
+          </div>
+
+          <Link
+            className="inline-block w-40"
+            href="/"
+            onMouseEnter={() => setIsShopActive(false)}
+          >
+            <Image
+              className="h-full w-full object-cover"
+              src={logo}
+              alt="logo"
+            />
+          </Link>
+
+          <div className="flex flex-1 justify-end lg:justify-between">
+            <div className="hidden gap-4 lg:flex">
+              <BurgerNavLink
+                href="resources"
+                onMouseEnter={() => setIsShopActive(false)}
+              />
+              <BurgerNavLink
+                href="about"
+                onMouseEnter={() => setIsShopActive(false)}
+              />
+              <BurgerNavLink
+                href="contact"
+                onMouseEnter={() => setIsShopActive(false)}
+              />
             </div>
-            <div
-              onMouseEnter={() => setIsShopActive(false)}
-              className="hidden lg:flex lg:px-12"
-            >
-              <div className="px-8">
-                <Link
-                  className="text-[#5d3a40] no-underline lg:text-lg"
-                  href="/resources"
-                >
-                  resources
-                </Link>
-              </div>
-              <div className="px-8">
-                <Link
-                  className="text-[#5d3a40] no-underline lg:text-lg"
-                  href="/about"
-                >
-                  about
-                </Link>
-              </div>
-              <div className="px-8">
-                <Link
-                  className="text-[#5d3a40] no-underline lg:text-lg"
-                  href="/contact"
-                >
-                  contact
-                </Link>
-              </div>
-            </div>
+
             <motion.div
               variants={opacity}
               animate={showBurgerMenu ? "closed" : "open"}
-              className="flex cursor-pointer items-center gap-8"
+              className="flex cursor-pointer items-center"
             >
-              <FiShoppingCart />
-              <IoIosSearch
-                className="hidden lg:flex"
+              <button className="p-4 lg:pr-2">
+                <FiShoppingCart />
+              </button>
+              <button
+                className="hidden p-4 pl-2 lg:flex"
                 onClick={toggleSearchBar}
-              />
+              >
+                <IoIosSearch />
+              </button>
             </motion.div>
           </div>
-        )}
+        </div>
+      )}
 
-        <SearchBar onClick={toggleSearchBar} showSearch={showSearch} />
+      <SearchBar onClick={toggleSearchBar} showSearch={showSearch} />
 
-        <AnimatePresence mode="wait">
-          {isShopActive && <ShopMenu setIsShopActive={setIsShopActive} />}
-        </AnimatePresence>
-        <AnimatePresence mode="wait">
-          {showBurgerMenu && <BurgerNav />}
-        </AnimatePresence>
-      </nav>
-      <div style={{ minHeight: "50px" }}></div>
-    </>
+      <AnimatePresence mode="wait">
+        {isShopActive && <ShopMenu setIsShopActive={setIsShopActive} />}
+      </AnimatePresence>
+      <AnimatePresence mode="wait">
+        {showBurgerMenu && <BurgerNav />}
+      </AnimatePresence>
+    </nav>
   );
 };
 

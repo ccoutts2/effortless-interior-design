@@ -2,17 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
-html,
-body {
-  max-width: 100vw;
-  overflow-x: hidden;
-  color: #5d3a40;
-  /* background-color: #945e5c; */
-  /* background-color: #c09f66; */
-  /* background-color: #744442; */
-  /* background-color: #c29c64; */
-  background-color: #f3eee8;
-}
+/* html,
+body { */
+/* background-color: #945e5c; */
+/* background-color: #c09f66; */
+/* background-color: #744442; */
+/* background-color: #c29c64; */
+/* } */
 
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap");
 
