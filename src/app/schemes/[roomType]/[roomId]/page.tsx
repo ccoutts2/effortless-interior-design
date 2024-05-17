@@ -7,7 +7,13 @@ import { GrAdd } from "react-icons/gr";
 import { GrSubtract } from "react-icons/gr";
 import ImageCarousel from "@/components/ImageCarousel/ImageCarousel";
 
-const Bathroom1: React.FC = () => {
+interface RoomSchemeProps {
+  params: {
+    roomId: string;
+  };
+}
+
+const RoomScheme = ({ params: { roomId } }: RoomSchemeProps) => {
   const images = [room1, room2, room3].map((image) => image.src);
 
   const [quantity, setQuantity] = useState<number>(1);
@@ -107,4 +113,4 @@ const Bathroom1: React.FC = () => {
   );
 };
 
-export default Bathroom1;
+export default RoomScheme;

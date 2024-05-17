@@ -4,33 +4,39 @@ import FilterOverlay from "@/components/FilterOverlay/FilterOverlay";
 
 const schemes = [
   {
-    title: "yellow",
-    src: "/assets/images/eid8.jpg",
-    srcHover: "/assets/images/eid2.jpg",
+    title: "room1",
+    src: "/assets/images/eid6.jpg",
+    srcHover: "/assets/images/eid4.jpg",
     price: "£1000000",
   },
   {
-    title: "blue",
-    src: "/assets/images/eid9.jpg",
+    title: "room2",
+    src: "/assets/images/eid13.jpg",
     srcHover: "/assets/images/eid1.jpg",
     price: "£1000000",
   },
   {
-    title: "red",
+    title: "room3",
     src: "/assets/images/eid14.jpg",
-    srcHover: "/assets/images/eid13.jpg",
+    srcHover: "/assets/images/eid5.jpg",
     price: "£1000000",
   },
 ];
 
-const Schemes = () => {
+interface RoomSchemes {
+  params: {
+    roomType: string;
+  };
+}
+
+const RoomSchemes = ({ params: { roomType } }: RoomSchemes) => {
   return (
     <>
-      <SchemePageHeader room="rooms" />
+      <SchemePageHeader roomType={roomType} />
       <FilterOverlay />
       <SchemeArticles schemes={schemes} />
     </>
   );
 };
 
-export default Schemes;
+export default RoomSchemes;
