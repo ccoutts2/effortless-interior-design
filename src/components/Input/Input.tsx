@@ -7,8 +7,8 @@ interface InputProps {
 
 const Input = ({ name, placeholder }: InputProps) => {
   return (
-    <label className="hidden">
-      {name}
+    <div className=" w-full ">
+      <label className="hidden">{name}</label>
       <input
         id={name}
         name={name}
@@ -16,7 +16,7 @@ const Input = ({ name, placeholder }: InputProps) => {
         placeholder={placeholder || name}
         className="placeholder-uppercase mb-1 h-[auto] w-full border-b border-solid border-[#744442] bg-[#f3eee8] p-1 text-start text-sm uppercase placeholder-[#5d3a40]"
       />
-    </label>
+    </div>
   );
 };
 
