@@ -1,5 +1,7 @@
 import Image from "next/image";
 
+import Button from "../buttons/Button/Button";
+
 const Resources = () => {
   const articles = [
     {
@@ -35,9 +37,7 @@ const Resources = () => {
           >
             <Image width={500} height={500} src={article.src} alt="resources" />
             <h3 className="p-1 text-sm xl:p-2">{article.title}</h3>
-            <button className="my-3 h-auto w-auto bg-[#744442] px-7 py-2 text-xs uppercase tracking-[1px] text-[#f3eee8]">
-              {article.continue}
-            </button>
+            <Button label={article.continue} />
           </article>
         ))}
       </div>

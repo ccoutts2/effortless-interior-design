@@ -1,3 +1,4 @@
+import SchemePageHeader from "@/components/SchemePageHeader/SchemePageHeader";
 import SchemeArticles from "@/components/SchemeArticles/SchemeArticles";
 import FilterOverlay from "@/components/FilterOverlay/FilterOverlay";
 
@@ -25,15 +26,8 @@ const schemes = [
 const Schemes = () => {
   return (
     <>
-      <section className="flex w-full flex-col items-center justify-center gap-4 border-b border-black px-4 py-8 text-center">
-        <h1 className="text-lg">Off the peg design schemes</h1>
-        <p className="text-sm font-light italic">
-          Elevate your rooms with Off the peg design schemes tailored to you
-        </p>
-      </section>
-
+      <SchemePageHeader room="rooms" />
       <FilterOverlay />
-
       <SchemeArticles schemes={schemes} />
     </>
   );
