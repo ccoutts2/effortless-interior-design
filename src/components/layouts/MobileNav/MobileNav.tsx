@@ -1,9 +1,9 @@
+"use client";
 import { motion } from "framer-motion";
 import { height } from "./anim";
-import BurgerNavLink from "./BurgerNavLink";
-import BurgerNavExpandable from "./BurgerNavExpandable";
+import { NavLink, NavExpandable } from "@/components";
 
-const BurgerNav = () => {
+export const MobileNav = () => {
   return (
     <motion.section
       className="truncate"
@@ -13,12 +13,12 @@ const BurgerNav = () => {
       exit="exit"
     >
       <nav className="relative flex flex-col px-4 pb-4 lg:hidden">
-        <BurgerNavExpandable label="schemes" />
-        <BurgerNavLink href="workshops" />
-        <BurgerNavLink href="consultations" />
-        <BurgerNavLink href="resources" />
-        <BurgerNavLink href="about" />
-        <BurgerNavLink href="contact" />
+        <NavExpandable label="schemes" />
+        <NavLink href="workshops" />
+        <NavLink href="consultations" />
+        <NavLink href="resources" />
+        <NavLink href="about" />
+        <NavLink href="contact" />
         <form
           className="w-full border-b border-[#5d3a40]"
           id="search"
@@ -35,5 +35,3 @@ const BurgerNav = () => {
     </motion.section>
   );
 };
-
-export default BurgerNav;

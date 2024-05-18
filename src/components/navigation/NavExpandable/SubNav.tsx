@@ -4,11 +4,11 @@ import { useState } from "react";
 import { height, blur } from "./anim";
 import Link from "next/link";
 
-interface ShopMenuProps {
+interface SubNavProps {
   setIsShopActive: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const ShopMenu = ({ setIsShopActive }: ShopMenuProps) => {
+export const SubNav = ({ setIsShopActive }: SubNavProps) => {
   const [selectedLink, setSelectedLink] = useState({
     isActive: false,
     index: 0,
@@ -79,5 +79,3 @@ const ShopMenu = ({ setIsShopActive }: ShopMenuProps) => {
     </motion.div>
   );
 };
-
-export default ShopMenu;

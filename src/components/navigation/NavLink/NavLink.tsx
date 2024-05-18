@@ -1,12 +1,12 @@
 import Link from "next/link";
 
-interface BurgerNavLinkProps {
+interface NavLinkProps {
   href: string;
   label?: string;
   onMouseEnter?: () => void;
 }
 
-const BurgerNavLink = ({ href, label, onMouseEnter }: BurgerNavLinkProps) => {
+export const NavLink = ({ href, label, onMouseEnter }: NavLinkProps) => {
   return (
     <Link
       className="inline-block w-full py-2 text-sm uppercase lg:w-fit lg:py-3 lg:text-lg"
@@ -17,5 +17,3 @@ const BurgerNavLink = ({ href, label, onMouseEnter }: BurgerNavLinkProps) => {
     </Link>
   );
 };
-
-export default BurgerNavLink;

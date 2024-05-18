@@ -6,7 +6,11 @@ interface BurgerButtonProps {
   className?: string;
 }
 
-const BurgerButton = ({ isOpen, setIsOpen, className }: BurgerButtonProps) => {
+export const BurgerButton = ({
+  isOpen,
+  setIsOpen,
+  className,
+}: BurgerButtonProps) => {
   return (
     <button
       onClick={() => {
@@ -18,5 +22,3 @@ const BurgerButton = ({ isOpen, setIsOpen, className }: BurgerButtonProps) => {
     </button>
   );
 };
-
-export default BurgerButton;

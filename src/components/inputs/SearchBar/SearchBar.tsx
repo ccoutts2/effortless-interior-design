@@ -1,3 +1,4 @@
+"use client";
 import { IoIosClose } from "react-icons/io";
 import { motion } from "framer-motion";
 import { container, item } from "./anim";
@@ -5,10 +6,9 @@ import { container, item } from "./anim";
 interface SearchBarProps {
   showSearch: boolean;
   setShowSearch: React.Dispatch<React.SetStateAction<boolean>>;
-  onClick: () => void;
 }
 
-const SearchBar = ({ showSearch, setShowSearch, onClick }: SearchBarProps) => {
+export const SearchBar = ({ showSearch, setShowSearch }: SearchBarProps) => {
   return (
     showSearch && (
       <motion.div
@@ -35,7 +35,9 @@ const SearchBar = ({ showSearch, setShowSearch, onClick }: SearchBarProps) => {
         </motion.form>
         <motion.button
           className="flex h-12 w-8 justify-end border-b border-[#5d3a40] bg-[#f3eee8]"
-          onClick={onClick}
+          onClick={() => {
+            setShowSearch(false);
+          }}
           variants={item}
         >
           <IoIosClose className="h-full" />
@@ -44,5 +46,3 @@ const SearchBar = ({ showSearch, setShowSearch, onClick }: SearchBarProps) => {
     )
   );
 };
-
-export default SearchBar;

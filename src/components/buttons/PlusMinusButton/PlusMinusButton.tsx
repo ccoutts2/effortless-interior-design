@@ -5,7 +5,10 @@ interface PlusMinusButtonProps {
   onClick?: () => void;
 }
 
-const PlusMinusButton = ({ isActive, onClick }: PlusMinusButtonProps) => {
+export const PlusMinusButton = ({
+  isActive,
+  onClick,
+}: PlusMinusButtonProps) => {
   return (
     <button
       onClick={onClick}
@@ -13,4 +16,3 @@ const PlusMinusButton = ({ isActive, onClick }: PlusMinusButtonProps) => {
     />
   );
 };
-export default PlusMinusButton;

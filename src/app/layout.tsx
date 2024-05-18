@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Overpass } from "next/font/google";
-import NavBar from "../components/header/NavBar/NavBar";
 import Footer from "../components/Footer/Footer";
+import { Header } from "@/components";
 import "./globals.css";
 
 const overpass = Overpass({
@@ -24,7 +24,7 @@ export default function RootLayout({
       <body
         className={`w-full bg-[#f3eee8] text-[#5d3a40] ${overpass.className}`}
       >
-        <NavBar />
+        <Header />
         {children}
         <Footer />
       </body>
