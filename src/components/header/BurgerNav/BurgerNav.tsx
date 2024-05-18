@@ -12,23 +12,25 @@ const BurgerNav = () => {
       animate="enter"
       exit="exit"
     >
-      <nav className="relative mt-2 lg:flex">
-        <BurgerNavLink label="home" href="" />
+      <nav className="relative flex flex-col px-4 pb-4 lg:hidden">
         <BurgerNavExpandable label="schemes" />
-        <BurgerNavLink label="workshops" href="workshops" />
-        <BurgerNavLink label="consultations" href="consultations" />
-        <BurgerNavLink label="resources" href="resources" />
-        <BurgerNavLink label="about" href="about" />
-        <BurgerNavLink label="contact" href="contact" />
-        <div className="relative mx-1 my-0 cursor-pointer px-0 py-2 text-xs uppercase">
-          <form id="search" name="search">
-            <input
-              type="text"
-              className="w-full border-b border-solid  border-[#5d3a40] bg-[#f3eee8] text-left uppercase placeholder-[#5d3a40]"
-              placeholder="Search..."
-            ></input>
-          </form>
-        </div>
+        <BurgerNavLink href="workshops" />
+        <BurgerNavLink href="consultations" />
+        <BurgerNavLink href="resources" />
+        <BurgerNavLink href="about" />
+        <BurgerNavLink href="contact" />
+        <form
+          className="w-full border-b border-[#5d3a40]"
+          id="search"
+          name="search"
+        >
+          <input
+            type="text"
+            className="w-full bg-[#f3eee8] py-2 text-left text-sm placeholder:text-sm placeholder:uppercase placeholder:text-inherit placeholder:opacity-60"
+            placeholder="Search"
+            autoFocus
+          />
+        </form>
       </nav>
     </motion.section>
   );

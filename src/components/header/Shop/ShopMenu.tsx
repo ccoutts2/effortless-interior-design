@@ -1,28 +1,20 @@
 "use client";
 import { motion } from "framer-motion";
 import { useState } from "react";
-import { height, translate, blur } from "./anim";
+import { height, blur } from "./anim";
 import Link from "next/link";
-// import ShopImages from "./ShopImages";
 
 interface ShopMenuProps {
   setIsShopActive: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const ShopMenu = ({ setIsShopActive }: ShopMenuProps) => {
-  interface SelectedLinkState {
-    isActive: boolean;
-    index: number;
-  }
-
-  const [selectedLink, setSelectedLink] = useState<SelectedLinkState>({
+  const [selectedLink, setSelectedLink] = useState({
     isActive: false,
     index: 0,
   });
 
-  type Links = { title: string; href: string; src: string }[];
-
-  const links: Links = [
+  const links = [
     {
       title: "bedroom",
       href: "/schemes/bedroom",
@@ -45,72 +37,46 @@ const ShopMenu = ({ setIsShopActive }: ShopMenuProps) => {
     },
   ];
 
-  const getChar = (word: string): JSX.Element[] => {
-    let chars: JSX.Element[] = [];
-    word.split("").forEach((char, index) => {
-      chars.push(
-        <motion.span
-          variants={translate}
-          initial="initial"
-          animate="enter"
-          exit="closed"
-          key={`c_${index}`}
-        >
-          {char}
-        </motion.span>,
-      );
-    });
-
-    return chars;
-  };
-
   return (
-    <>
-      <motion.section
-        className="overflow-hidden"
-        variants={height}
-        initial="initial"
-        animate="enter"
-        exit="exit"
-        onMouseLeave={() => {
-          setIsShopActive(false);
-        }}
-      >
-        <div className="mx-1 lg:ml-24 lg:flex lg:w-[50%] lg:flex-wrap lg:justify-start lg:pt-8">
-          {links.map((link, index) => {
-            const { title, href } = link;
-            return (
-              <Link
-                onMouseOver={() => setSelectedLink({ isActive: true, index })}
-                onMouseLeave={() => {
-                  setSelectedLink({ isActive: false, index });
-                }}
-                href={href}
-                key={`l_${index}`}
-                className="relative block cursor-pointer px-0 py-2 text-xs uppercase no-underline"
+    <motion.div
+      className="overflow-hidden"
+      variants={height}
+      initial="initial"
+      animate="enter"
+      exit="exit"
+      onMouseLeave={() => {
+        setIsShopActive(false);
+      }}
+    >
+      <div className="px-4 lg:ml-24 lg:flex lg:w-[50%] lg:flex-wrap lg:justify-start lg:pt-8">
+        {links.map(({ title, href }, index) => {
+          return (
+            <Link
+              onMouseOver={() => setSelectedLink({ isActive: true, index })}
+              onMouseLeave={() => {
+                setSelectedLink({ isActive: false, index });
+              }}
+              href={href}
+              key={`l_${index}`}
+              className="relative block py-2 text-sm uppercase"
+            >
+              <motion.p
+                className="mx-0 my-1 lg:mx-8 lg:my-8 lg:text-[2.6rem]"
+                variants={blur}
+                initial="initial"
+                animate={
+                  selectedLink.isActive && selectedLink.index !== index
+                    ? "open"
+                    : "closed"
+                }
               >
-                <motion.p
-                  className="mx-0 my-1 lg:mx-8 lg:my-8 lg:text-[2.6rem]"
-                  variants={blur}
-                  initial="initial"
-                  animate={
-                    selectedLink.isActive && selectedLink.index !== index
-                      ? "open"
-                      : "closed"
-                  }
-                >
-                  {getChar(title)}
-                </motion.p>
-              </Link>
-            );
-          })}
-        </div>
-      </motion.section>
-      {/* <ShopImages
-        src={links[selectedLink.index].src}
-        isActive={selectedLink.isActive}
-      /> */}
-    </>
+                {title}
+              </motion.p>
+            </Link>
+          );
+        })}
+      </div>
+    </motion.div>
   );
 };
 

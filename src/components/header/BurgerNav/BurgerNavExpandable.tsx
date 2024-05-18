@@ -12,12 +12,12 @@ const BurgerNavExpandable = ({ label }: BurgerNavExpandableProps) => {
   const [showMenu, setShowMenu] = useState(false);
 
   return (
-    <div>
+    <>
       <button
         onClick={() => {
           setShowMenu(!showMenu);
         }}
-        className="flex w-full justify-between py-2 text-xs uppercase"
+        className="flex w-full justify-between py-2 text-sm uppercase"
       >
         {label}
         <PlusMinusButton isActive={showMenu} />
@@ -25,7 +25,7 @@ const BurgerNavExpandable = ({ label }: BurgerNavExpandableProps) => {
       <AnimatePresence mode="wait">
         {showMenu && <ShopMenu setIsShopActive={setShowMenu} />}
       </AnimatePresence>
-    </div>
+    </>
   );
 };
 export default BurgerNavExpandable;
