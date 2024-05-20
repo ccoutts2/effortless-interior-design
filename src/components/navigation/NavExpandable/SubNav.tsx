@@ -48,7 +48,7 @@ export const SubNav = ({ setIsShopActive }: SubNavProps) => {
         setIsShopActive(false);
       }}
     >
-      <div className="px-4 lg:ml-24 lg:flex lg:w-[50%] lg:flex-wrap lg:justify-start lg:pt-8">
+      <div className="px-4 lg:ml-24 lg:flex lg:w-[50%] lg:flex-wrap lg:justify-start">
         {links.map(({ title, href }, index) => {
           return (
             <Link

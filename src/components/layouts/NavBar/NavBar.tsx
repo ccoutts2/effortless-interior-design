@@ -20,14 +20,14 @@ export const NavBar = ({
 }: NavBarProps) => {
   return (
     <nav className="centered gap-8 uppercase">
-      <div className="flex flex-1 lg:justify-end">
+      <div className="flex flex-[2] lg:justify-end">
         <BurgerButton
           className="lg:hidden"
           isOpen={showMobileNav}
           setIsOpen={setShowMobileNav}
         />
 
-        <div className="hidden gap-6 lg:flex">
+        <div className="hidden lg:flex lg:max-w-md lg:flex-1 lg:justify-between lg:gap-5 lg:pl-8">
           <NavLink href="schemes" onMouseEnter={() => setShowSubNav(true)} />
           <NavLink href="workshops" onMouseEnter={() => setShowSubNav(false)} />
           <NavLink
@@ -37,22 +37,24 @@ export const NavBar = ({
         </div>
       </div>
 
-      <Link
-        className="inline-block w-40"
-        href="/"
-        onMouseEnter={() => setShowSubNav(false)}
-      >
-        <Image className="h-full w-full object-cover" src={logo} alt="logo" />
-      </Link>
+      <div className="centered max-w-72 flex-[0.8]">
+        <Link
+          className="inline-block w-40"
+          href="/"
+          onMouseEnter={() => setShowSubNav(false)}
+        >
+          <Image className="h-full w-full object-cover" src={logo} alt="logo" />
+        </Link>
+      </div>
 
-      <div className="flex flex-1 justify-end lg:justify-between">
-        <div className="hidden gap-6 lg:flex">
+      <div className="flex flex-[2] justify-end lg:justify-between">
+        <div className="hidden lg:flex lg:max-w-[21.5rem] lg:flex-1 lg:justify-between lg:gap-5 lg:pr-4">
           <NavLink href="resources" onMouseEnter={() => setShowSubNav(false)} />
           <NavLink href="about" onMouseEnter={() => setShowSubNav(false)} />
           <NavLink href="contact" onMouseEnter={() => setShowSubNav(false)} />
         </div>
 
-        <div className="flex items-center">
+        <div className="flex items-center lg:pr-4">
           <button className="p-4 lg:pb-[1.125rem] lg:pr-2 lg:pt-[.875rem]">
             <FiShoppingCart />
           </button>
