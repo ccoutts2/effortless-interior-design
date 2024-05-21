@@ -18,7 +18,7 @@ export const SearchBar = ({ showSearch, setShowSearch }: SearchBarProps) => {
         animate="show"
       >
         <motion.form
-          className="w-[30%] border-b border-[#5d3a40] pl-8"
+          className="flex w-[30%] border-b border-[#5d3a40] pl-8"
           id="search"
           name="search"
           variants={item}
@@ -32,16 +32,17 @@ export const SearchBar = ({ showSearch, setShowSearch }: SearchBarProps) => {
               if (e.key === "Escape") setShowSearch(false);
             }}
           />
+          <motion.button
+            type="button"
+            className="flex h-12 w-8 justify-end bg-[#f3eee8]"
+            onClick={() => {
+              setShowSearch(false);
+            }}
+            variants={item}
+          >
+            <IoIosClose className="h-full" />
+          </motion.button>
         </motion.form>
-        <motion.button
-          className="flex h-12 w-8 justify-end border-b border-[#5d3a40] bg-[#f3eee8]"
-          onClick={() => {
-            setShowSearch(false);
-          }}
-          variants={item}
-        >
-          <IoIosClose className="h-full" />
-        </motion.button>
       </motion.div>
     )
   );
