@@ -1,19 +1,29 @@
 "use client";
 import Image from "next/image";
 import { useState, useEffect } from "react";
+import { VscTriangleRight } from "react-icons/vsc";
+import { VscTriangleLeft } from "react-icons/vsc";
 
 type ImageCarouselProps = {
   images: string[];
   auto?: boolean;
   interval?: number;
+  onClick?: (src: string, index: number) => void;
+  showNavSliders?: boolean;
+  showNavButtons?: boolean;
+  currentIndex?: number;
 };
 
 const ImageCarousel = ({
   images,
   auto = false,
   interval = 5000,
+  onClick,
+  showNavSliders = false,
+  showNavButtons = true,
+  currentIndex = 0,
 }: ImageCarouselProps) => {
-  const [imageIndex, setImageIndex] = useState(0);
+  const [imageIndex, setImageIndex] = useState(currentIndex);
 
   const showNextImage = () => {
     setImageIndex((index) => {
@@ -22,11 +32,22 @@ const ImageCarousel = ({
     });
   };
 
+  const showPrevImage = () => {
+    setImageIndex((index) => {
+      if (index === 0) return images.length - 1;
+      return index - 1;
+    });
+  };
+
   useEffect(() => {
     if (auto) {
       const intervalImage = setInterval(showNextImage, interval);
       return () => clearInterval(intervalImage);
     }
+  }, []);
+
+  useEffect(() => {
+    setImageIndex(currentIndex);
   }, []);
 
   return (
@@ -44,14 +65,33 @@ const ImageCarousel = ({
               transition: "opacity 1s ease-in-out",
               opacity: index === imageIndex ? 1 : 0,
             }}
+            onClick={() => onClick && onClick(url, index)}
           />
         ))}
       </div>
-      <div className="absolute bottom-2 left-1/2 flex -translate-x-1/2 transform gap-1">
-        {images.map((_, index) => (
+      {showNavSliders && (
+        <>
           <button
-            key={index}
-            className={`
+            className="absolute bottom-0 top-0 block text-6xl"
+            onClick={showPrevImage}
+          >
+            <VscTriangleLeft />
+          </button>
+          <button
+            className="absolute bottom-0 right-0 top-0 block text-6xl"
+            onClick={showNextImage}
+          >
+            <VscTriangleRight />
+          </button>
+        </>
+      )}
+
+      {showNavButtons && (
+        <div className="absolute bottom-2 left-1/2 flex -translate-x-1/2 transform gap-1">
+          {images.map((_, index) => (
+            <button
+              key={index}
+              className={`
             relative mx-[6px] inline-block h-[9px] w-[9px] cursor-pointer rounded-full border [transition:color_0.2s_ease-in-out]
               ${
                 index === imageIndex
@@ -59,12 +99,13 @@ const ImageCarousel = ({
                   : "border-[#d9c6c5] bg-transparent"
               }
             `}
-            onClick={() => setImageIndex(index)}
-          >
-            <span aria-hidden="true"></span>
-          </button>
-        ))}
-      </div>
+              onClick={() => setImageIndex(index)}
+            >
+              <span aria-hidden="true"></span>
+            </button>
+          ))}
+        </div>
+      )}
     </div>
   );
 };
