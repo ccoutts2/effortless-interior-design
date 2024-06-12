@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { assetsConfig } from "@/config/assets";
 import Lenis from "lenis";
 import Testimonials from "@/components/Testimonials/Testimonials";
-import WorkshopsParagraphs from "@/components/WorkshopsParagraphs/WorkshopsParagraphs";
+import Paragraphs from "@/components/Paragraphs/Paragraphs";
 import Input from "@/components/Input/Input";
 import Button from "@/components/buttons/Button/Button";
 
@@ -57,14 +57,14 @@ const Workshops: React.FC = () => {
             <h1 className=" uppercase">workshops</h1>
             <p className="px-0 py-2 ">Hello,</p>
             <p className="px-0 py-2 "></p>
-            <WorkshopsParagraphs
+            <Paragraphs
               paragraph="The number one problem my clients have is that they lack
               confidence when putting design schemes together. A lack of
               confidence leads to indecision, frustration and, even after
               you've finally made a decision, doubt as to whether
               you've made the right choice, or wasted your money."
             />
-            <WorkshopsParagraphs
+            <Paragraphs
               paragraph="A lack of confidence in your design decisions stems from the
               following problems. do any of them resonate with you?"
             />
@@ -75,22 +75,22 @@ const Workshops: React.FC = () => {
                 </li>
               ))}
             </ul>
-            <WorkshopsParagraphs
+            <Paragraphs
               paragraph="This workshop is a deep-dive into everything you need to know to
               create sensational design schemes."
             />
-            <WorkshopsParagraphs
+            <Paragraphs
               paragraph=" It will give you the knowledge, tools and step-by-step methods you
               need to banish your doubts, and start designing your home with
               ease and confidence."
             />
-            <WorkshopsParagraphs
+            <Paragraphs
               paragraph="The workshop will include several design exercises, some shorter,
               some longer, so that you can immediately put everything you are
               learning into practice, in order to build your confidence and
               consolidate the lessons in your mind."
             />
-            <WorkshopsParagraphs
+            <Paragraphs
               paragraph="I really want the skills you are learning to stick, so that you
               can repeat them with ease when you are designing at home!"
             />
