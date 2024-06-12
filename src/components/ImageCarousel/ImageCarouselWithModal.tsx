@@ -1,9 +1,7 @@
 import { createPortal } from "react-dom";
 import ImageCarousel from "../ImageCarousel/ImageCarousel";
 import { AiFillCloseCircle } from "react-icons/ai";
-import { MouseEventHandler, useEffect, useRef, useState } from "react";
-import gsap from "gsap";
-import { useGSAP } from "@gsap/react";
+import { MouseEventHandler, useEffect, useState } from "react";
 
 interface ImageModalProps {
   images: string[];
@@ -16,8 +14,6 @@ interface ImageModalProps {
 }
 
 const ImageCarouselWithModal = ({ images, currentIndex }: ImageModalProps) => {
-  //   const container = useRef<HTMLElement>(null);
-
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleImageClick = () => {
@@ -27,18 +23,6 @@ const ImageCarouselWithModal = ({ images, currentIndex }: ImageModalProps) => {
   const closeModal = () => {
     setIsModalOpen(false);
   };
-
-  //   useGSAP(
-  //     () => {
-  //       gsap.to(container.current, {
-  //         delay: 0.1,
-  //         duration: 0.8,
-  //         opacity: 1,
-  //         ease: "power4.inOut",
-  //       });
-  //     },
-  //     { scope: container },
-  //   );
 
   useEffect(() => {
     isModalOpen
@@ -60,9 +44,8 @@ const ImageCarouselWithModal = ({ images, currentIndex }: ImageModalProps) => {
       {isModalOpen &&
         createPortal(
           <section
-            // ref={container}
             onClick={closeModal}
-            className="fixed left-0 top-0 z-50 flex h-screen w-screen cursor-auto items-center justify-center overflow-hidden bg-black bg-opacity-75"
+            className="fixed left-0 top-0 z-50 flex h-screen w-screen cursor-default items-center justify-center overflow-hidden bg-black bg-opacity-75"
           >
             <div
               onClick={(e) => {
@@ -76,7 +59,7 @@ const ImageCarouselWithModal = ({ images, currentIndex }: ImageModalProps) => {
               >
                 <AiFillCloseCircle />
               </button>
-              <div className="h-full w-full cursor-zoom-in object-cover">
+              <div className="h-full w-full object-cover">
                 <ImageCarousel
                   images={images}
                   auto={false}

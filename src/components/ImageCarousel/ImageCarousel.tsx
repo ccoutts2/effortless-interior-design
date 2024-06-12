@@ -1,12 +1,11 @@
 "use client";
 import { createPortal } from "react-dom";
 import Image from "next/image";
-import { useState, useEffect, MouseEventHandler, useRef } from "react";
+import { useState, useEffect, MouseEventHandler } from "react";
 import { VscTriangleRight } from "react-icons/vsc";
 import { VscTriangleLeft } from "react-icons/vsc";
 import { AiFillCloseCircle } from "react-icons/ai";
-import gsap from "gsap";
-import { useGSAP } from "@gsap/react";
+import { BsPlusCircleFill } from "react-icons/bs";
 
 type CarouselProps = {
   images: string[];
@@ -36,8 +35,6 @@ const Carousel = ({
   auto = false,
   interval = 5000,
   imageOnClick,
-  // showNavSliders = false,
-  // showNavButtons = true,
   navType = "circles",
   imageIndex,
   setImageIndex,
@@ -66,6 +63,12 @@ const Carousel = ({
   return (
     <div className="relative h-full w-full">
       <div className="flex h-[70vh] w-full overflow-hidden lg:h-screen">
+        <button
+          className="absolute right-4 top-4 z-10 text-3xl md:hidden"
+          onClick={imageOnClick}
+        >
+          <BsPlusCircleFill />
+        </button>
         {images.map((url, index) => (
           <Image
             width={2000}
@@ -108,7 +111,7 @@ const Carousel = ({
             relative mx-[6px] inline-block h-[9px] w-[9px] cursor-pointer rounded-full border [transition:color_0.2s_ease-in-out]
               ${
                 index === imageIndex
-                  ? "border-yellow-400 bg-yellow-400"
+                  ? "border-[#d9c6c5] bg-[#d9c6c5]"
                   : "border-[#d9c6c5] bg-transparent"
               }
             `}
@@ -133,11 +136,6 @@ const ImageCarousel = ({
 }: ImageCarouselProps) => {
   const [imageIndex, setImageIndex] = useState(currentIndex);
 
-  // useEffect(() => {
-  //   setImageIndex(currentIndex);
-  // }, [currentIndex]);
-  const container = useRef<HTMLElement>(null);
-
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleImageClick = () => {
@@ -147,18 +145,6 @@ const ImageCarousel = ({
   const closeModal = () => {
     setIsModalOpen(false);
   };
-
-  useGSAP(
-    () => {
-      gsap.to(container.current, {
-        delay: 0.1,
-        duration: 0.8,
-        opacity: 1,
-        ease: "power4.inOut",
-      });
-    },
-    { scope: container },
-  );
 
   useEffect(() => {
     isModalOpen
@@ -182,7 +168,6 @@ const ImageCarousel = ({
         isModalOpen &&
         createPortal(
           <section
-            ref={container}
             onClick={closeModal}
             className="fixed left-0 top-0 z-50 flex h-screen w-screen cursor-auto items-center justify-center overflow-hidden bg-black bg-opacity-75"
           >
@@ -198,7 +183,7 @@ const ImageCarousel = ({
               >
                 <AiFillCloseCircle />
               </button>
-              <div className="h-full w-full cursor-zoom-in object-cover">
+              <div className="h-full w-full cursor-auto object-cover">
                 <Carousel
                   images={images}
                   navType="arrows"
@@ -215,5 +200,4 @@ const ImageCarousel = ({
   );
 };
 
-// export default ImageCarouselWithModal;
 export default ImageCarousel;
