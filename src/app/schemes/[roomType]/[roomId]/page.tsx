@@ -8,6 +8,7 @@ import { GrSubtract } from "react-icons/gr";
 import { BsPlusCircleFill } from "react-icons/bs";
 import ImageCarousel from "@/components/ImageCarousel/ImageCarousel";
 import ImageModal from "@/components/ImageModal/ImageModal";
+import ImageCarouselWithModal from "@/components/ImageCarousel/ImageCarouselWithModal";
 
 interface RoomSchemeProps {
   params: {
@@ -19,8 +20,7 @@ const RoomScheme = ({ params: { roomId } }: RoomSchemeProps) => {
   const images = [room1, room2, room3].map((image) => image.src);
 
   const [quantity, setQuantity] = useState<number>(1);
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [initialIndex, setInitialIndex] = useState(0);
+  // const [initialIndex, setInitialIndex] = useState(0);
 
   const countUp = () => {
     setQuantity((prevQuantity) => prevQuantity + 1);
@@ -38,15 +38,6 @@ const RoomScheme = ({ params: { roomId } }: RoomSchemeProps) => {
 
   const subtractQuantity = () => {
     countDown();
-  };
-
-  const handleImageClick = (src: string, index: number) => {
-    setInitialIndex(index);
-    setIsModalOpen(true);
-  };
-
-  const closeModal = () => {
-    setIsModalOpen(false);
   };
 
   const dropDown = [
@@ -68,18 +59,15 @@ const RoomScheme = ({ params: { roomId } }: RoomSchemeProps) => {
       </div>
       <div className="lg:flex lg:flex-row lg:justify-center">
         <div className="relative h-[65vh] cursor-zoom-in px-4 py-4 md:h-[80vh] md:px-12 lg:w-full">
-          <button
+          {/* <button
             className="absolute right-8 top-[3.25rem] z-10 text-3xl md:hidden"
-            onClick={handleImageClick}
+            onClick={() => {
+              handleImageClick();
+            }}
           >
             <BsPlusCircleFill />
-          </button>
-          <ImageCarousel
-            images={images}
-            onClick={handleImageClick}
-            showNavButtons={false}
-            showNavSliders={true}
-          />
+          </button> */}
+          <ImageCarousel images={images} navType="arrows" hasFullScreen />
         </div>
         <div className="px-4 md:px-12 lg:py-4">
           <div>
@@ -110,7 +98,7 @@ const RoomScheme = ({ params: { roomId } }: RoomSchemeProps) => {
             ))}
           </article>
           <div className="pb-4 pt-0">
-            <div className="justif-center flex w-[35%] flex-row items-center border border-solid border-black">
+            <div className="flex w-[35%] flex-row items-center justify-center border border-solid border-black">
               <button
                 className="flex w-full justify-center rounded border-none px-4 py-2"
                 onClick={subtractQuantity}
@@ -133,13 +121,13 @@ const RoomScheme = ({ params: { roomId } }: RoomSchemeProps) => {
           </div>
         </div>
       </div>
-      {isModalOpen && (
+      {/* {isModalOpen && (
         <ImageModal
           images={images}
           closeModal={closeModal}
           currentIndex={initialIndex}
         />
-      )}
+      )} */}
     </section>
   );
 };

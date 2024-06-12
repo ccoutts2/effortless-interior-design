@@ -1,30 +1,47 @@
 "use client";
+import { createPortal } from "react-dom";
 import Image from "next/image";
-import { useState, useEffect } from "react";
+import { useState, useEffect, MouseEventHandler, useRef } from "react";
 import { VscTriangleRight } from "react-icons/vsc";
 import { VscTriangleLeft } from "react-icons/vsc";
+import { AiFillCloseCircle } from "react-icons/ai";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
 
-type ImageCarouselProps = {
+type CarouselProps = {
   images: string[];
   auto?: boolean;
   interval?: number;
-  onClick?: (src: string, index: number) => void;
-  showNavSliders?: boolean;
-  showNavButtons?: boolean;
+  imageOnClick?: MouseEventHandler;
+  navType?: "arrows" | "circles";
+  imageIndex: number;
+  setImageIndex: React.Dispatch<React.SetStateAction<number>>;
   currentIndex?: number;
 };
 
-const ImageCarousel = ({
+interface ImageCarouselProps {
+  images: string[];
+  auto?: boolean;
+  interval?: number;
+  onClick?: MouseEventHandler;
+  showNavSliders?: boolean;
+  showNavButtons?: boolean;
+  hasFullScreen?: boolean;
+  navType?: "arrows" | "circles";
+  currentIndex?: number;
+}
+
+const Carousel = ({
   images,
   auto = false,
   interval = 5000,
-  onClick,
-  showNavSliders = false,
-  showNavButtons = true,
-  currentIndex = 0,
-}: ImageCarouselProps) => {
-  const [imageIndex, setImageIndex] = useState(currentIndex);
-
+  imageOnClick,
+  // showNavSliders = false,
+  // showNavButtons = true,
+  navType = "circles",
+  imageIndex,
+  setImageIndex,
+}: CarouselProps) => {
   const showNextImage = () => {
     setImageIndex((index) => {
       if (index === images.length - 1) return 0;
@@ -46,10 +63,6 @@ const ImageCarousel = ({
     }
   }, []);
 
-  useEffect(() => {
-    setImageIndex(currentIndex);
-  }, []);
-
   return (
     <div className="relative h-full w-full">
       <div className="flex h-[70vh] w-full overflow-hidden lg:h-screen">
@@ -65,11 +78,11 @@ const ImageCarousel = ({
               transition: "opacity 1s ease-in-out",
               opacity: index === imageIndex ? 1 : 0,
             }}
-            onClick={() => onClick && onClick(url, index)}
+            onClick={imageOnClick}
           />
         ))}
       </div>
-      {showNavSliders && (
+      {navType === "arrows" && (
         <>
           <button
             className="absolute bottom-0 top-0 block text-6xl"
@@ -86,7 +99,7 @@ const ImageCarousel = ({
         </>
       )}
 
-      {showNavButtons && (
+      {navType === "circles" && (
         <div className="absolute bottom-2 left-1/2 flex -translate-x-1/2 transform gap-1">
           {images.map((_, index) => (
             <button
@@ -110,4 +123,97 @@ const ImageCarousel = ({
   );
 };
 
+const ImageCarousel = ({
+  images,
+  auto,
+  interval,
+  hasFullScreen = false,
+  navType = "circles",
+  currentIndex = 0,
+}: ImageCarouselProps) => {
+  const [imageIndex, setImageIndex] = useState(currentIndex);
+
+  // useEffect(() => {
+  //   setImageIndex(currentIndex);
+  // }, [currentIndex]);
+  const container = useRef<HTMLElement>(null);
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleImageClick = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+
+  useGSAP(
+    () => {
+      gsap.to(container.current, {
+        delay: 0.1,
+        duration: 0.8,
+        opacity: 1,
+        ease: "power4.inOut",
+      });
+    },
+    { scope: container },
+  );
+
+  useEffect(() => {
+    isModalOpen
+      ? (document.body.style.overflow = "hidden")
+      : (document.body.style.overflow = "scroll");
+  }, [isModalOpen]);
+
+  return (
+    <>
+      <Carousel
+        images={images}
+        auto={auto}
+        interval={interval}
+        navType={navType}
+        imageIndex={imageIndex}
+        imageOnClick={handleImageClick}
+        setImageIndex={setImageIndex}
+      />
+
+      {hasFullScreen &&
+        isModalOpen &&
+        createPortal(
+          <section
+            ref={container}
+            onClick={closeModal}
+            className="fixed left-0 top-0 z-50 flex h-screen w-screen cursor-auto items-center justify-center overflow-hidden bg-black bg-opacity-75"
+          >
+            <div
+              onClick={(e) => {
+                e.stopPropagation();
+              }}
+              className="relative h-full w-full md:h-[90%] md:w-[60%]"
+            >
+              <button
+                onClick={closeModal}
+                className="absolute bottom-2 left-[45%] z-[55] text-4xl"
+              >
+                <AiFillCloseCircle />
+              </button>
+              <div className="h-full w-full cursor-zoom-in object-cover">
+                <Carousel
+                  images={images}
+                  navType="arrows"
+                  imageIndex={imageIndex}
+                  imageOnClick={handleImageClick}
+                  setImageIndex={setImageIndex}
+                />
+              </div>
+            </div>
+          </section>,
+          document.body,
+        )}
+    </>
+  );
+};
+
+// export default ImageCarouselWithModal;
 export default ImageCarousel;
