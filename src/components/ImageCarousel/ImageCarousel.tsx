@@ -7,27 +7,21 @@ import { VscTriangleLeft } from "react-icons/vsc";
 import { AiFillCloseCircle } from "react-icons/ai";
 import { BsPlusCircleFill } from "react-icons/bs";
 
-type CarouselProps = {
+interface BaseProps {
   images: string[];
   auto?: boolean;
   interval?: number;
-  imageOnClick?: MouseEventHandler;
   navType?: "arrows" | "circles";
+}
+
+interface CarouselProps extends BaseProps {
   imageIndex: number;
   setImageIndex: React.Dispatch<React.SetStateAction<number>>;
-  currentIndex?: number;
-};
+  imageOnClick?: MouseEventHandler;
+}
 
-interface ImageCarouselProps {
-  images: string[];
-  auto?: boolean;
-  interval?: number;
-  onClick?: MouseEventHandler;
-  showNavSliders?: boolean;
-  showNavButtons?: boolean;
+interface ImageCarouselProps extends BaseProps {
   hasFullScreen?: boolean;
-  navType?: "arrows" | "circles";
-  currentIndex?: number;
 }
 
 const Carousel = ({
@@ -132,9 +126,8 @@ const ImageCarousel = ({
   interval,
   hasFullScreen = false,
   navType = "circles",
-  currentIndex = 0,
 }: ImageCarouselProps) => {
-  const [imageIndex, setImageIndex] = useState(currentIndex);
+  const [imageIndex, setImageIndex] = useState(0);
 
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -179,7 +172,7 @@ const ImageCarousel = ({
             >
               <button
                 onClick={closeModal}
-                className="absolute bottom-2 left-[45%] z-[55] text-4xl"
+                className="-translate-1/2 absolute bottom-2 left-1/2 z-[55] transform text-4xl"
               >
                 <AiFillCloseCircle />
               </button>
