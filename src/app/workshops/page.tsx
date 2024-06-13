@@ -1,7 +1,7 @@
 "use client";
 import { useEffect } from "react";
 import { assetsConfig } from "@/config/assets";
-import Lenis from "@studio-freight/lenis";
+import Lenis from "lenis";
 import Testimonials from "@/components/Testimonials/Testimonials";
 import WorkshopsParagraphs from "@/components/WorkshopsParagraphs/WorkshopsParagraphs";
 import Input from "@/components/Input/Input";

@@ -49,13 +49,13 @@ const RoomScheme = ({ params: { roomId } }: RoomSchemeProps) => {
   ];
 
   return (
-    <section className="mt-[15vh]">
+    <section className="mt-[5vh]">
       <div className="px-4 md:px-12">
         <p>paper trail placeholder for the time being</p>
       </div>
       <div className="lg:flex lg:flex-row lg:justify-center">
-        <div className="h-[65vh] px-4 py-4 md:h-[80vh] md:px-12 lg:w-full">
-          <ImageCarousel images={images} />
+        <div className="relative h-[65vh] cursor-pointer px-4 py-4 md:h-[80vh] md:px-12 lg:w-full">
+          <ImageCarousel images={images} navType="arrows" hasFullScreen />
         </div>
         <div className="px-4 md:px-12 lg:py-4">
           <div>
@@ -86,7 +86,7 @@ const RoomScheme = ({ params: { roomId } }: RoomSchemeProps) => {
             ))}
           </article>
           <div className="pb-4 pt-0">
-            <div className="justif-center flex w-[35%] flex-row items-center border border-solid border-black">
+            <div className="flex w-[35%] flex-row items-center justify-center border border-solid border-black">
               <button
                 className="flex w-full justify-center rounded border-none px-4 py-2"
                 onClick={subtractQuantity}

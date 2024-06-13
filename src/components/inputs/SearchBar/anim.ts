@@ -5,7 +5,7 @@ export const container: Variants = {
   show: {
     opacity: 1,
     transition: {
-      delayChildren: 0.5,
+      delayChildren: 0.2,
       staggerChildren: 0.2,
     },
   },
