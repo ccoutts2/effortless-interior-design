@@ -22,7 +22,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="max-w-screen">
       <body
-        className={`w-full bg-[#f3eee8] text-[#5d3a40] ${overpass.className}`}
+        className={`relative w-full bg-[#f3eee8] text-[#5d3a40] ${overpass.className}`}
       >
         <Header />
         {children}
