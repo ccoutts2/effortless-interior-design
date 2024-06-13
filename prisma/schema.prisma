@@ -1,0 +1,73 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("POSTGRES_PRISMA_URL")
+  directUrl = env("POSTGRES_URL_NON_POOLING")
+}
+
+model Scheme {
+  id          Int               @id @default(autoincrement())
+  name        String
+  description String
+  price       Int
+  isAvailable Boolean
+  images      Image[]
+  roomTypeId  Int
+  roomType    RoomType          @relation(fields: [roomTypeId], references: [id], onDelete: Cascade)
+  orders      OrdersOnSchemes[]
+  createdAt   DateTime          @default(now())
+  updatedAt   DateTime          @updatedAt
+}
+
+model Image {
+  id         Int       @id @default(autoincrement())
+  url        String
+  shemeId    Int
+  scheme     Scheme    @relation(fields: [shemeId], references: [id], onDelete: Cascade)
+  roomTypeId Int?
+  roomType   RoomType? @relation(fields: [roomTypeId], references: [id], onDelete: Cascade)
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
+}
+
+model RoomType {
+  id        Int      @id @default(autoincrement())
+  name      String
+  schemes   Scheme[]
+  images    Image[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model User {
+  email     String   @id
+  name      String
+  orders    Order[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Order {
+  id               Int               @id @default(autoincrement())
+  totalPrice       Int
+  schemes          OrdersOnSchemes[]
+  userEmail        String
+  user             User?             @relation(fields: [userEmail], references: [email], onDelete: Cascade)
+  withConsultation Boolean           @default(false)
+  createdAt        DateTime          @default(now())
+  updatedAt        DateTime          @updatedAt
+}
+
+model OrdersOnSchemes {
+  schemeId  Int
+  scheme    Scheme   @relation(fields: [schemeId], references: [id], onDelete: Restrict)
+  orderId   Int
+  order     Order    @relation(fields: [orderId], references: [id], onDelete: Restrict)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@id([schemeId, orderId])
+}
