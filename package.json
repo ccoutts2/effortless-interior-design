@@ -12,7 +12,7 @@
     "@emailjs/browser": "^4.3.1",
     "@gsap/react": "^2.1.1",
     "@prisma/client": "^5.15.0",
-    "@studio-freight/lenis": "^1.0.42",
+    "lenis": "^1.1.2",
     "framer-motion": "^11.0.15",
     "gsap": "^3.12.5",
     "next": "14.1.3",
