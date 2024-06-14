@@ -1,6 +1,5 @@
-import prisma from "@/lib/prisma";
-import SchemePageHeader from "@/components/SchemePageHeader/SchemePageHeader";
-import SchemeArticles from "@/components/SchemeArticles/SchemeArticles";
+import { prisma } from "@/lib";
+import { SchemePageHeader, SchemeArticles } from "@/components";
 // import FilterOverlay from "@/components/FilterOverlay/FilterOverlay";
 
 interface RoomSchemesProps {
