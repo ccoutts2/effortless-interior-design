@@ -9,11 +9,11 @@ import ImageCarousel from "@/components/ImageCarousel/ImageCarousel";
 
 interface RoomSchemeProps {
   params: {
-    roomId: string;
+    schemeId: string;
   };
 }
 
-const RoomScheme = ({ params: { roomId } }: RoomSchemeProps) => {
+const RoomScheme = ({ params: { schemeId } }: RoomSchemeProps) => {
   const images = [room1, room2, room3].map((image) => image.src);
 
   const [quantity, setQuantity] = useState<number>(1);

@@ -1,16 +1,10 @@
 "use client";
+import type { Scheme, Image as ImageT } from "@prisma/client";
 import { useState } from "react";
 import Image from "next/image";
 
-interface Scheme {
-  title: string;
-  src: string;
-  srcHover: string;
-  price: string;
-}
-
 interface SchemeProps {
-  schemes: Scheme[];
+  schemes: (Scheme & { images: ImageT[] })[];
 }
 
 const SchemeArticles: React.FC<SchemeProps> = ({ schemes }) => {
@@ -29,17 +23,19 @@ const SchemeArticles: React.FC<SchemeProps> = ({ schemes }) => {
         <article
           onMouseEnter={() => handleMouseEnter(index)}
           onMouseLeave={handleMouseLeave}
-          key={index}
+          key={scheme.id}
           className="flex w-full flex-col items-start justify-start gap-1 text-center [flex:0_0_auto] md:h-80 md:w-[17rem] xl:h-[25rem] xl:w-[25rem] xl:gap-2"
         >
           <Image
-            width={500}
-            height={500}
-            src={index === isHover ? scheme.srcHover : scheme.src}
+            width={600}
+            height={400}
+            src={
+              index === isHover ? scheme.images[1].url : scheme.images[0].url
+            }
             alt="resources"
           />
-          <h3 className="text-md">{scheme.title}</h3>
-          <p className="text-md">{scheme.price}</p>
+          <h3 className="text-md">{scheme.name}</h3>
+          <p className="text-md">£{scheme.price / 100}</p>
         </article>
       ))}
     </section>

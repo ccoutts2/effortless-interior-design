@@ -9,33 +9,33 @@ datasource db {
 }
 
 model Scheme {
-  id          Int               @id @default(autoincrement())
-  name        String
-  description String
-  price       Int
-  isAvailable Boolean
-  images      Image[]
-  roomTypeId  Int
-  roomType    RoomType          @relation(fields: [roomTypeId], references: [id], onDelete: Cascade)
-  orders      OrdersOnSchemes[]
-  createdAt   DateTime          @default(now())
-  updatedAt   DateTime          @updatedAt
+  id           Int               @id @default(autoincrement())
+  name         String
+  description  String
+  price        Int
+  isAvailable  Boolean           @default(false)
+  images       Image[]
+  roomTypeName String?
+  roomType     RoomType?         @relation(fields: [roomTypeName], references: [name], onDelete: Cascade)
+  orders       OrdersOnSchemes[]
+  createdAt    DateTime          @default(now())
+  updatedAt    DateTime          @updatedAt
 }
 
 model Image {
-  id         Int       @id @default(autoincrement())
-  url        String
-  shemeId    Int
-  scheme     Scheme    @relation(fields: [shemeId], references: [id], onDelete: Cascade)
-  roomTypeId Int?
-  roomType   RoomType? @relation(fields: [roomTypeId], references: [id], onDelete: Cascade)
-  createdAt  DateTime  @default(now())
-  updatedAt  DateTime  @updatedAt
+  id           Int       @id @default(autoincrement())
+  url          String
+  schemeId     Int
+  schemeIndex  Int
+  scheme       Scheme    @relation(fields: [schemeId], references: [id], onDelete: Cascade)
+  roomTypeName String?
+  roomType     RoomType? @relation(fields: [roomTypeName], references: [name], onDelete: Cascade)
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
 }
 
 model RoomType {
-  id        Int      @id @default(autoincrement())
-  name      String
+  name      String   @id
   schemes   Scheme[]
   images    Image[]
   createdAt DateTime @default(now())
