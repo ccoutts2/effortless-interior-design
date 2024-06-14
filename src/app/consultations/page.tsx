@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import Lenis from "lenis";
 import Paragraphs from "@/components/Paragraphs/Paragraphs";
 import Button from "@/components/buttons/Button/Button";
+import { PageHeader } from "@/components";
 
 const Page = () => {
   useEffect(() => {
@@ -19,7 +20,7 @@ const Page = () => {
   return (
     <>
       <ImageContainer />
-      <HeaderSection />
+      <PageHeader header="consultations" />
       <TextSection />
     </>
   );
@@ -35,21 +36,6 @@ const ImageContainer = () => {
         className="h-full w-full object-cover"
       />
     </div>
-  );
-};
-
-const HeaderSection = () => {
-  return (
-    <section className="relative p-4 pt-6 md:p-12 lg:px-32">
-      <div className="absolute inset-0 flex items-center px-4 md:px-12 lg:px-32">
-        <div className="w-full border-b border-[#5d3a40]"></div>
-      </div>
-      <div className="relative flex justify-center">
-        <span className="bg-[#f3eee8] px-4 text-2xl md:text-4xl">
-          Consultations
-        </span>
-      </div>
-    </section>
   );
 };
 
