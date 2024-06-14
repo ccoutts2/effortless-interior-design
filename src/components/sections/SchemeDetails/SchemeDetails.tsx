@@ -1,39 +1,27 @@
 "use client";
+import type { Scheme, Image } from "@prisma/client";
 import { useState } from "react";
-import room1 from "../../../../../public/assets/images/eid2.jpg";
-import room2 from "../../../../../public/assets/images/eid5.jpg";
-import room3 from "../../../../../public/assets/images/eid11.jpg";
 import { GrAdd } from "react-icons/gr";
 import { GrSubtract } from "react-icons/gr";
-import ImageCarousel from "@/components/ImageCarousel/ImageCarousel";
+import { ImageCarousel } from "@/components";
 
-interface RoomSchemeProps {
-  params: {
-    roomId: string;
-  };
+interface SchemeDetailsProps {
+  scheme: Scheme & { images: Image[] };
 }
 
-const RoomScheme = ({ params: { roomId } }: RoomSchemeProps) => {
-  const images = [room1, room2, room3].map((image) => image.src);
-
+export const SchemeDetails = ({
+  scheme: { name, description, price, images },
+}: SchemeDetailsProps) => {
   const [quantity, setQuantity] = useState<number>(1);
 
-  const countUp = () => {
+  const addQuantity = () => {
     setQuantity((prevQuantity) => prevQuantity + 1);
   };
 
-  const countDown = () => {
+  const subtractQuantity = () => {
     if (quantity > 1) {
       setQuantity((prevQuantity) => prevQuantity - 1);
     }
-  };
-
-  const addQuantity = () => {
-    countUp();
-  };
-
-  const subtractQuantity = () => {
-    countDown();
   };
 
   const dropDown = [
@@ -49,26 +37,24 @@ const RoomScheme = ({ params: { roomId } }: RoomSchemeProps) => {
   ];
 
   return (
-    <section className="mt-[5vh]">
-      <div className="px-4 md:px-12">
-        <p>paper trail placeholder for the time being</p>
-      </div>
+    <section>
       <div className="lg:flex lg:flex-row lg:justify-center">
         <div className="relative h-[65vh] cursor-pointer px-4 py-4 md:h-[80vh] md:px-12 lg:w-full">
-          <ImageCarousel images={images} navType="arrows" hasFullScreen />
+          <ImageCarousel
+            images={images.map(({ url }) => url)}
+            navType="arrows"
+            hasFullScreen
+          />
         </div>
         <div className="px-4 md:px-12 lg:py-4">
           <div>
             <h2 className="w-[80%] pb-[1.75rem] font-medium uppercase">
-              linen frill bathmat, sky blue
+              {name}
             </h2>
-            <h3 className="text-base font-medium capitalize">
-              handwoven, this bathmat is a classic bathroom essential done the
-              holly lomax way.
-            </h3>
+            <h3 className="text-base font-medium capitalize">{description}</h3>
           </div>
           <article className="py-[1.75rem]">
-            <p className="px-0 py-[0.4]">£1000</p>
+            <p className="px-0 py-[0.4]">£{price / 100}</p>
             {dropDown.map((item, index) => (
               <div key={index} className="collapse collapse-arrow ">
                 <input type="checkbox" />
@@ -112,5 +98,3 @@ const RoomScheme = ({ params: { roomId } }: RoomSchemeProps) => {
     </section>
   );
 };
-
-export default RoomScheme;
