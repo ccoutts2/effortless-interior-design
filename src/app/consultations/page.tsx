@@ -1,8 +1,8 @@
 "use client";
 import { useEffect } from "react";
 import Lenis from "lenis";
-import Paragraphs from "@/components/Paragraphs/Paragraphs";
-import Button from "@/components/buttons/Button/Button";
+import { Paragraphs } from "@/components";
+import { Button } from "@/components";
 import { PageHeader } from "@/components";
 
 const Page = () => {

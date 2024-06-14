@@ -3,9 +3,9 @@ import { useEffect } from "react";
 import { assetsConfig } from "@/config/assets";
 import Lenis from "lenis";
 import Testimonials from "@/components/Testimonials/Testimonials";
-import Paragraphs from "@/components/Paragraphs/Paragraphs";
+import { Paragraphs } from "@/components";
 import Input from "@/components/Input/Input";
-import Button from "@/components/buttons/Button/Button";
+import { Button } from "@/components";
 
 interface BulletPoints {
   problem: string;
