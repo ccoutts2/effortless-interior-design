@@ -1,3 +1,5 @@
+import { NewsletterForm } from "./forms/NewsletterForm/NewsletterForm";
+
 // buttons
 export { BurgerButton } from "./buttons/BurgerButton/BurgerButton";
 export { PlusMinusButton } from "./buttons/PlusMinusButton/PlusMinusButton";
@@ -21,3 +23,6 @@ export { Hero } from "./sections/Hero/Hero";
 export { SchemeArticles } from "./sections/SchemeArticles/SchemeArticles";
 export { SchemeDetails } from "./sections/SchemeDetails/SchemeDetails";
 export { SchemePageHeader } from "./sections/SchemePageHeader/SchemePageHeader";
+
+// forms
+export { NewsletterForm } from "./forms/NewsletterForm/NewsletterForm";
