@@ -1,27 +1,55 @@
-import React from "react";
+import { PageHeader } from "@/components";
 
 const Page = () => {
   return (
-    <>
-      <div>about</div>
-      <div>page</div>
-      <div>page</div>
-      <div>page</div>
-      <div>page</div>
-      <div>page</div>
-      <div>page</div>
-      <div>page</div>
-      <div>page</div>
-      <div>page</div>
-      <div>about</div>
-      <div>page</div>
-      <div>page</div>
-      <div>page</div>
-      <div>page</div>
-      <div>page</div>
-      <div>page</div>
-      <div>page</div>
-    </>
+    <section className="mt-[5vh]">
+      <PageHeader header="About Us" />
+      <section className="gap-12 md:px-12 lg:mx-auto lg:my-0 lg:flex lg:items-center lg:justify-center lg:px-32 lg:py-8">
+        <div className="h-[25rem] w-full md:h-[40rem] lg:flex-1">
+          <img
+            src="/assets/images/portrait.png"
+            alt="Holly Lomax portrait by a shelving unit"
+            className="h-full w-full object-cover"
+          />
+        </div>
+        <div className="px-4 py-8 lg:flex lg:flex-1 lg:flex-col lg:px-0 lg:py-0">
+          <p className="pb-4">
+            Effortless Interior Design was founded by interior designer Holly
+            Lomax
+          </p>
+          <p className="py-4">
+            Originally from Norfolk, Holly studied History of Art and
+            Architectural History at the universities of Edinburgh and
+            Cambridge. This academic background in design analysis,
+            architectural history, classical composition and building
+            construction serves as an excellent foundation to her work as an
+            interior designer.
+          </p>
+          <p className="py-4">
+            Holly trained in interior design under the internationally-renowned
+            designer Rita Konig (House & Garden Top 100, AD Top 100), before
+            working as a senior designer for Isabella Worsley and Lucy
+            Cunningham (House & Garden Top 100). In these studios, Holly has
+            been the lead designer of several multi-million pound projects,
+            including Grade I listed country houses, elegant London townhouses
+            and stunning new-builds.
+          </p>
+          <p className="py-4">
+            Holly is a gifted public speaker and has a natural, authentic
+            teaching style. She is passionate about passing on the knowledge she
+            has gained and publishes free video tutorials and written articles
+            on all aspects of interior design.
+          </p>
+          <p className="py-4">
+            Holly is on a mission to empower you to create the home you&apos;ve
+            always wanted. Through workshops and consultations, she helps
+            clients feel enlightened and energised about their interiors, giving
+            them the design skills, knowledge and suppliers they need to
+            transform their home with ease and confidence.
+          </p>
+        </div>
+      </section>
+    </section>
   );
 };
 
