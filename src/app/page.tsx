@@ -1,6 +1,6 @@
 "use client";
 import { useEffect } from "react";
-import Hero from "@/components/Hero/Hero";
+import { Hero } from "@/components";
 import HomeBio from "@/components/HomeBio/HomeBio";
 import SchemeSlider from "@/components/ShemeSlider/SchemeSlider";
 import OurStory from "@/components/OurStory/OurStory";

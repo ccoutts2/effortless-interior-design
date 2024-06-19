@@ -65,12 +65,12 @@ const Carousel = ({
         </button>
         {images.map((url, index) => (
           <Image
-            width={2000}
-            height={2000}
+            width={600}
+            height={400}
             key={url}
             src={url}
             alt="carousel"
-            className="absolute left-0 top-0 block h-full w-full shrink-0 grow-0 object-cover"
+            className="absolute left-0 top-0 block h-full w-full shrink-0 grow-0 object-contain"
             style={{
               transition: "opacity 1s ease-in-out",
               opacity: index === imageIndex ? 1 : 0,
@@ -120,7 +120,7 @@ const Carousel = ({
   );
 };
 
-const ImageCarousel = ({
+export const ImageCarousel = ({
   images,
   auto,
   interval,
@@ -192,5 +192,3 @@ const ImageCarousel = ({
     </>
   );
 };
-
-export default ImageCarousel;
