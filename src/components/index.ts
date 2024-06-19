@@ -1,5 +1,3 @@
-import { Paragraphs } from "./Paragraphs/Paragraphs";
-
 // buttons
 export { Button } from "./buttons/Button/Button";
 export { BurgerButton } from "./buttons/BurgerButton/BurgerButton";
@@ -25,6 +23,3 @@ export { SchemeArticles } from "./sections/SchemeArticles/SchemeArticles";
 export { SchemeDetails } from "./sections/SchemeDetails/SchemeDetails";
 export { SchemePageHeader } from "./sections/SchemePageHeader/SchemePageHeader";
 export { PageHeader } from "./sections/PageHeader/PageHeader";
-
-// text sections
-export { Paragraphs } from "./Paragraphs/Paragraphs";
