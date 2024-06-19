@@ -3,9 +3,8 @@ import { useEffect } from "react";
 import { assetsConfig } from "@/config/assets";
 import Lenis from "lenis";
 import Testimonials from "@/components/Testimonials/Testimonials";
-import WorkshopsParagraphs from "@/components/WorkshopsParagraphs/WorkshopsParagraphs";
 import Input from "@/components/Input/Input";
-import Button from "@/components/buttons/Button/Button";
+import { Button } from "@/components";
 
 interface BulletPoints {
   problem: string;
@@ -54,20 +53,19 @@ const Workshops: React.FC = () => {
       <div className="mt-24 flex flex-col items-start justify-start md:flex-row md:items-stretch md:justify-between md:gap-6 md:p-12 lg:px-32 lg:py-5">
         <div className="flex h-full flex-1 flex-col items-end justify-between px-4 md:p-0">
           <div className="leading-6 md:leading-8">
-            <h1 className=" uppercase">workshops</h1>
-            <p className="px-0 py-2 ">Hello,</p>
-            <p className="px-0 py-2 "></p>
-            <WorkshopsParagraphs
-              paragraph="The number one problem my clients have is that they lack
+            <h1 className="uppercase">workshops</h1>
+            <p className="py-2 ">Hello,</p>
+            <p className="py-2">
+              The number one problem my clients have is that they lack
               confidence when putting design schemes together. A lack of
               confidence leads to indecision, frustration and, even after
-              you've finally made a decision, doubt as to whether
-              you've made the right choice, or wasted your money."
-            />
-            <WorkshopsParagraphs
-              paragraph="A lack of confidence in your design decisions stems from the
-              following problems. do any of them resonate with you?"
-            />
+              you&apos;ve finally made a decision, doubt as to whether
+              you&apos;ve made the right choice, or wasted your money.
+            </p>
+            <p className="py-2">
+              A lack of confidence in your design decisions stems from the
+              following problems. Do any of them resonate with you?
+            </p>
             <ul className="list-inside">
               {bulletPoints.map((point, index) => (
                 <li className="p-1" key={index}>
@@ -75,25 +73,25 @@ const Workshops: React.FC = () => {
                 </li>
               ))}
             </ul>
-            <WorkshopsParagraphs
-              paragraph="This workshop is a deep-dive into everything you need to know to
+            <p className="py-2">
+              This workshop is a deep-dive into everything you need to know to
               create sensational design schemes."
-            />
-            <WorkshopsParagraphs
-              paragraph=" It will give you the knowledge, tools and step-by-step methods you
+            </p>
+            <p className="py-2">
+              It will give you the knowledge, tools and step-by-step methods you
               need to banish your doubts, and start designing your home with
               ease and confidence."
-            />
-            <WorkshopsParagraphs
-              paragraph="The workshop will include several design exercises, some shorter,
+            </p>
+            <p className="py-2">
+              The workshop will include several design exercises, some shorter,
               some longer, so that you can immediately put everything you are
               learning into practice, in order to build your confidence and
               consolidate the lessons in your mind."
-            />
-            <WorkshopsParagraphs
-              paragraph="I really want the skills you are learning to stick, so that you
+            </p>
+            <p className="py-2">
+              I really want the skills you are learning to stick, so that you
               can repeat them with ease when you are designing at home!"
-            />
+            </p>
           </div>
           <form className="flex w-full flex-col items-start justify-start">
             <Input name="name" />
@@ -116,9 +114,7 @@ const Workshops: React.FC = () => {
           </video>
         </div>
       </div>
-      <section>
-        <Testimonials />
-      </section>
+      <Testimonials />
     </section>
   );
 };
