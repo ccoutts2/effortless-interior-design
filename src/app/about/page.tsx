@@ -5,15 +5,14 @@ const Page = () => {
     <section className="mt-[5vh]">
       <PageHeader header="About Us" />
       <section className="gap-12 md:px-12 lg:mx-auto lg:my-0 lg:flex lg:items-stretch lg:px-32 lg:py-8">
-        <div className="lg:flex lg:flex-1 lg:items-stretch">
-          <div className="h-[25rem] w-full md:h-[40rem] lg:h-auto lg:flex-1">
-            <img
-              src="/assets/images/portrait.png"
-              alt="Holly Lomax portrait by a shelving unit"
-              className="h-full w-full object-cover"
-            />
-          </div>
+        <div className="h-[25rem] w-full md:h-[40rem] lg:flex lg:h-auto lg:flex-1 lg:items-stretch">
+          <img
+            src="/assets/images/portrait.png"
+            alt="Holly Lomax portrait by a shelving unit"
+            className="h-full w-full object-cover"
+          />
         </div>
+
         <div className="gap-6 px-4 py-8 lg:flex lg:flex-1 lg:flex-col lg:justify-between lg:px-0 lg:py-0">
           <p className="pb-4 lg:pb-0">
             Effortless Interior Design was founded by interior designer Holly
