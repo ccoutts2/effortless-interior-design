@@ -21,10 +21,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="max-w-screen">
-      <body
-        className={`relative w-full bg-[#f3eee8] text-[#5d3a40] ${overpass.className}`}
-      >
+    <html lang="en" className="max-w-screen bg-[#f3eee8] text-[#5d3a40]">
+      <body className={`relative w-full ${overpass.className}`}>
         <Providers>
           <Header />
           {children}
