@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Overpass } from "next/font/google";
 import Footer from "../components/Footer/Footer";
 import { Header } from "@/components";
+import { Providers } from "./providers";
 import "./globals.css";
 
 const overpass = Overpass({
@@ -24,9 +25,11 @@ export default function RootLayout({
       <body
         className={`relative w-full bg-[#f3eee8] text-[#5d3a40] ${overpass.className}`}
       >
-        <Header />
-        {children}
-        <Footer />
+        <Providers>
+          <Header />
+          {children}
+          <Footer />
+        </Providers>
       </body>
     </html>
   );
