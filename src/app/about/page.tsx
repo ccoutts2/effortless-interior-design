@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { PageHeader } from "@/components";
 
 const Page = () => {
@@ -6,7 +7,9 @@ const Page = () => {
       <PageHeader header="About Us" />
       <section className="gap-12 md:px-12 lg:mx-auto lg:my-0 lg:flex lg:items-stretch lg:px-32 lg:py-8">
         <div className="h-[25rem] w-full md:h-[40rem] lg:flex lg:h-auto lg:flex-1 lg:items-stretch">
-          <img
+          <Image
+            width={1741}
+            height={2054}
             src="/assets/images/portrait.png"
             alt="Holly Lomax portrait by a shelving unit"
             className="h-full w-full object-cover"
