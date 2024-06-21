@@ -1,6 +1,6 @@
 "use client";
 import type { Scheme, Image } from "@prisma/client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { GrAdd } from "react-icons/gr";
 import { GrSubtract } from "react-icons/gr";
 import { ImageCarousel } from "@/components";
@@ -14,14 +14,28 @@ export const SchemeDetails = ({
   scheme: { name, description, price, images, id },
 }: SchemeDetailsProps) => {
   const { checkout, setCheckout, setShowBasket } = useCheckoutContext();
-  const [quantity, setQuantity] = useState<number>(1);
+  const [quantity, setQuantity] = useState(1);
+  const [basketQuantity, setBasketQuantity] = useState(0);
+
+  useEffect(() => {
+    if (checkout) {
+      const schemeAdded = checkout.schemes.find((scheme) => scheme.id === id);
+      if (schemeAdded) {
+        setBasketQuantity(schemeAdded.quantity);
+        setQuantity(schemeAdded.quantity);
+      } else {
+        setBasketQuantity(0);
+        setQuantity(1);
+      }
+    }
+  }, [checkout]);
 
   const addQuantity = () => {
     setQuantity((prevQuantity) => prevQuantity + 1);
   };
 
   const subtractQuantity = () => {
-    if (quantity > 1) {
+    if ((basketQuantity > 0 && quantity > 0) || quantity > 1) {
       setQuantity((prevQuantity) => prevQuantity - 1);
     }
   };
@@ -29,15 +43,36 @@ export const SchemeDetails = ({
   const addToBasket = () => {
     setCheckout((prevCheckout) => {
       const schemeToAdd = { id, quantity };
-      return prevCheckout
-        ? {
+      if (!prevCheckout) {
+        return {
+          schemes: [schemeToAdd],
+          tier: 1,
+        };
+      }
+
+      const prevSchemesCopy = structuredClone(prevCheckout.schemes);
+      const existingScheme = prevSchemesCopy.find((scheme) => scheme.id === id);
+      if (existingScheme) {
+        if (quantity === 0) {
+          const existingSchemeIndex = prevSchemesCopy.indexOf(existingScheme);
+          prevSchemesCopy.splice(existingSchemeIndex, 1);
+          return {
             ...prevCheckout,
-            schemes: [...prevCheckout.schemes, schemeToAdd],
-          }
-        : {
-            schemes: [schemeToAdd],
-            tier: 1,
+            schemes: prevSchemesCopy,
           };
+        }
+
+        existingScheme.quantity = quantity;
+        return {
+          ...prevCheckout,
+          schemes: prevSchemesCopy,
+        };
+      }
+
+      return {
+        ...prevCheckout,
+        schemes: [...prevCheckout.schemes, schemeToAdd],
+      };
     });
 
     setShowBasket(true);
@@ -109,10 +144,15 @@ export const SchemeDetails = ({
           </div>
           <div className="flex flex-col items-center gap-5">
             <button
-              className="flex w-full justify-center rounded border-none bg-white px-4 py-2 capitalize text-black"
+              className="flex w-full justify-center rounded border-none bg-white px-4 py-2 capitalize text-black disabled:bg-gray-100 disabled:text-gray-300"
               onClick={addToBasket}
+              disabled={quantity === basketQuantity}
             >
-              add to basket
+              {basketQuantity === 0
+                ? "add to basket"
+                : quantity === 0
+                  ? "remove from basket"
+                  : "update basket"}
             </button>
             <button className="flex w-full justify-center rounded border-none bg-purple-500 px-4 py-2 capitalize text-white">
               pay with stripe

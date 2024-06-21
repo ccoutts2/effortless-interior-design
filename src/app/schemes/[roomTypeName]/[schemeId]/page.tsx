@@ -34,12 +34,14 @@ const SchemePage = async ({
           <Link href={"/schemes"} className="hover:underline">
             Schemes
           </Link>
+          <p>/</p>
           <Link
             href={`/schemes/${roomTypeName}`}
             className="capitalize hover:underline"
           >
             {roomTypeName}
           </Link>
+          <p>/</p>
           <p>{scheme.name}</p>
         </div>
       </div>
