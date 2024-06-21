@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { BurgerButton, NavLink } from "@/components";
 import logo from "../../../../public/assets/logo/background.png";
+import { useCheckoutContext } from "@/contexts";
 
 interface NavBarProps {
   showMobileNav: boolean;
@@ -18,6 +19,8 @@ export const NavBar = ({
   setShowSubNav,
   setShowSearch,
 }: NavBarProps) => {
+  const { setShowBasket } = useCheckoutContext();
+
   return (
     <nav className="centered gap-8 uppercase">
       <div className="flex flex-[2] lg:justify-end">
@@ -55,7 +58,12 @@ export const NavBar = ({
         </div>
 
         <div className="flex items-center lg:pr-4">
-          <button className="p-4 lg:pb-[1.125rem] lg:pr-2 lg:pt-[.875rem]">
+          <button
+            onClick={() => {
+              setShowBasket((prevState) => !prevState);
+            }}
+            className="p-4 lg:pb-[1.125rem] lg:pr-2 lg:pt-[.875rem]"
+          >
             <FiShoppingCart />
           </button>
           <button

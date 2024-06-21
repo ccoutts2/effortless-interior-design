@@ -4,6 +4,7 @@ import Footer from "../components/Footer/Footer";
 import { Header } from "@/components";
 import { Providers } from "./providers";
 import "./globals.css";
+import { BasketOverlay } from "@/components/sections/BasketOverlay/BasketOverlay";
 
 const overpass = Overpass({
   subsets: ["latin"],
@@ -25,6 +26,7 @@ export default function RootLayout({
       <body className={`relative w-full ${overpass.className}`}>
         <Providers>
           <Header />
+          <BasketOverlay />
           {children}
           <Footer />
         </Providers>

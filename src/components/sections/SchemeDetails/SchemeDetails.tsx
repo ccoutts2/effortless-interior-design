@@ -4,14 +4,16 @@ import { useState } from "react";
 import { GrAdd } from "react-icons/gr";
 import { GrSubtract } from "react-icons/gr";
 import { ImageCarousel } from "@/components";
+import { useCheckoutContext } from "@/contexts";
 
 interface SchemeDetailsProps {
   scheme: Scheme & { images: Image[] };
 }
 
 export const SchemeDetails = ({
-  scheme: { name, description, price, images },
+  scheme: { name, description, price, images, id },
 }: SchemeDetailsProps) => {
+  const { checkout, setCheckout, setShowBasket } = useCheckoutContext();
   const [quantity, setQuantity] = useState<number>(1);
 
   const addQuantity = () => {
@@ -22,6 +24,23 @@ export const SchemeDetails = ({
     if (quantity > 1) {
       setQuantity((prevQuantity) => prevQuantity - 1);
     }
+  };
+
+  const addToBasket = () => {
+    setCheckout((prevCheckout) => {
+      const schemeToAdd = { id, quantity };
+      return prevCheckout
+        ? {
+            ...prevCheckout,
+            schemes: [...prevCheckout.schemes, schemeToAdd],
+          }
+        : {
+            schemes: [schemeToAdd],
+            tier: 1,
+          };
+    });
+
+    setShowBasket(true);
   };
 
   const dropDown = [
@@ -88,7 +107,13 @@ export const SchemeDetails = ({
               </button>
             </div>
           </div>
-          <div className="flex items-center">
+          <div className="flex flex-col items-center gap-5">
+            <button
+              className="flex w-full justify-center rounded border-none bg-white px-4 py-2 capitalize text-black"
+              onClick={addToBasket}
+            >
+              add to basket
+            </button>
             <button className="flex w-full justify-center rounded border-none bg-purple-500 px-4 py-2 capitalize text-white">
               pay with stripe
             </button>

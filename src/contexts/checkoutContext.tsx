@@ -1,4 +1,5 @@
 "use client";
+import type { Dispatch, SetStateAction, ReactNode } from "react";
 import { createContext, useContext, useEffect, useState } from "react";
 
 type Checkout = {
@@ -11,7 +12,9 @@ type Checkout = {
 
 interface CheckoutContextType {
   checkout: Checkout | null;
-  setCheckout: React.Dispatch<React.SetStateAction<Checkout | null>>;
+  setCheckout: Dispatch<SetStateAction<Checkout | null>>;
+  showBasket: boolean;
+  setShowBasket: Dispatch<SetStateAction<boolean>>;
 }
 
 const CheckoutContext = createContext<CheckoutContextType | null>(null);
@@ -20,13 +23,10 @@ export const useCheckoutContext = () => {
   return useContext(CheckoutContext) as CheckoutContextType;
 };
 
-export const CheckoutProvider = ({
-  children,
-}: {
-  children: React.ReactNode;
-}) => {
+export const CheckoutProvider = ({ children }: { children: ReactNode }) => {
   const [checkout, setCheckout] = useState<Checkout | null>(null);
-  const [storageChecked, setStorageChecked] = useState<boolean>(false);
+  const [storageChecked, setStorageChecked] = useState(false);
+  const [showBasket, setShowBasket] = useState(false);
 
   useEffect(() => {
     setCheckout(JSON.parse(window.localStorage.getItem("checkout")!) ?? null);
@@ -41,7 +41,9 @@ export const CheckoutProvider = ({
   }, [checkout, storageChecked]);
 
   return (
-    <CheckoutContext.Provider value={{ checkout, setCheckout }}>
+    <CheckoutContext.Provider
+      value={{ checkout, setCheckout, showBasket, setShowBasket }}
+    >
       {children}
     </CheckoutContext.Provider>
   );
