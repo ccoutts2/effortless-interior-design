@@ -57,7 +57,7 @@ const Page = () => {
       <section className="px-4 pb-8 md:px-12 md:pt-2 lg:px-32">
         <h3 className="text-2xl">Need more information?</h3>
         <p className="pt-4">
-          Head to our our{" "}
+          Head to our
           <span className="cursor-pointer underline">
             <Link href="/faq">FAQ&apos;s</Link>
           </span>
