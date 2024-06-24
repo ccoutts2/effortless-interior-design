@@ -27,7 +27,7 @@ export default function Home() {
       <SchemeSlider />
       <HomeBio />
       <Testimonials />
-      <Resources />
+      <Resources articleFilter="all posts" />
     </main>
   );
 }
