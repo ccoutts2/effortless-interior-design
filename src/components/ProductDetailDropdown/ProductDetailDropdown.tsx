@@ -14,15 +14,17 @@ const productDetails: productDetailsProps[] = [
   {
     header: "Details",
     details:
-      "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Asperiores dolores aut hic nulla voluptatem harum inventore. Dolorum, voluptatibus hic, ad fuga quae quisquam sit aliquam porro dignissimos eius nulla consectetur.",
+      "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Asperiores dolores aut hic nulla voluptatem harum inventore. Dolorum, voluptatibus hic, ad fuga quae quisquam sit aliquam porro dignissimos eius nulla consectetur. ",
   },
   {
     header: "Fabric Details",
-    details: "My name is Jeff",
+    details:
+      "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Asperiores dolores aut hic nulla voluptatem harum inventore. Dolorum, voluptatibus hic, ad fuga quae quisquam sit aliquam porro dignissimos eius nulla consectetur.",
   },
   {
     header: "Get Holly's Help",
-    details: "My name is Jeff",
+    details:
+      "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Asperiores dolores aut hic nulla voluptatem harum inventore. Dolorum, voluptatibus hic, ad fuga quae quisquam sit aliquam porro dignissimos eius nulla consectetur.",
   },
 ];
 
@@ -80,13 +82,18 @@ const ProductDetailDropdown = () => {
           ref={container}
           className="flex cursor-pointer justify-between py-4"
         >
-          <div className="flex flex-col">
+          <div className="flex flex-col gap-2 md:gap-0">
             <p>{details.header}</p>
-            <p ref={(el) => (dropDown.current[index] = el)} className="pr-8">
+            <p
+              ref={(el) => (dropDown.current[index] = el)}
+              className="pt-1 text-sm"
+            >
               {isDropDownOpen[index] && details.details}
             </p>
           </div>
-          <PlusMinusButton isActive={isDropDownOpen[index]} />
+          <div className="z-10">
+            <PlusMinusButton isActive={isDropDownOpen[index]} />
+          </div>
         </div>
       ))}
     </div>
