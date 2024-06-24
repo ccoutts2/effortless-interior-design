@@ -4,6 +4,7 @@ import { useState } from "react";
 import { GrAdd } from "react-icons/gr";
 import { GrSubtract } from "react-icons/gr";
 import { ImageCarousel } from "@/components";
+import ProductDetailDropdown from "@/components/ProductDetailDropdown/ProductDetailDropdown";
 
 interface SchemeDetailsProps {
   scheme: Scheme & { images: Image[] };
@@ -39,15 +40,15 @@ export const SchemeDetails = ({
   return (
     <section>
       <div className="lg:flex lg:flex-row lg:justify-center">
-        <div className="relative h-[65vh] cursor-pointer px-4 py-4 md:h-[80vh] md:px-12 lg:w-full">
+        <div className="relative h-[65vh] flex-1 cursor-pointer px-4 py-4 md:h-[80vh] md:px-12 lg:w-full">
           <ImageCarousel
             images={images.map(({ url }) => url)}
             navType="arrows"
             hasFullScreen
           />
         </div>
-        <div className="px-4 md:px-12 lg:py-4">
-          <div>
+        <div className="flex-1 px-4 md:px-12 lg:py-4 lg:pl-0 ">
+          <div className="flex-1">
             <h2 className="w-[80%] pb-[1.75rem] font-medium uppercase">
               {name}
             </h2>
@@ -55,21 +56,7 @@ export const SchemeDetails = ({
           </div>
           <article className="py-[1.75rem]">
             <p className="px-0 py-[0.4]">£{price / 100}</p>
-            {dropDown.map((item, index) => (
-              <div key={index} className="collapse collapse-arrow ">
-                <input type="checkbox" />
-                <div className="collapse-title font-medium">{item.title}</div>
-                <div className="collapse-content">
-                  <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Temporibus dignissimos libero omnis reprehenderit,
-                    praesentium laborum aliquid velit eveniet quam minus,
-                    delectus eius ab ullam nesciunt fugiat aspernatur! Harum,
-                    nobis fugiat.
-                  </p>
-                </div>
-              </div>
-            ))}
+            <ProductDetailDropdown />
           </article>
           <div className="pb-4 pt-0">
             <div className="flex w-[35%] flex-row items-center justify-center border border-solid border-black">
