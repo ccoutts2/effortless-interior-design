@@ -1,11 +1,12 @@
 import { PageHeader } from "@/components";
-import Link from "next/link";
+import DetailDropdown from "@/components/DetailDropdown/DetailDropdown";
+import { details } from "./data";
 
 const page = () => {
   return (
-    <section>
-      <PageHeader header="frequently asked questions" />
-      <div className="centered flex-col">
+    <section className="w-full">
+      <PageHeader header="FAQ's" />
+      <div className="centered w-full flex-col px-4">
         <p>
           Please contact {""}
           <a
@@ -16,6 +17,12 @@ const page = () => {
           </a>
           {""} if you cannot find an answer to your question.
         </p>
+        <div className="flex w-full flex-col items-start justify-start pt-8 md:px-12 lg:px-32">
+          <DetailDropdown
+            details={details}
+            className="border-b border-[#5d3a40]"
+          />
+        </div>
       </div>
     </section>
   );

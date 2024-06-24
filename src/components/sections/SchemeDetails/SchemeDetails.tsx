@@ -4,7 +4,8 @@ import { useState } from "react";
 import { GrAdd } from "react-icons/gr";
 import { GrSubtract } from "react-icons/gr";
 import { ImageCarousel } from "@/components";
-import ProductDetailDropdown from "@/components/ProductDetailDropdown/ProductDetailDropdown";
+import { details } from "./data";
+import DetailDropdown from "@/components/DetailDropdown/DetailDropdown";
 
 interface SchemeDetailsProps {
   scheme: Scheme & { images: Image[] };
@@ -25,18 +26,6 @@ export const SchemeDetails = ({
     }
   };
 
-  const dropDown = [
-    {
-      title: "Details",
-    },
-    {
-      title: "Fabric Prices",
-    },
-    {
-      title: "Get Holly's Help",
-    },
-  ];
-
   return (
     <section>
       <div className="lg:flex lg:flex-row lg:justify-center">
@@ -56,7 +45,7 @@ export const SchemeDetails = ({
           </div>
           <article className="py-[1.75rem]">
             <p className="px-0 py-[0.4]">£{price / 100}</p>
-            <ProductDetailDropdown />
+            <DetailDropdown details={details} />
           </article>
           <div className="pb-4 pt-0">
             <div className="flex w-[35%] flex-row items-center justify-center border border-solid border-black">
