@@ -43,11 +43,11 @@ const Cookie = () => {
               </span>
             </p>
           </div>
-          <div className="items-between flex w-full flex-col gap-4 md:flex-row md:justify-between">
-            <div className="centered border border-[#f3eee8]">
+          <div className="items-between flex w-full flex-col-reverse gap-4 md:flex-row md:justify-between">
+            <div className="centered w-full border border-[#f3eee8]">
               <Button label="reject all" onClick={rejectCookie} />
             </div>
-            <div className="centered border border-[#f3eee8]">
+            <div className="centered w-full border border-[#f3eee8]">
               <Button label="accept all" onClick={acceptCookie} />
             </div>
           </div>
