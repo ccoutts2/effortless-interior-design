@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-import Button from "../buttons/Button/Button";
+import { Button } from "../buttons/Button/Button";
 
 const Resources = () => {
   const articles = [
