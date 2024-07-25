@@ -1,32 +1,38 @@
 "use client";
-
-import { useRef } from "react";
+import { useEffect, useState } from "react";
 import { useFormState } from "react-dom";
-
-import Input from "@/components/Input/Input";
-
+import { Button, Input } from "@/components";
 import { newsletterSignUp } from "@/lib/actions";
 
 export const NewsletterForm = () => {
   const [formState, formAction] = useFormState(newsletterSignUp, {
     message: "",
   });
-  const formRef = useRef<HTMLFormElement>(null);
+  const [email, setEmail] = useState("");
 
-  const submit = async (formData: FormData) => {
-    formAction(formData);
-    if (formState.message === "Success") formRef.current?.reset();
+  const handleInputChange: React.ChangeEventHandler<HTMLInputElement> = (
+    event,
+  ) => {
+    setEmail(event.target.value);
   };
+
+  useEffect(() => {
+    if (formState.message === "Success") setEmail("");
+  }, [formState.message]);
 
   return (
     <form
-      ref={formRef}
-      action={submit}
+      action={formAction}
       className="flex w-full flex-col items-center justify-center gap-2"
     >
       {formState.message && <p>{formState.message}</p>}
-      <Input name="email" placeholder="enter your email address" />
-      <button className="text-xs lg:text-base">Submit</button>
+      <Input
+        name="email"
+        placeholder="Enter your email address"
+        value={email}
+        onChange={handleInputChange}
+      />
+      <Button label="Submit" disabled={!email.trim()} />
     </form>
   );
 };

@@ -1,11 +1,10 @@
-import { NewsletterForm } from "./forms/NewsletterForm/NewsletterForm";
-
 // buttons
 export { Button } from "./buttons/Button/Button";
 export { BurgerButton } from "./buttons/BurgerButton/BurgerButton";
 export { PlusMinusButton } from "./buttons/PlusMinusButton/PlusMinusButton";
 
 // inputs
+export { Input } from "./inputs/Input/Input";
 export { SearchBar } from "./inputs/SearchBar/SearchBar";
 
 // display

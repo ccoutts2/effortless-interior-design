@@ -1,7 +1,6 @@
 "use server";
-
-import { validateEmail } from "@/app/utils/validation";
-import prisma from "./db";
+import { validateEmail } from "@/utils/validation";
+import { prisma } from "@/lib";
 
 export const newsletterSignUp = async (
   formState: { message: string },
@@ -11,6 +10,7 @@ export const newsletterSignUp = async (
     let email = formData.get("email");
     if (!validateEmail(email)) return { message: "Must be a valid email" };
     email = email.toLowerCase();
+
     await prisma.user.upsert({
       where: { email },
       update: { newsletterSub: true },
@@ -18,6 +18,7 @@ export const newsletterSignUp = async (
     });
     return { message: "Success" };
   } catch (error) {
+    console.error(error);
     return { message: "Error" };
   }
 };
