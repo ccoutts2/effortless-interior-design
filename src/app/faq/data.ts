@@ -1,9 +1,9 @@
-interface detailsProps {
+export interface DetailItem {
   header: string;
   details: string;
 }
 
-export const details: detailsProps[] = [
+export const details: DetailItem[] = [
   {
     header: "What happens when I buy the Silver Design Package?",
     details:

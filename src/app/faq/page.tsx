@@ -5,7 +5,7 @@ import { details } from "./data";
 const page = () => {
   return (
     <section className="w-full">
-      <PageHeader header="FAQ's" />
+      <PageHeader header="FAQs" />
       <div className="centered w-full flex-col px-4">
         <p>
           Please contact {""}

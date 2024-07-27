@@ -4,18 +4,14 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 
 import { PlusMinusButton } from "../buttons/PlusMinusButton/PlusMinusButton";
+import { DetailItem } from "@/app/faq/data";
 
-interface DetailsProps {
-  header: string;
-  details: string;
-}
-
-interface DetailDropdown {
-  details: DetailsProps[];
+interface DetailDropdownProps {
+  details: DetailItem[];
   className?: string;
 }
 
-const DetailDropdown = ({ details, className }: DetailDropdown) => {
+const DetailDropdown = ({ details, className }: DetailDropdownProps) => {
   const [isDropDownOpen, setIsDropDownOpen] = useState(
     Array(details.length).fill(false),
   );

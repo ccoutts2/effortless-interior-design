@@ -1,9 +1,6 @@
-interface detailsProps {
-  header: string;
-  details: string;
-}
+import { DetailItem } from "@/app/faq/data";
 
-export const details: detailsProps[] = [
+export const details: DetailItem[] = [
   {
     header: "Details",
     details:
