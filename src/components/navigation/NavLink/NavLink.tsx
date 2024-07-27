@@ -4,7 +4,7 @@ import { usePathname } from "next/navigation";
 
 interface NavLinkProps {
   href: string;
-  label?: string;
+  label: string;
   onMouseEnter?: () => void;
 }
 
@@ -18,7 +18,7 @@ export const NavLink = ({ href, label, onMouseEnter }: NavLinkProps) => {
       onMouseEnter={onMouseEnter}
     >
       <span
-        className={`hover:border-b-2 hover:border-[#5d3a40] ${pathname === href ? "border-b-2 border-[#5d3a40]" : ""}`}
+        className={`hover:border-b-2 hover:border-[#5d3a40] ${pathname.startsWith(href) ? "border-b-2 border-[#5d3a40]" : ""}`}
       >
         {label}
       </span>
