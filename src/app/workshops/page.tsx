@@ -75,22 +75,22 @@ const Workshops: React.FC = () => {
             </ul>
             <p className="py-2">
               This workshop is a deep-dive into everything you need to know to
-              create sensational design schemes."
+              create sensational design schemes.
             </p>
             <p className="py-2">
               It will give you the knowledge, tools and step-by-step methods you
               need to banish your doubts, and start designing your home with
-              ease and confidence."
+              ease and confidence.
             </p>
             <p className="py-2">
               The workshop will include several design exercises, some shorter,
               some longer, so that you can immediately put everything you are
               learning into practice, in order to build your confidence and
-              consolidate the lessons in your mind."
+              consolidate the lessons in your mind.
             </p>
             <p className="py-2">
               I really want the skills you are learning to stick, so that you
-              can repeat them with ease when you are designing at home!"
+              can repeat them with ease when you are designing at home!
             </p>
           </div>
           <form className="flex w-full flex-col items-start justify-start">
