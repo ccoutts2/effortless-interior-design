@@ -1,0 +1,20 @@
+interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
+  name: string;
+  placeholder?: string;
+}
+
+export const Input = ({ name, placeholder, ...defaultProps }: InputProps) => {
+  return (
+    <div className=" w-full ">
+      <label className="hidden">{name}</label>
+      <input
+        id={name}
+        name={name}
+        type="text"
+        placeholder={placeholder || name}
+        className="mb-1 h-[auto] w-full border-b border-solid border-[#744442] bg-[#f3eee8] p-1 text-start text-sm placeholder-[#5d3a40] placeholder:uppercase"
+        {...defaultProps}
+      />
+    </div>
+  );
+};

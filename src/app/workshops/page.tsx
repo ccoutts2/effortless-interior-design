@@ -3,8 +3,7 @@ import { useEffect } from "react";
 import { assetsConfig } from "@/config/assets";
 import Lenis from "lenis";
 import Testimonials from "@/components/Testimonials/Testimonials";
-import Input from "@/components/Input/Input";
-import { Button } from "@/components";
+import { Input, Button } from "@/components";
 
 interface BulletPoints {
   problem: string;

@@ -1,39 +1,21 @@
 "use client";
-import React, { useState } from "react";
-import styles from "./Footer.module.scss";
+import { NewsletterForm } from "@/components";
 
 const Footer = () => {
-  const [isActive, setIsActive] = useState<boolean>(false);
-
-  const onFocus = () => {
-    setIsActive(!isActive);
-  };
-
   return (
     <footer className="flex w-full flex-col items-center justify-center bg-[#f4f0ea] p-4 px-12 md:justify-between lg:px-32">
       <h2 className="text-center font-normal capitalize">
         effortless interior design
       </h2>
 
-      <div className="flex w-full flex-col items-center justify-center gap-0 pt-4 md:flex-row md:items-start md:justify-between">
+      <section className="flex w-full flex-col items-center justify-center gap-0 pt-4 md:flex-row md:items-start md:justify-between">
         <div className="w-full md:flex md:w-[66.6%] md:flex-row-reverse md:items-start md:justify-between">
           <div className="flex w-full flex-col items-center justify-center px-0 py-4 font-normal capitalize">
             <h3 className="pb-2 text-base font-normal uppercase lg:text-xl">
               newsletter
             </h3>
 
-            <form className="flex w-full flex-col items-center justify-center gap-2 capitalize">
-              <input
-                onFocus={onFocus}
-                className={`w-[80%] border-b border-l-0  border-r-0 border-t-0 border-[#978f8f80] border-opacity-50 bg-[#f4f0ea] text-center placeholder-opacity-50 lg:text-base ${
-                  isActive
-                    ? "border-[#97060680] transition duration-700 ease-in-out"
-                    : ""
-                }`}
-                placeholder="Enter your email address to subscribe"
-              ></input>
-              <p className="text-xs lg:text-base">submit</p>
-            </form>
+            <NewsletterForm />
           </div>
 
           <div className="flex w-full flex-col items-center justify-center px-0 py-4 capitalize md:items-start">
@@ -54,7 +36,7 @@ const Footer = () => {
           <p className="text-xs lg:text-base">kitchen</p>
           <p className="text-xs lg:text-base">living room</p>
         </nav>
-      </div>
+      </section>
 
       <section className="flex w-full flex-col items-center justify-center md:items-start">
         <p className="text-xs capitalize lg:text-base">

@@ -4,6 +4,7 @@ export { BurgerButton } from "./buttons/BurgerButton/BurgerButton";
 export { PlusMinusButton } from "./buttons/PlusMinusButton/PlusMinusButton";
 
 // inputs
+export { Input } from "./inputs/Input/Input";
 export { SearchBar } from "./inputs/SearchBar/SearchBar";
 
 // display
@@ -23,3 +24,6 @@ export { SchemeArticles } from "./sections/SchemeArticles/SchemeArticles";
 export { SchemeDetails } from "./sections/SchemeDetails/SchemeDetails";
 export { SchemePageHeader } from "./sections/SchemePageHeader/SchemePageHeader";
 export { PageHeader } from "./sections/PageHeader/PageHeader";
+
+// forms
+export { NewsletterForm } from "./forms/NewsletterForm/NewsletterForm";

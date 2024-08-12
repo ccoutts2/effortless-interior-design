@@ -43,7 +43,8 @@ model RoomType {
 }
 
 model User {
-  email         String   @id
+  id            Int      @id @default(autoincrement())
+  email         String   @unique
   name          String?
   password      String?
   isActive      Boolean  @default(false)
@@ -58,8 +59,8 @@ model Order {
   id               Int               @id @default(autoincrement())
   totalPrice       Int
   schemes          OrdersOnSchemes[]
-  userEmail        String
-  user             User?             @relation(fields: [userEmail], references: [email], onDelete: Cascade)
+  userId           Int
+  user             User?             @relation(fields: [userId], references: [id], onDelete: Cascade)
   withConsultation Boolean           @default(false)
   createdAt        DateTime          @default(now())
   updatedAt        DateTime          @updatedAt
