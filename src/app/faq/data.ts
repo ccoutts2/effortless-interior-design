@@ -1,7 +1,4 @@
-export interface DetailItem {
-  header: string;
-  details: string;
-}
+import { DetailItem } from "./types";
 
 export const details: DetailItem[] = [
   {
