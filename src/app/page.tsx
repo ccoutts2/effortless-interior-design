@@ -1,24 +1,14 @@
-"use client";
-import { useEffect } from "react";
 import { Hero } from "@/components";
 import HomeBio from "@/components/HomeBio/HomeBio";
 import SchemeSlider from "@/components/ShemeSlider/SchemeSlider";
 import OurStory from "@/components/OurStory/OurStory";
-import Lenis from "lenis";
 import Testimonials from "@/components/Testimonials/Testimonials";
 import Resources from "@/components/Resources/Resources";
 
-export default function Home() {
-  useEffect(() => {
-    const lenis = new Lenis();
+import { getPosts } from "@/utils/getPosts";
 
-    function raf(time: number) {
-      lenis.raf(time);
-      requestAnimationFrame(raf);
-    }
-
-    requestAnimationFrame(raf);
-  }, []);
+export default async function Home() {
+  const posts = await getPosts();
 
   return (
     <main>
@@ -27,7 +17,11 @@ export default function Home() {
       <SchemeSlider />
       <HomeBio />
       <Testimonials />
-      <Resources articleFilter="all posts" />
+      {posts.length > 0 ? (
+        <Resources posts={posts} />
+      ) : (
+        <p>No posts available</p>
+      )}
     </main>
   );
 }
