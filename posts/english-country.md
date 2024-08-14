@@ -2,6 +2,7 @@
 title: "English Country-House Style and the Privilege of Belonging "
 date: "31-08-14"
 category: "Articles"
+image: "/assets/images/eid7.jpg"
 ---
 
 ## Origins

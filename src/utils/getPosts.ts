@@ -26,6 +26,7 @@ export const getPosts = async (): Promise<PostItem[]> => {
         title: matterResult.data.title,
         date: matterResult.data.date,
         category: matterResult.data.category,
+        image: matterResult.data.image,
       };
     }),
   );

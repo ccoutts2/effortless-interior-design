@@ -1,4 +1,6 @@
-import Markdown from "react-markdown";
+import styles from "./page.module.css";
+
+import ReactMarkdown from "react-markdown";
 
 import Link from "next/link";
 
@@ -8,16 +10,13 @@ const Post = async ({ params }: { params: { post: string } }) => {
   const postData = await getPostData(params.post);
 
   return (
-    <section className="mx-auto mt-20 flex w-10/12 flex-col gap-5 md:w-1/2">
-      <div className="flex justify-between">
-        <Link
-          href="/resources"
-          className="flex flex-row place-items-center gap-1"
-        >
-          ← Back
-        </Link>
-        <article>
-          <Markdown>{postData}</Markdown>
+    <section>
+      <Link href="/resources" className="p-4 text-lg md:px-12 lg:px-32">
+        ← Back
+      </Link>
+      <div className="mx-auto flex w-10/12 flex-col gap-5 pt-4 md:w-1/2">
+        <article className={styles.markdown}>
+          <ReactMarkdown>{postData}</ReactMarkdown>
         </article>
       </div>
     </section>

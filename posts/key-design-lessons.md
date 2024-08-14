@@ -2,6 +2,7 @@
 title: "How to choose a scheme"
 date: "27-01-23"
 category: "Articles"
+image: "/assets/images/eid10.jpg"
 ---
 
 ## Origins

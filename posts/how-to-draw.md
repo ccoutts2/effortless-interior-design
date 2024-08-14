@@ -2,6 +2,7 @@
 title: "How to Draw"
 date: "22-08-23"
 category: "Articles"
+image: "/assets/images/eid8.jpg"
 ---
 
 ## Origins
