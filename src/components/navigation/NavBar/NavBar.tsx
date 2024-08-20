@@ -28,10 +28,19 @@ export const NavBar = ({
         />
 
         <div className="hidden lg:flex lg:max-w-md lg:flex-1 lg:justify-between lg:gap-5 lg:pl-8">
-          <NavLink href="schemes" onMouseEnter={() => setShowSubNav(true)} />
-          <NavLink href="workshops" onMouseEnter={() => setShowSubNav(false)} />
           <NavLink
-            href="consultations"
+            label="schemes"
+            href="/schemes"
+            onMouseEnter={() => setShowSubNav(true)}
+          />
+          <NavLink
+            label="workshops"
+            href="/workshops"
+            onMouseEnter={() => setShowSubNav(false)}
+          />
+          <NavLink
+            label="consultations"
+            href="/consultations"
             onMouseEnter={() => setShowSubNav(false)}
           />
         </div>
@@ -49,9 +58,21 @@ export const NavBar = ({
 
       <div className="flex flex-[2] justify-end lg:justify-between">
         <div className="hidden lg:flex lg:max-w-[21.5rem] lg:flex-1 lg:justify-between lg:gap-5 lg:pr-4">
-          <NavLink href="resources" onMouseEnter={() => setShowSubNav(false)} />
-          <NavLink href="about" onMouseEnter={() => setShowSubNav(false)} />
-          <NavLink href="contact" onMouseEnter={() => setShowSubNav(false)} />
+          <NavLink
+            label="resources"
+            href="/resources"
+            onMouseEnter={() => setShowSubNav(false)}
+          />
+          <NavLink
+            label="about"
+            href="/about"
+            onMouseEnter={() => setShowSubNav(false)}
+          />
+          <NavLink
+            label="contact"
+            href="/contact"
+            onMouseEnter={() => setShowSubNav(false)}
+          />
         </div>
 
         <div className="flex items-center lg:pr-4">

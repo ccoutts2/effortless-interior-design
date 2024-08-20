@@ -1,5 +1,3 @@
-import Button from "../buttons/Button/Button";
-
 interface InputProps {
   name: string;
   placeholder?: string;

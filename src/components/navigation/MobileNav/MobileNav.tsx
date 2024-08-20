@@ -14,11 +14,11 @@ export const MobileNav = () => {
     >
       <nav className="relative flex flex-col px-4 pb-4 lg:hidden">
         <NavExpandable label="schemes" />
-        <NavLink href="workshops" />
-        <NavLink href="consultations" />
-        <NavLink href="resources" />
-        <NavLink href="about" />
-        <NavLink href="contact" />
+        <NavLink href="workshops" label="workshops" />
+        <NavLink href="consultations" label="consultations" />
+        <NavLink href="resources" label="resources" />
+        <NavLink href="about" label="about" />
+        <NavLink href="contact" label="contact" />
         <form
           className="w-full border-b border-[#5d3a40]"
           id="search"
