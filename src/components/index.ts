@@ -4,6 +4,7 @@ export { BurgerButton } from "./buttons/BurgerButton/BurgerButton";
 export { PlusMinusButton } from "./buttons/PlusMinusButton/PlusMinusButton";
 
 // inputs
+export { Input } from "./inputs/Input/Input";
 export { SearchBar } from "./inputs/SearchBar/SearchBar";
 
 // display

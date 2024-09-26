@@ -10,7 +10,7 @@
     "postinstall": "prisma generate"
   },
   "dependencies": {
-    "@emailjs/browser": "^4.3.3",
+    "@emailjs/browser": "^4.4.1",
     "@gsap/react": "^2.1.1",
     "@prisma/client": "^5.15.0",
     "@types/js-cookie": "^3.0.6",

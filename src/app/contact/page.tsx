@@ -1,30 +1,28 @@
 "use client";
-import { useRef, FormEvent } from "react";
+import { useRef, useState, useEffect } from "react";
+import { useFormState } from "react-dom";
 import emailjs from "@emailjs/browser";
-import Input from "@/components/Input/Input";
+import { Input } from "@/components";
 import { PageHeader } from "@/components";
+import { contactFormSubmit } from "@/lib/actions";
 
 const Page = () => {
   const form = useRef<HTMLFormElement | null>(null);
+  const [formState, formAction] = useFormState(contactFormSubmit, {
+    message: "",
+  });
 
-  const sendEmail = (e: FormEvent) => {
-    e.preventDefault();
+  const [email, setEmail] = useState("");
 
-    if (form.current) {
-      emailjs
-        .sendForm("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", form.current, {
-          publicKey: "YOUR_PUBLIC_KEY",
-        })
-        .then(
-          () => {
-            console.log("SUCCESS!");
-          },
-          (error) => {
-            console.log("FAILED...", error.text);
-          },
-        );
-    }
+  const handleInputChange: React.ChangeEventHandler<HTMLInputElement> = (
+    event,
+  ) => {
+    setEmail(event.target.value);
   };
+
+  useEffect(() => {
+    if (formState.message === "Email sent successfully") setEmail("");
+  }, [formState.message]);
 
   return (
     <section>
@@ -34,17 +32,16 @@ const Page = () => {
           Got a question? Don&apos; hesitate to get in touch!
         </h1>
         <form
-          ref={form}
-          onSubmit={sendEmail}
+          action={formAction}
           className="flex w-full flex-col items-start py-4"
         >
-          <Input name="name" />
+          <Input name="name" value="name" onChange={handleInputChange} />
           {/* <label>Name</label>
           <input type="text" name="user_name" /> */}
-          <Input name="email" />
+          <Input name="email" value="email" onChange={handleInputChange} />
           {/* <label>Email</label>
           <input type="email" name="user_email" /> */}
-          <Input name="message" />
+          <Input name="message" value="message" onChange={handleInputChange} />
           {/* <label>Message</label> */}
           {/* <textarea name="message" />
           <input type="submit" value="Send" /> */}
