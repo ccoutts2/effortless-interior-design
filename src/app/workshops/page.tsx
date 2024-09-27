@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { assetsConfig } from "@/config/assets";
 import Lenis from "lenis";
 import Testimonials from "@/components/Testimonials/Testimonials";
-import Input from "@/components/Input/Input";
+import { Input } from "@/components";
 import { Button } from "@/components";
 
 interface BulletPoints {
@@ -28,7 +28,7 @@ const bulletPoints: BulletPoints[] = [
   },
   {
     problem:
-      "You don't know where to find the right fabrics, wallpapers furnishings etc.",
+      "You don't know where to find the right fabrics, wallpapers furnishings etc",
   },
   {
     problem:
@@ -36,7 +36,7 @@ const bulletPoints: BulletPoints[] = [
   },
 ];
 
-const Workshops: React.FC = () => {
+const Workshops = () => {
   useEffect(() => {
     const lenis = new Lenis();
 

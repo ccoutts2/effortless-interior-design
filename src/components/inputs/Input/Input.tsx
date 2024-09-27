@@ -5,7 +5,7 @@ interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
 
 export const Input = ({ name, placeholder, ...defaultProps }: InputProps) => {
   return (
-    <div className=" w-full ">
+    <div className="w-full">
       <label className="hidden">{name}</label>
       <input
         id={name}

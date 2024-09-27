@@ -1,31 +1,47 @@
-import { validateEmail } from "@/utils/validation";
 import emailjs from "@emailjs/browser";
+import { validateEmail } from "@/utils/validation";
 
-export const contactFormSubmit = async (form: HTMLFormElement | null) => {
-  if (!form) return { message: "Form not found" };
-
-  const formData = new FormData(form);
-  let email = formData.get("email");
-  const name = formData.get("name");
-  const message = formData.get("message");
-
-  if (!validateEmail(email)) return { message: "Must be a valid email" };
-  email = email.toLowerCase();
-
-  if (!name) return { message: "Please enter a name" };
-
-  //   need to link holly to an email.js account so we can imput the IDs
+export const handleContactForm = async (
+  formState: { message: string },
+  formElement: HTMLFormElement,
+) => {
   try {
-    await emailjs.sendForm(
-      "YOUR_SERVICE_ID",
-      "YOUR_TEMPLATE_ID",
-      form,
-      "YOUR_PUBLIC_KEY",
-    );
+    const formData = new FormData(formElement);
 
-    return { message: "Email sent successfully" };
+    let name = formData.get("name");
+    if (!name) return { message: "Please enter a name" };
+
+    let email = formData.get("email");
+    if (!validateEmail(email)) return { message: "Must be a valid email" };
+    email = email.toLocaleLowerCase();
+
+    let message = formData.get("message");
+    if (!message) return { message: "Please enter a message" };
+
+    if (!name || !email || !message) {
+      return { message: "All fields are required" };
+    }
   } catch (error) {
-    console.error(error);
-    return { message: error };
+    console.log(error);
+    return { message: "Error" };
   }
+
+  const emailServiceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
+  const emailTemplateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
+  const emailPublicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
+
+  if (!emailServiceId || !emailTemplateId || !emailPublicKey) {
+    throw new Error("EmailJS environment variables are not set.");
+  }
+
+  const sendEmail = await emailjs
+    .sendForm(emailServiceId, emailTemplateId, formElement, emailPublicKey)
+    .then(
+      (result) => {
+        alert(result.text);
+      },
+      (error) => {
+        alert(error.text);
+      },
+    );
 };
