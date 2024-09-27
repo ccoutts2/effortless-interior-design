@@ -1,18 +1,29 @@
 "use client";
-import { useRef, FormEvent } from "react";
+import { useRef, FormEvent, useState } from "react";
 import { PageHeader } from "@/components";
 import ContactPageForm from "@/components/forms/ContactPageForm";
 import { handleContactForm } from "@/lib/actions";
 
 const Page = () => {
+  const [loading, setLoading] = useState(false);
+  const [message, setMessage] = useState<string | null>(null);
+  const [buttonLabel, setButtonLabel] = useState("Send");
+
   const form = useRef<HTMLFormElement | null>(null);
   const onSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event?.preventDefault();
     if (form.current) {
+      setLoading(true);
+      setMessage(null);
       const formState = { message: "" };
       const response = await handleContactForm(formState, form.current);
+
       if (response && response.message) {
-        return { message: response.message };
+        setMessage(response.message);
+        if (response.message === "Success") {
+          setButtonLabel("Sent!");
+          form.current.reset();
+        }
       }
     }
   };
@@ -24,7 +35,13 @@ const Page = () => {
         <h1 className="text-2xl">
           Got a question? Don&apos;t hesitate to get in touch!
         </h1>
-        <ContactPageForm ref={form} onSubmit={onSubmit} />
+        {message && <p>{message}</p>}
+        <ContactPageForm
+          ref={form}
+          onSubmit={onSubmit}
+          buttonLabel={buttonLabel}
+        />
+        {loading && <p>Sending message...</p>}
       </section>
     </>
   );

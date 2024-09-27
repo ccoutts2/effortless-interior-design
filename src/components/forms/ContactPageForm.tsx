@@ -7,12 +7,14 @@ interface ContactPageFormProps
   extends DetailedHTMLProps<
     FormHTMLAttributes<HTMLFormElement>,
     HTMLFormElement
-  > {}
+  > {
+  buttonLabel: string;
+}
 
 export const ContactPageForm = forwardRef<
   HTMLFormElement,
   ContactPageFormProps
->(({ ...restProps }, ref) => {
+>(({ buttonLabel, ...restProps }, ref) => {
   return (
     <form
       ref={ref}
@@ -22,7 +24,7 @@ export const ContactPageForm = forwardRef<
       <Input name="name" placeholder="Your Name" />
       <Input name="email" placeholder="Your Email" />
       <Input name="message" placeholder="Your Message" />
-      <Button label="Send" type="submit" />
+      <Button label={buttonLabel} type="submit" />
     </form>
   );
 });
