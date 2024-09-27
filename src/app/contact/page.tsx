@@ -5,26 +5,44 @@ import ContactPageForm from "@/components/forms/ContactPageForm";
 import { handleContactForm } from "@/lib/actions";
 
 const Page = () => {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [textarea, setTextArea] = useState("");
+  const [buttonLabel, setButtonLabel] = useState("Send");
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState<string | null>(null);
-  const [buttonLabel, setButtonLabel] = useState("Send");
 
   const form = useRef<HTMLFormElement | null>(null);
+
+  const handleInputChange: React.ChangeEventHandler<HTMLInputElement> = (
+    event,
+  ) => {
+    const { name, value } = event.target;
+    if (name === "name") setName(value);
+    if (name === "email") setEmail(value);
+    if (name === "textarea") setTextArea(value);
+  };
+
   const onSubmit = async (event: FormEvent<HTMLFormElement>) => {
-    event?.preventDefault();
+    event.preventDefault();
     if (form.current) {
       setLoading(true);
       setMessage(null);
+
       const formState = { message: "" };
       const response = await handleContactForm(formState, form.current);
 
       if (response && response.message) {
         setMessage(response.message);
+
         if (response.message === "Success") {
-          setButtonLabel("Sent!");
-          form.current.reset();
+          setName("");
+          setEmail("");
+          setTextArea("");
+          setButtonLabel("Sent");
         }
       }
+      setLoading(false);
     }
   };
 
@@ -39,6 +57,7 @@ const Page = () => {
         <ContactPageForm
           ref={form}
           onSubmit={onSubmit}
+          handleInputChange={handleInputChange}
           buttonLabel={buttonLabel}
         />
         {loading && <p>Sending message...</p>}

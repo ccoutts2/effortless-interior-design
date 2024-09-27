@@ -13,12 +13,12 @@ export const handleContactForm = async (
 
     let email = formData.get("email");
     if (!validateEmail(email)) return { message: "Must be a valid email" };
-    email = email.toLocaleLowerCase();
+    email = email.toLowerCase();
 
-    let message = formData.get("message");
-    if (!message) return { message: "Please enter a message" };
+    let textarea = formData.get("textarea");
+    if (!textarea) return { message: "Please enter a message" };
 
-    if (!name || !email || !message) {
+    if (!name || !email || !textarea) {
       return { message: "All fields are required" };
     }
   } catch (error) {
@@ -38,10 +38,10 @@ export const handleContactForm = async (
     .sendForm(emailServiceId, emailTemplateId, formElement, emailPublicKey)
     .then(
       (result) => {
-        alert(result.text);
+        console.log(result.text);
       },
       (error) => {
-        alert(error.text);
+        console.log(error.text);
       },
     );
 };
