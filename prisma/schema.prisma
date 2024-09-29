@@ -48,6 +48,7 @@ model User {
   password      String?
   isActive      Boolean  @default(false)
   newsletterSub Boolean  @default(false)
+  emailConsent  Boolean  @default(false)
   isAdmin       Boolean  @default(false)
   orders        Order[]
   createdAt     DateTime @default(now())

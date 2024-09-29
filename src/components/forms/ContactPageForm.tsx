@@ -34,6 +34,7 @@ export const ContactPageForm = forwardRef<
         placeholder="Your Message"
         onChange={handleInputChange}
       />
+      <Input type="checkbox" name="checkbox" placeholder="Agree to terms" />
       <Button label={buttonLabel} type="submit" />
     </form>
   );
