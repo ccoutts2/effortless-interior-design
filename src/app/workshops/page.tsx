@@ -94,8 +94,8 @@ const Workshops = () => {
             </p>
           </div>
           <form className="flex w-full flex-col items-start justify-start">
-            <Input name="name" />
-            <Input name="email" />
+            <Input name="name" className="hidden" />
+            <Input name="email" className="hidden" />
             <Button label="enquire" />
           </form>
         </div>

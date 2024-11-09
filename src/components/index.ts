@@ -6,6 +6,7 @@ export { PlusMinusButton } from "./buttons/PlusMinusButton/PlusMinusButton";
 // inputs
 export { Input } from "./inputs/Input/Input";
 export { SearchBar } from "./inputs/SearchBar/SearchBar";
+export { Textarea } from "./inputs/Input/Textarea";
 
 // display
 export { ImageCarousel } from "./display/ImageCarousel/ImageCarousel";
@@ -24,3 +25,6 @@ export { SchemeArticles } from "./sections/SchemeArticles/SchemeArticles";
 export { SchemeDetails } from "./sections/SchemeDetails/SchemeDetails";
 export { SchemePageHeader } from "./sections/SchemePageHeader/SchemePageHeader";
 export { PageHeader } from "./sections/PageHeader/PageHeader";
+
+// toast
+export { Toast } from "./Toast/Toast";

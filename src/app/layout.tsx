@@ -1,9 +1,9 @@
+import "./globals.css";
 import type { Metadata } from "next";
 import { Overpass } from "next/font/google";
 import Cookie from "@/components/Cookie/Cookie";
 import Footer from "../components/Footer/Footer";
 import { Header } from "@/components";
-import "./globals.css";
 
 const overpass = Overpass({
   subsets: ["latin"],
