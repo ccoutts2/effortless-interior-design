@@ -22,25 +22,32 @@ export const ContactPageForm = () => {
   const [email, setEmail] = useState("");
   const [textarea, setTextarea] = useState("");
   const [emailError, setEmailError] = useState("");
+  const [emailConsent, setEmailConsent] = useState(false);
   const [errorMessages, setErrorMessages] = useState({});
   const [buttonlabel, setButtonLabel] = useState("Send");
   const [isToastVisible, setIsToastVisible] = useState(false);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
+
+    if (name === "checkEmailConsent") {
+      setEmailConsent(!emailConsent);
+    }
+
     if (name === "name") {
       setName(value);
     }
     if (name === "email") {
       setEmail(value);
-
       const emailValidation = Schema.shape.email.safeParse(value);
-      if (!emailValidation.success && value !== "") {
-        setEmailError("Please input a valid email");
-      } else {
-        setEmailError("");
-      }
+      setEmailError(
+        emailValidation.success ? "" : "Please input a valid email",
+      );
     }
+  };
+
+  const handleCheckInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setEmailConsent(!emailConsent);
   };
 
   const handleTextareaChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -61,14 +68,29 @@ export const ContactPageForm = () => {
       name: formData.get("name"),
       email: formData.get("email"),
       textarea: formData.get("textarea"),
+      emailConsent: formData.get("checkEmailConsent") === "on" ? true : false,
     });
 
     if (!validatedFields.success) {
       setErrorMessages(validatedFields.error.flatten().fieldErrors);
+      setButtonLabel("Send");
       return;
     }
 
     try {
+      if (emailConsent) {
+        await fetch("/api/saveEmailConsent/route.ts", {
+          method: "POST",
+          body: JSON.stringify({
+            name,
+            email,
+            emailConsent: true,
+          }),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+      }
       const emailServiceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
       const emailTemplateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
       const emailPublicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
@@ -94,6 +116,7 @@ export const ContactPageForm = () => {
       setName("");
       setEmail("");
       setTextarea("");
+      setEmailConsent(false);
       setButtonLabel("Send");
       setEmailError("");
       setIsToastVisible(true);
@@ -109,7 +132,7 @@ export const ContactPageForm = () => {
     <form
       ref={form}
       onSubmit={handleSubmit}
-      className="flex w-full max-w-[50%] flex-col items-start py-4"
+      className="flex w-full max-w-[40rem] flex-col items-start py-4"
     >
       <Input
         name="name"
@@ -135,12 +158,17 @@ export const ContactPageForm = () => {
         rows={5}
         required
       />
+
       <Input
         type="checkbox"
-        name="checkbox"
-        placeholder="Agree to terms"
-        className="flex items-center justify-start"
+        name="checkEmailConsent"
+        checked={emailConsent}
+        onChange={handleCheckInput}
+        placeholder="I agree to receive communication by email"
+        className="flex w-auto items-center justify-start "
       />
+      <p>The checkbox is {emailConsent ? "checked" : "unchecked"}</p>
+
       <div className="relative w-full pb-1 pt-4">
         <Button label={buttonlabel} type="submit" />
         {Object.keys(errorMessages).length > 0 && (
