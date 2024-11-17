@@ -1,24 +1,17 @@
-"use client";
-import { useEffect } from "react";
 import { Hero } from "@/components";
 import HomeBio from "@/components/HomeBio/HomeBio";
 import SchemeSlider from "@/components/ShemeSlider/SchemeSlider";
 import OurStory from "@/components/OurStory/OurStory";
-import Lenis from "lenis";
 import Testimonials from "@/components/Testimonials/Testimonials";
 import Resources from "@/components/Resources/Resources";
 
-export default function Home() {
-  useEffect(() => {
-    const lenis = new Lenis();
+import { getPosts } from "@/utils/getPosts";
+import { PostItem } from "@/utils/types";
 
-    function raf(time: number) {
-      lenis.raf(time);
-      requestAnimationFrame(raf);
-    }
+export default async function Home() {
+  const posts: PostItem[] = await getPosts();
 
-    requestAnimationFrame(raf);
-  }, []);
+  const postDisplayLimit = posts.slice(0, 3);
 
   return (
     <main>
@@ -27,7 +20,7 @@ export default function Home() {
       <SchemeSlider />
       <HomeBio />
       <Testimonials />
-      <Resources />
+      <Resources posts={postDisplayLimit} />
     </main>
   );
 }
