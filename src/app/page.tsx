@@ -6,9 +6,12 @@ import Testimonials from "@/components/Testimonials/Testimonials";
 import Resources from "@/components/Resources/Resources";
 
 import { getPosts } from "@/utils/getPosts";
+import { PostItem } from "@/utils/types";
 
 export default async function Home() {
-  const posts = await getPosts();
+  const posts: PostItem[] = await getPosts();
+
+  const postDisplayLimit = posts.slice(0, 3);
 
   return (
     <main>
@@ -17,11 +20,7 @@ export default async function Home() {
       <SchemeSlider />
       <HomeBio />
       <Testimonials />
-      {posts.length > 0 ? (
-        <Resources posts={posts} />
-      ) : (
-        <p>No posts available</p>
-      )}
+      <Resources posts={postDisplayLimit} />
     </main>
   );
 }
