@@ -1,7 +1,6 @@
 "use client";
 import { useRef, useState } from "react";
 import { Button, Input, Textarea, Toast } from "@/components";
-
 import emailjs from "@emailjs/browser";
 import { z } from "zod";
 
@@ -13,6 +12,7 @@ const Schema = z.object({
     })
     .email(),
   textarea: z.string().min(1, "Message is required"),
+  emailConsent: z.boolean().optional(),
 });
 
 export const ContactPageForm = () => {
@@ -24,14 +24,14 @@ export const ContactPageForm = () => {
   const [emailError, setEmailError] = useState("");
   const [emailConsent, setEmailConsent] = useState(false);
   const [errorMessages, setErrorMessages] = useState({});
-  const [buttonlabel, setButtonLabel] = useState("Send");
+  const [buttonLabel, setButtonLabel] = useState("Send");
   const [isToastVisible, setIsToastVisible] = useState(false);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
+    const { name, value, type, checked } = e.target;
 
-    if (name === "checkEmailConsent") {
-      setEmailConsent(!emailConsent);
+    if (type === "checkbox" && name === "checkEmailConsent") {
+      setEmailConsent(checked);
     }
 
     if (name === "name") {
@@ -44,10 +44,6 @@ export const ContactPageForm = () => {
         emailValidation.success ? "" : "Please input a valid email",
       );
     }
-  };
-
-  const handleCheckInput = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setEmailConsent(!emailConsent);
   };
 
   const handleTextareaChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -63,12 +59,11 @@ export const ContactPageForm = () => {
     setErrorMessages({});
     setButtonLabel("Sending");
 
-    const formData = new FormData(form.current!);
     const validatedFields = Schema.safeParse({
-      name: formData.get("name"),
-      email: formData.get("email"),
-      textarea: formData.get("textarea"),
-      emailConsent: formData.get("checkEmailConsent") === "on" ? true : false,
+      name,
+      email,
+      textarea,
+      emailConsent,
     });
 
     if (!validatedFields.success) {
@@ -79,7 +74,7 @@ export const ContactPageForm = () => {
 
     try {
       if (emailConsent) {
-        await fetch("/api/saveEmailConsent/route.ts", {
+        await fetch("/api/saveEmailConsent", {
           method: "POST",
           body: JSON.stringify({
             name,
@@ -91,6 +86,7 @@ export const ContactPageForm = () => {
           },
         });
       }
+
       const emailServiceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
       const emailTemplateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
       const emailPublicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
@@ -158,19 +154,20 @@ export const ContactPageForm = () => {
         rows={5}
         required
       />
-
-      <Input
-        type="checkbox"
-        name="checkEmailConsent"
-        checked={emailConsent}
-        onChange={handleCheckInput}
-        placeholder="I agree to receive communication by email"
-        className="flex w-auto items-center justify-start "
-      />
-      <p>The checkbox is {emailConsent ? "checked" : "unchecked"}</p>
+      <label className="flex items-center gap-4">
+        <input
+          type="checkbox"
+          name="checkEmailConsent"
+          onChange={handleInputChange}
+          checked={emailConsent}
+        />
+        <span className="text-sm md:text-base">
+          Do you agree to be contacted by email?
+        </span>
+      </label>
 
       <div className="relative w-full pb-1 pt-4">
-        <Button label={buttonlabel} type="submit" />
+        <Button label={buttonLabel} type="submit" />
         {Object.keys(errorMessages).length > 0 && (
           <p className="text-sm text-red-700">
             Please enter all the required fields

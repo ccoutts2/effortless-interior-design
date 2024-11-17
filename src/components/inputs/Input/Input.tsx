@@ -14,20 +14,7 @@ export const Input = ({
   className,
   ...defaultProps
 }: InputProps) => {
-  return type === "checkbox" ? (
-    <div className="mb-4 flex items-center">
-      <input
-        id={name}
-        name={name}
-        type="checkbox"
-        placeholder={placeholder || name}
-        className="accent-[#5d3a40]"
-      />
-      <label htmlFor={name} className="ms-2 text-sm font-medium text-[#744442]">
-        {placeholder}
-      </label>
-    </div>
-  ) : (
+  return (
     <div className={`${className} w-full`}>
       <label htmlFor={name} className="hidden">
         {name}
