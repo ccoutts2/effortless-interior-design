@@ -1,28 +1,16 @@
-import React from "react";
+import { PageHeader } from "@/components";
+import ContactPageForm from "@/components/forms/ContactPageForm";
 
-const Page = () => {
+export default async function Page() {
   return (
     <>
-      <div>contact</div>
-      <div>page</div>
-      <div>page</div>
-      <div>page</div>
-      <div>page</div>
-      <div>page</div>
-      <div>page</div>
-      <div>page</div>
-      <div>page</div>
-      <div>page</div>
-      <div>contact</div>
-      <div>page</div>
-      <div>page</div>
-      <div>page</div>
-      <div>page</div>
-      <div>page</div>
-      <div>page</div>
-      <div>page</div>
+      <PageHeader header="contact us" />
+      <section className="centered lf:px-32 flex-col px-4 md:px-12">
+        <h1 className="text-2xl">
+          Got a question? Don&apos;t hesitate to get in touch!
+        </h1>
+        <ContactPageForm />
+      </section>
     </>
   );
-};
-
-export default Page;
+}
