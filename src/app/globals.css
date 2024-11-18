@@ -38,18 +38,27 @@ input::placeholder {
   padding-bottom: 1rem;
 }
 
-.documentation li {
-  padding-bottom: 0.5rem;
+.documentation h2 {
+  font-size: 1.25rem;
 }
 
-.documentation a {
-  text-decoration: underline;
+.documentation h3 {
+  font-size: 1.1rem;
 }
 
 .documentation h2,
 .documentation h3,
 .documentation p {
   padding: 1rem 0;
+}
+
+.documentation li {
+  padding-bottom: 0.5rem;
+  list-style: inside;
+}
+
+.documentation a {
+  text-decoration: underline;
 }
 
 @layer utilities {

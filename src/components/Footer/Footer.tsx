@@ -1,6 +1,8 @@
 "use client";
 import React, { useState } from "react";
 import styles from "./Footer.module.scss";
+import Link from "next/link";
+import { NavLink } from "../navigation/NavLink/NavLink";
 
 const Footer = () => {
   const [isActive, setIsActive] = useState<boolean>(false);
@@ -16,8 +18,8 @@ const Footer = () => {
       </h2>
 
       <div className="flex w-full flex-col items-center justify-center gap-0 pt-4 md:flex-row md:items-start md:justify-between">
-        <div className="w-full md:flex md:w-[66.6%] md:flex-row-reverse md:items-start md:justify-between">
-          <div className="flex w-full flex-col items-center justify-center px-0 py-4 font-normal capitalize">
+        <div className="w-full md:flex md:flex-[2] md:flex-row-reverse md:items-start md:justify-between">
+          <div className="flex w-full flex-[1] flex-col items-center justify-center px-0 py-4 font-normal capitalize">
             <h3 className="pb-2 text-base font-normal uppercase lg:text-xl">
               newsletter
             </h3>
@@ -35,25 +37,49 @@ const Footer = () => {
               <p className="text-xs lg:text-base">submit</p>
             </form>
           </div>
-
-          <div className="flex w-full flex-col items-center justify-center px-0 py-4 capitalize md:items-start">
+          <nav className="flex w-full flex-[1] flex-col items-center justify-center px-0 py-4 text-center capitalize md:items-start md:text-start">
             <h3 className="pb-2 text-base font-normal uppercase lg:text-xl">
-              contact
+              site map
             </h3>
-            <p className="text-xs lg:text-base">tel: +44 8495 1561 </p>
-            <p className="text-xs lg:text-base">email: blank@mail.com</p>
-          </div>
+            <ul>
+              <li className="text-xs lg:text-base">
+                <Link href="/">bedroom</Link>
+              </li>
+              <li className="text-xs lg:text-base">
+                <Link href="/">bathroom</Link>
+              </li>
+              <li className="text-xs lg:text-base">
+                <Link href="/">kitchen</Link>
+              </li>
+              <li className="text-xs lg:text-base">
+                <Link href="/">living room</Link>
+              </li>
+              <li className="text-xs lg:text-base">
+                <Link href="/privacy-policy">privacy policy</Link>
+              </li>
+              <li className="text-xs lg:text-base">
+                <Link href="/terms-and-conditions">t&c&apos;s</Link>
+              </li>
+              <li className="text-xs lg:text-base">
+                <Link href="cookie-policy">cookie policy</Link>
+              </li>
+            </ul>
+          </nav>
         </div>
 
-        <nav className="flex w-[30%] flex-col items-center justify-center px-0 py-4 capitalize md:items-end">
+        <div className="flex flex-[1] flex-col items-center justify-center px-0 py-4 text-center md:items-end md:text-end">
           <h3 className="pb-2 text-base font-normal uppercase lg:text-xl">
-            schemes
+            contact
           </h3>
-          <p className="text-xs lg:text-base">bedroom</p>
-          <p className="text-xs lg:text-base">bathroom</p>
-          <p className="text-xs lg:text-base">kitchen</p>
-          <p className="text-xs lg:text-base">living room</p>
-        </nav>
+          <ul>
+            <li className="text-xs capitalize lg:text-base">+44 8495 1561</li>
+            <li className="text-xs lg:text-base">
+              <Link href="mailto:info@effortlessinteriordesign.com">
+                info@effortlessinteriordesign.com
+              </Link>{" "}
+            </li>
+          </ul>
+        </div>
       </div>
 
       <section className="flex w-full flex-col items-center justify-center md:items-start">
