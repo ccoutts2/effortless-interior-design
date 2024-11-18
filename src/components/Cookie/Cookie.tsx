@@ -28,8 +28,6 @@ const Cookie = () => {
     setShowCookie(false);
   };
 
-  if (!showCookie) return `&#x1F36A`;
-
   return (
     <>
       {showCookie && (
