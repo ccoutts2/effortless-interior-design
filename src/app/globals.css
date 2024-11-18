@@ -24,6 +24,43 @@ input::placeholder {
   font-size: 0.7rem;
 }
 
+.documentation {
+  font-size: clamp(0.85rem, 0.6522rem + 1.7391vw, 1rem);
+  line-height: 2rem;
+  margin: auto;
+  max-width: 70ch;
+  padding: 2em 1em 3em;
+}
+
+.documentation h1 {
+  font-size: 1.5rem;
+  text-align: center;
+  padding-bottom: 1rem;
+}
+
+.documentation h2 {
+  font-size: 1.25rem;
+}
+
+.documentation h3 {
+  font-size: 1.1rem;
+}
+
+.documentation h2,
+.documentation h3,
+.documentation p {
+  padding: 1rem 0;
+}
+
+.documentation li {
+  padding-bottom: 0.5rem;
+  list-style: inside;
+}
+
+.documentation a {
+  text-decoration: underline;
+}
+
 @layer utilities {
   /* Hide scrollbar for Chrome, Safari and Opera */
   .no-scrollbar::-webkit-scrollbar {
