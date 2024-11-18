@@ -1,7 +1,7 @@
 import styles from "./PlusMinusButton.module.css";
 
 interface PlusMinusButtonProps {
-  isActive: boolean;
+  isActive: boolean | undefined;
   onClick?: () => void;
 }
 

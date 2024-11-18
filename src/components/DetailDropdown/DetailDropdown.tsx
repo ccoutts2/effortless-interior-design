@@ -4,7 +4,7 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 
 import { PlusMinusButton } from "../buttons/PlusMinusButton/PlusMinusButton";
-import { DetailItem } from "@/app/faq/data";
+import { DetailItem } from "@/app/faq/types";
 
 interface DetailDropdownProps {
   details: DetailItem[];
@@ -39,7 +39,7 @@ const DetailDropdown = ({ details, className }: DetailDropdownProps) => {
             height: "auto",
             autoAlpha: 1,
             duration: 0.95,
-            ease: "power3.inOut",
+            ease: "power4.inOut",
           });
       });
     },
@@ -71,7 +71,7 @@ const DetailDropdown = ({ details, className }: DetailDropdownProps) => {
               ref={(el) => (dropDown.current[index] = el)}
               className="pt-1 text-sm"
             >
-              {isDropDownOpen[index] && details.details}
+              {details.details}
             </p>
           </div>
           <div className="z-10">

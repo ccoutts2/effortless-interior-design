@@ -1,4 +1,4 @@
-export interface DetailItem {
-  header: string;
-  details: string;
+export interface AccordionItems {
+  title: string;
+  content: string;
 }
