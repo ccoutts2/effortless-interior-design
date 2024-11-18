@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { PageHeader } from "@/components";
+import Link from "next/link";
 
 const Page = () => {
   return (
@@ -16,7 +17,7 @@ const Page = () => {
           />
         </div>
 
-        <div className="gap-6 px-4 py-8 lg:flex lg:flex-1 lg:flex-col lg:justify-between lg:px-0 lg:py-0">
+        <div className="gap-6 px-4 py-8 md:px-0 lg:flex lg:flex-1 lg:flex-col lg:justify-between lg:py-0">
           <p className="pb-4 lg:pb-0">
             Effortless Interior Design was founded by interior designer Holly
             Lomax
@@ -52,6 +53,15 @@ const Page = () => {
             transform their home with ease and confidence.
           </p>
         </div>
+      </section>
+      <section className="px-4 pb-8 md:px-12 md:pt-2 lg:px-32">
+        <h3 className="text-2xl">Need more information?</h3>
+        <p className="pt-4">
+          Head to our {""}
+          <span className="cursor-pointer underline">
+            <Link href="/faq">FAQ&apos;s</Link>
+          </span>
+        </p>
       </section>
     </section>
   );

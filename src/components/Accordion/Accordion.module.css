@@ -1,0 +1,46 @@
+.Accordion {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.Accordion > div:first-of-type {
+  border-top: 1px solid;
+}
+
+.Accordion > div {
+  border-bottom: 1px solid;
+}
+
+.AccordionItem {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.AccordionItem__Section {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition:
+    max-height 0.5s ease-out,
+    opacity 1s ease;
+}
+
+.AccordionItem__Section[data-is-open] {
+  opacity: 1;
+}
+
+.AccordionItem p {
+  margin: 0;
+  padding-top: 0.25;
+  padding: 0.5rem;
+}
+
+.AccordionTitle {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  margin: 0;
+  transition: background-color 0.2s ease;
+}

@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import styles from "./Footer.module.scss";
+import Link from "next/link";
 
 const Footer = () => {
   const [isActive, setIsActive] = useState<boolean>(false);
@@ -45,20 +45,28 @@ const Footer = () => {
           </div>
         </div>
 
-        <nav className="flex w-[30%] flex-col items-center justify-center px-0 py-4 capitalize md:items-end">
+        <nav className="centered w-[30%] flex-col px-0 py-4 capitalize md:items-end">
           <h3 className="pb-2 text-base font-normal uppercase lg:text-xl">
-            schemes
+            shop
           </h3>
-          <p className="text-xs lg:text-base">bedroom</p>
-          <p className="text-xs lg:text-base">bathroom</p>
-          <p className="text-xs lg:text-base">kitchen</p>
-          <p className="text-xs lg:text-base">living room</p>
+          <ul className="text-center md:text-right">
+            <li className="text-xs lg:text-base">bedroom</li>
+            <li className="text-xs lg:text-base">bathroom</li>
+            <li className="text-xs lg:text-base">kitchen</li>
+            <li className="text-xs lg:text-base">living room</li>
+            <li className="text-xs uppercase lg:text-base">
+              <Link href="/faq">faq</Link>
+            </li>
+            <li className="text-xs lg:text-base">Terms and Conditions</li>
+            <li className="text-xs lg:text-base">privacy policy</li>
+            <li className="text-xs lg:text-base">Cookie policy</li>
+          </ul>
         </nav>
       </div>
 
       <section className="flex w-full flex-col items-center justify-center md:items-start">
         <p className="text-xs capitalize lg:text-base">
-          <span>&copy;</span>effortless interior design
+          <span>&copy;</span>2024 effortless interior design
         </p>
         <p className="text-xs capitalize lg:text-base">
           website by chris coutts & kabir seth

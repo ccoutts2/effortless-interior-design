@@ -4,29 +4,29 @@
   width: 1rem;
 }
 
-.plus::after,
-.plus::before {
+.plus:after,
+.plus:before {
   content: "";
   position: absolute;
   transform: translate(-50%, -50%) rotate(-90deg);
   background-color: currentColor;
-  transition: all 1s cubic-bezier(0.76, 0, 0.24, 1);
+  transition: all 0.75s cubic-bezier(0.76, 0, 0.24, 1);
 }
 
-.plus::before {
+.plus:before {
   width: 100%;
   height: 1px;
 }
 
-.plus::after {
+.plus:after {
   width: 1px;
   height: 100%;
 }
 
-.minus::after {
+.minus:after {
   transform: translate(-50%, -50%) rotate(90deg);
 }
 
-.minus::before {
+.minus:before {
   opacity: 0;
 }

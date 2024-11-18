@@ -4,33 +4,16 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 
 import { PlusMinusButton } from "../buttons/PlusMinusButton/PlusMinusButton";
+import { DetailItem } from "@/app/faq/types";
 
-interface productDetailsProps {
-  header: string;
-  details: string;
+interface DetailDropdownProps {
+  details: DetailItem[];
+  className?: string;
 }
 
-const productDetails: productDetailsProps[] = [
-  {
-    header: "Details",
-    details:
-      "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Asperiores dolores aut hic nulla voluptatem harum inventore. Dolorum, voluptatibus hic, ad fuga quae quisquam sit aliquam porro dignissimos eius nulla consectetur. ",
-  },
-  {
-    header: "Fabric Details",
-    details:
-      "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Asperiores dolores aut hic nulla voluptatem harum inventore. Dolorum, voluptatibus hic, ad fuga quae quisquam sit aliquam porro dignissimos eius nulla consectetur.",
-  },
-  {
-    header: "Get Holly's Help",
-    details:
-      "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Asperiores dolores aut hic nulla voluptatem harum inventore. Dolorum, voluptatibus hic, ad fuga quae quisquam sit aliquam porro dignissimos eius nulla consectetur.",
-  },
-];
-
-const ProductDetailDropdown = () => {
+const DetailDropdown = ({ details, className }: DetailDropdownProps) => {
   const [isDropDownOpen, setIsDropDownOpen] = useState(
-    Array(productDetails.length).fill(false),
+    Array(details.length).fill(false),
   );
 
   const container = useRef<HTMLDivElement>(null);
@@ -49,14 +32,14 @@ const ProductDetailDropdown = () => {
     () => {
       gsap.set(dropDown.current, { autoAlpha: 0, height: 0 });
 
-      productDetails.forEach((_, i) => {
+      details.forEach((_, i) => {
         tl.current[i] = gsap
           .timeline({ paused: true })
           .to(dropDown.current[i], {
             height: "auto",
             autoAlpha: 1,
             duration: 0.95,
-            ease: "power3.inOut",
+            ease: "power4.inOut",
           });
       });
     },
@@ -74,13 +57,13 @@ const ProductDetailDropdown = () => {
   }, [isDropDownOpen]);
 
   return (
-    <div className="flex flex-col">
-      {productDetails.map((details, index) => (
+    <div className="flex w-full flex-col">
+      {details.map((details, index) => (
         <div
           onClick={() => onClick(index)}
           key={index}
           ref={container}
-          className="flex cursor-pointer justify-between py-4"
+          className={`flex cursor-pointer justify-between py-4 ${className}`}
         >
           <div className="flex flex-col gap-2 md:gap-0">
             <p>{details.header}</p>
@@ -88,7 +71,7 @@ const ProductDetailDropdown = () => {
               ref={(el) => (dropDown.current[index] = el)}
               className="pt-1 text-sm"
             >
-              {isDropDownOpen[index] && details.details}
+              {details.details}
             </p>
           </div>
           <div className="z-10">
@@ -100,4 +83,4 @@ const ProductDetailDropdown = () => {
   );
 };
 
-export default ProductDetailDropdown;
+export default DetailDropdown;
